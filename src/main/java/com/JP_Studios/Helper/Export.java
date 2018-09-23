@@ -9,11 +9,10 @@ import java.util.ArrayList;
 
 public class Export {
     /**
-     *
-     * @param überschuss Die Schueler die bei der Verteilung nicht berücksichtigt wurden
      * @return Ausgabe der Ergebnisse als Text
      */
-    public static String getResultsAsText(ArrayList<Schueler>[] überschuss, Verteiler verteiler) {
+    public static String getResultsAsText(Verteiler verteiler) {
+        ArrayList<Schueler>[] überschuss = verteiler.getÜberschuss();
         String results = "";
         results += "______________Seminare______________ " + System.lineSeparator()+"W-Seminare:"+ System.lineSeparator();
         ArrayList<Kurs> WSeminar = verteiler.getKurse(GlobalConstants.W_SEMINAR);

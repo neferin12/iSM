@@ -12,7 +12,7 @@ public class Verteiler {
     private ArrayList<Schueler> schueler = new ArrayList<>();
     public int punktzahl;
     private ArrayList<Kurs>[] kurses = new ArrayList[2];
-    ArrayList<Schueler> überschuss[] = new ArrayList[2];
+    private ArrayList<Schueler> überschuss[] = new ArrayList[2];
 
 
     /**
@@ -106,5 +106,9 @@ public class Verteiler {
 
     public ArrayList<Kurs>[] getKurse() {
         return kurses;
+    }
+
+    public ArrayList<Schueler>[] getÜberschuss() {
+        return überschuss;
     }
 }
