@@ -59,8 +59,8 @@ public class Controller implements Runnable {
 
     /**
      *
-     * @param lowerEnd An welcher Stelle in der GesamtIterationszahl der Algorythmus beginnen soll
-     * @param upperEnd An welcher Stelle in der GesamtIterationszahl der Algorythmus aufhören soll
+     * @param lowerEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus beginnen soll
+     * @param upperEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus aufhören soll
      * @return Gibt den besten Durchlauf aus diesem Abschnitt zurück
      */
 
