@@ -50,7 +50,9 @@ public class Controller implements Runnable {
         for (int i = 0; i < results.length - 1; i++) {
             results[i] = calculatePart(i * PART_SIZE, (i + 1) * PART_SIZE);
         }
-        results[results.length - 1] = calculatePart(iterations - (rest), iterations - 1);
+        if (rest != 0) {
+            results[results.length - 1] = calculatePart(iterations - (rest), iterations - 1);
+        }
 
 
         Arrays.sort(results, new VerteilerComparator());
