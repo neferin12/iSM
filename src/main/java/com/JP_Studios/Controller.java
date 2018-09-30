@@ -52,6 +52,10 @@ public class Controller implements Runnable {
         }
         if (rest != 0) {
             results[results.length - 1] = calculatePart(iterations - (rest), iterations - 1);
+        } else {
+            results[results.length - 1] = new Verteiler(schuelers, kurses);
+            results[results.length - 1].seminareVerteilen();
+            oberflaeche.handleProgress(100);
         }
 
 
