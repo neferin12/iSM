@@ -1,7 +1,6 @@
 package com.JP_Studios.DeclarationClasses;
 
 import com.JP_Studios.Verteiler;
-
 import java.net.SocketAddress;
 
 /**
