@@ -19,7 +19,7 @@ public abstract class Import {
      */
     public static ArrayList<Schueler> importSchuelerFromCSV(File wahlen) throws IOException {
         ArrayList<Schueler> schuelers = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(wahlen), StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(wahlen), StandardCharsets.ISO_8859_1))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty()) {
@@ -46,7 +46,7 @@ public abstract class Import {
         ArrayList<Kurs> w = new ArrayList<>();
         ArrayList<Kurs> p = new ArrayList<>();
         int i = 0;
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(kurse), StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(kurse), StandardCharsets.ISO_8859_1))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty()) {
