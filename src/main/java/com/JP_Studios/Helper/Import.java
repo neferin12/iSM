@@ -4,10 +4,8 @@ import com.JP_Studios.DeclarationClasses.GlobalConstants;
 import com.JP_Studios.Kurs;
 import com.JP_Studios.Schueler;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,9 +17,9 @@ public abstract class Import {
      * @return Gibt den Dateiinhalt als eine {@link ArrayList} der Klasse {@link Schueler} zurück.
      * @throws FileNotFoundException Datei nicht gefunden
      */
-    public static ArrayList<Schueler> importSchuelerFromCSV(File wahlen) throws FileNotFoundException {
+    public static ArrayList<Schueler> importSchuelerFromCSV(File wahlen) throws IOException {
         ArrayList<Schueler> schuelers = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(wahlen))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(wahlen), StandardCharsets.UTF_8))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty()) {
@@ -31,8 +29,9 @@ public abstract class Import {
                     schuelers.add(new Schueler(daten[0], pSeminare, wSeminare));
                 }
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
+            throw e;
         }
         return schuelers;
     }
@@ -43,16 +42,23 @@ public abstract class Import {
      * @return Gibt ein Array zurück. Dieses enthält die W-Seminare als {@link ArrayList} am Index {@link GlobalConstants#W_SEMINAR} und die P-Seminare als {@link ArrayList} am Index {@link GlobalConstants#P_SEMINAR}
      * @throws FileNotFoundException Datei nicht gefunden
      */
-    public static ArrayList<Kurs>[] importKurseFromCSV(File kurse) throws FileNotFoundException {
+    public static ArrayList<Kurs>[] importKurseFromCSV(File kurse) throws IOException {
         ArrayList<Kurs> w = new ArrayList<>();
         ArrayList<Kurs> p = new ArrayList<>();
-        Scanner scanner = new Scanner(kurse);
         int i = 0;
-        while (scanner.hasNextLine()) {
-            i++;
-            String[] daten = scanner.nextLine().split(";");
-            w.add(new Kurs(daten[0], GlobalConstants.W_SEMINAR, Integer.parseInt(daten[1]),i));
-            p.add(new Kurs(daten[2], GlobalConstants.P_SEMINAR, Integer.parseInt(daten[3]),i));
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(kurse), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    i++;
+                    String[] daten = line.split(";");
+                    w.add(new Kurs(daten[0], GlobalConstants.W_SEMINAR, Integer.parseInt(daten[1]), i));
+                    p.add(new Kurs(daten[2], GlobalConstants.P_SEMINAR, Integer.parseInt(daten[3]), i));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
         }
         return new ArrayList[]{w, p};
     }

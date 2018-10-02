@@ -7,7 +7,7 @@ import com.JP_Studios.Verteiler;
 
 import java.util.ArrayList;
 
-public class Export {
+public abstract class Export {
     /**
      * @return Ausgabe der Ergebnisse als Text
      */

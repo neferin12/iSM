@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Created by Julian Pollinger
  */
-public class TaskbarHandler {
+public abstract class TaskbarHandler {
     private static Taskbar taskbar = Taskbar.getTaskbar();
     public static void setTaskbarProgress(int progress, Frame frame) {
         if (Taskbar.isTaskbarSupported()) {
