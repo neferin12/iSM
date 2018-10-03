@@ -1,7 +1,8 @@
 package com.JP_Studios;
 
+import com.JP_Studios.DeclarationClasses.Comparator.SchuelerNameComparator;
 import com.JP_Studios.DeclarationClasses.GlobalConstants;
-import com.JP_Studios.DeclarationClasses.SchuelerPunktzahlComparator;
+import com.JP_Studios.DeclarationClasses.Comparator.SchuelerPunktzahlComparator;
 import com.JP_Studios.Exceptions.SchuelerLimitErreichtExeption;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Verteiler {
      * @param schueler Die Schueler
      * @param kurse Die Kurs
      */
-    public Verteiler(ArrayList<Schueler> schueler, ArrayList<Kurs>[] kurse) {
+    Verteiler(ArrayList<Schueler> schueler, ArrayList<Kurs>[] kurse) {
         for (Schueler schueler1 : schueler) {
             this.schueler.add(new Schueler(schueler1.name, schueler1.pseminarwahl, schueler1.wseminarwahl));
         }
@@ -39,7 +40,7 @@ public class Verteiler {
      * Weißt die Schueler den Kursen zu
      * @return Gibt die {@link Schueler Schueler} zurueck, die keinen ihrer Wuensche bekommen haben. Das Array ist aufgeteilt in {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      */
-    public ArrayList<Schueler>[] seminareVerteilen() {
+    void seminareVerteilen() {
 
         überschuss[0] = new ArrayList<>();
         überschuss[1] = new ArrayList<>();
@@ -49,15 +50,9 @@ public class Verteiler {
          */
         Collections.shuffle(schueler);
         for (Schueler schueler1 : schueler) {
-            try {
-                schueler1.kursSetzen(schueler1.pseminarwahl[0],GlobalConstants.P_SEMINAR,GlobalConstants.ERSTE_WAHL,false, this);
-            } catch (SchuelerLimitErreichtExeption schuelerLimitErreichtExeption) {
-                try {
-                    schueler1.kursSetzen(schueler1.pseminarwahl[1],GlobalConstants.P_SEMINAR,GlobalConstants.ZWEITE_WAHL,false, this);
-                } catch (SchuelerLimitErreichtExeption schuelerLimitErreichtExeption1) {
-                    try {
-                        schueler1.kursSetzen(schueler1.pseminarwahl[2],GlobalConstants.P_SEMINAR,GlobalConstants.DRITTE_WAHL,false, this);
-                    } catch (SchuelerLimitErreichtExeption schuelerLimitErreichtExeption2) {
+            if (!schueler1.kursSetzen(schueler1.pseminarwahl[0], GlobalConstants.P_SEMINAR, GlobalConstants.ERSTE_WAHL, false, this)) {
+                if (!schueler1.kursSetzen(schueler1.pseminarwahl[1], GlobalConstants.P_SEMINAR, GlobalConstants.ZWEITE_WAHL, false, this)) {
+                    if (!schueler1.kursSetzen(schueler1.pseminarwahl[2], GlobalConstants.P_SEMINAR, GlobalConstants.DRITTE_WAHL, false, this)) {
                         schueler1.keineWahlBekommen();
                         überschuss[GlobalConstants.P_SEMINAR].add(schueler1);
                     }
@@ -65,21 +60,15 @@ public class Verteiler {
             }
         }
         Collections.shuffle(schueler);
-        Collections.sort(schueler, new SchuelerPunktzahlComparator());
+        schueler.sort(new SchuelerPunktzahlComparator());
 
         /**
          * W-Seminare
          */
         for (Schueler schueler1 : schueler) {
-            try {
-                schueler1.kursSetzen(schueler1.wseminarwahl[0],GlobalConstants.W_SEMINAR,GlobalConstants.ERSTE_WAHL,false, this);
-            } catch (SchuelerLimitErreichtExeption schuelerLimitErreichtExeption) {
-                try {
-                    schueler1.kursSetzen(schueler1.wseminarwahl[1],GlobalConstants.W_SEMINAR,GlobalConstants.ZWEITE_WAHL,false, this);
-                } catch (SchuelerLimitErreichtExeption schuelerLimitErreichtExeption1) {
-                    try {
-                        schueler1.kursSetzen(schueler1.wseminarwahl[2],GlobalConstants.W_SEMINAR,GlobalConstants.DRITTE_WAHL,false, this);
-                    } catch (SchuelerLimitErreichtExeption schuelerLimitErreichtExeption2) {
+            if (!schueler1.kursSetzen(schueler1.wseminarwahl[0], GlobalConstants.W_SEMINAR, GlobalConstants.ERSTE_WAHL, false, this)) {
+                if (!schueler1.kursSetzen(schueler1.wseminarwahl[1], GlobalConstants.W_SEMINAR, GlobalConstants.ZWEITE_WAHL, false, this)) {
+                    if (!schueler1.kursSetzen(schueler1.wseminarwahl[2], GlobalConstants.W_SEMINAR, GlobalConstants.DRITTE_WAHL, false, this)) {
                         schueler1.keineWahlBekommen();
                         überschuss[GlobalConstants.W_SEMINAR].add(schueler1);
                     }
@@ -91,9 +80,24 @@ public class Verteiler {
             punktzahl += schueler1.punktzahl;
         }
 
-        return überschuss;
     }
 
+    /**
+     * Sortiert alle Schülerlisten dieses Verteilers und der Kurse des Verteilers nach Alphabet. Sollte aus Performancegründen so selten wie möglich angewandt werden
+     */
+
+    public void sort() {
+        schueler.sort(new SchuelerNameComparator());
+        überschuss[0].sort(new SchuelerNameComparator());
+        überschuss[1].sort(new SchuelerNameComparator());
+        for (int i = 0; i < kurses.length; i++) {
+            ArrayList<Kurs> kurs = kurses[i];
+            for (Kurs kur : kurs) {
+                kur.sort();
+            }
+
+        }
+    }
 
 
     public ArrayList<Schueler> getSchueler() {
@@ -111,4 +115,5 @@ public class Verteiler {
     public ArrayList<Schueler>[] getÜberschuss() {
         return überschuss;
     }
+
 }

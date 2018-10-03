@@ -19,6 +19,7 @@ public abstract class Export {
     /**
      * @return Ausgabe der Ergebnisse als Text
      */
+    @Deprecated
     public static String getResultsAsText(Verteiler verteiler) {
         ArrayList<Schueler>[] überschuss = verteiler.getÜberschuss();
         String results = "";

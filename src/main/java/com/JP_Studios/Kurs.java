@@ -1,10 +1,12 @@
 package com.JP_Studios;
 
+import com.JP_Studios.DeclarationClasses.Comparator.SchuelerNameComparator;
 import com.JP_Studios.DeclarationClasses.GlobalConstants;
 import com.JP_Studios.Exceptions.SchuelerLimitErreichtExeption;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Kurs implements Serializable {
     private String name;
@@ -67,24 +69,33 @@ public class Kurs implements Serializable {
      *
      * @return Maximale Anzahl an Schülern im Kurs
      */
-    public int getMaximaleSchueler() {
+    int getMaximaleSchueler() {
         return maximaleSchueler;
     }
 
     /**
      * @param schueler Hier kann ein {@link Schueler Schueler} zum Seminar hinzugefügt werden
      * @param forceAdd Wenn {@code true}, wird das hinzufügen des {@link Schueler Schülers} erzwungen
-     * @throws SchuelerLimitErreichtExeption Wird ausgeworfen, wenn die maximale Anzahl an Schülern des Kurses erreicht ist
+     * @return Gibt zurück, ob das Hinzufügen des Schülers erfolgreich war
      */
-    public void addSchueler(Schueler schueler, boolean forceAdd) throws SchuelerLimitErreichtExeption {
+    boolean addSchueler(Schueler schueler, boolean forceAdd) {
         if (forceAdd) {
             schuelers.add(schueler);
         } else {
             if (schuelers.size() < maximaleSchueler) {
                 schuelers.add(schueler);
             } else {
-                throw new SchuelerLimitErreichtExeption(name);
+                return false;
             }
         }
+        return true;
+    }
+
+
+    /**
+     * Sortiert die Schüler des Kurses nach Alphabet
+     */
+    void sort() {
+        schuelers.sort(new SchuelerNameComparator());
     }
 }

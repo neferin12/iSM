@@ -2,7 +2,6 @@ package com.JP_Studios;
 
 
 import com.JP_Studios.DeclarationClasses.GlobalConstants;
-import com.JP_Studios.Exceptions.SchuelerLimitErreichtExeption;
 
 import java.io.Serializable;
 
@@ -11,7 +10,7 @@ public class Schueler implements Serializable {
     int [] pseminarwahl;
     int [] wseminarwahl;
     public int punktzahl;
-    int[] ergebnis;
+    private int[] ergebnis;
 
     /**
      * @param name Name des Schuelers
@@ -30,14 +29,19 @@ public class Schueler implements Serializable {
      * @param seminar Seminar, das der Schueler bekommt
      * @param pOw Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      * @param wahlPunktzahl Die Punkte die zur "Glückwertung" des Schülers hinzuzufügen sind. Möglich  sind {@link GlobalConstants#ERSTE_WAHL}, {@link GlobalConstants#ZWEITE_WAHL}, {@link GlobalConstants#DRITTE_WAHL} oder, falls keiner der Wünsche berücksichtigt werden konnte, {@link GlobalConstants#KEINE_WAHL}
+     * @return Gibt zurück, ob das Zuweisen erfolgreich war
      */
-    public void kursSetzen(int seminar, int pOw, int wahlPunktzahl, boolean forceAdd, Verteiler verteiler) throws SchuelerLimitErreichtExeption {
-        verteiler.getKurse(pOw).get(seminar).addSchueler(this, forceAdd);
-        ergebnis[pOw] = seminar;
-        punktzahl += wahlPunktzahl;
+    public boolean kursSetzen(int seminar, int pOw, int wahlPunktzahl, boolean forceAdd, Verteiler verteiler) {
+        boolean result = verteiler.getKurse(pOw).get(seminar).addSchueler(this, forceAdd);
+        if (result) {
+            ergebnis[pOw] = seminar;
+            punktzahl += wahlPunktzahl;
+        }
+
+        return result;
     }
 
-    public void keineWahlBekommen() {
+    void keineWahlBekommen() {
         punktzahl += GlobalConstants.KEINE_WAHL;
     }
 

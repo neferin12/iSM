@@ -1,4 +1,4 @@
-package com.JP_Studios.DeclarationClasses;
+package com.JP_Studios.DeclarationClasses.Comparator;
 
 import com.JP_Studios.Verteiler;
 
