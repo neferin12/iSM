@@ -20,7 +20,7 @@ public class Controller implements Runnable {
     private Oberflaeche oberflaeche;
 
 
-    private static final int PART_SIZE = 200000;
+    private static int PART_SIZE = 200000;
 
     /**
      *
@@ -86,4 +86,12 @@ public class Controller implements Runnable {
         return verteiler[0];
     }
 
+
+    public static int getPartSize() {
+        return PART_SIZE;
+    }
+
+    public static void setPartSize(int partSize) {
+        PART_SIZE = partSize;
+    }
 }
