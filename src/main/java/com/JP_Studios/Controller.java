@@ -15,10 +15,6 @@ public class Controller implements Runnable {
     private ArrayList<Kurs>[] kurses;
     private int iterations;
     private Oberflaeche oberflaeche;
-
-    /**
-     * Größe der einzelnen Berechnungspakete
-     */
     private static int PART_SIZE = 200000;
 
     /**
@@ -93,4 +89,6 @@ public class Controller implements Runnable {
     public static void setPartSize(int partSize) {
         PART_SIZE = partSize;
     }
+
+
 }

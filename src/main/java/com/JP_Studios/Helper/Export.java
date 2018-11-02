@@ -82,20 +82,82 @@ public abstract class Export {
 
             if (schueler.kurse()[W_SEMINAR] != -1) {
                 wSeminar = verteiler.getKurse(W_SEMINAR).get(schueler.kurse()[W_SEMINAR]).getName();
+            } else {
+                int wünsche[] = schueler.getWseminarwahl();
+                wSeminar += " (Wünsche: ";
+                for (int i : wünsche) {
+                    wSeminar += " " + i + " ";
+                }
+                wSeminar += ")";
             }
 
             if (schueler.kurse()[P_SEMINAR] != -1) {
                 pSeminar = verteiler.getKurse(P_SEMINAR).get(schueler.kurse()[P_SEMINAR]).getName();
+            } else {
+                int wünsche[] = schueler.getPseminarwahl();
+                pSeminar += " (Wünsche: ";
+                for (int i : wünsche) {
+                    pSeminar += " " + i + " ";
+                }
+                pSeminar += ")";
             }
             outputSchueler += schueler.name + ";" + wSeminar + ";" + pSeminar + System.lineSeparator();
         }
 
         File output = new File(path + "/iSM Export/Schüler.csv");
         output.createNewFile();
-        PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1));
-        out.print(outputSchueler);
-        out.flush();
-        out.close();
+        try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
+            out.print(outputSchueler);
+            out.flush();
+        }
+
+
+        folder = new File(path + "/iSM Export/Seminare/P-Seminare");
+        if (!folder.exists()) {
+            final boolean success = folder.mkdirs();
+            if (!success) {
+                throw new IOException("Erstellen des Ordners fehlgeschlagen");
+            }
+        }
+        folder = new File(path + "/iSM Export/Seminare/W-Seminare");
+        if (!folder.exists()) {
+            final boolean success = folder.mkdirs();
+            if (!success) {
+                throw new IOException("Erstellen des Ordners fehlgeschlagen");
+            }
+        }
+
+        ArrayList<Kurs>[] kurse = verteiler.getKurse();
+        ArrayList<Kurs> pSeminare = kurse[GlobalConstants.P_SEMINAR];
+        ArrayList<Kurs> wSeminare = kurse[GlobalConstants.W_SEMINAR];
+
+        for (Kurs kurs : wSeminare) {
+            String textOutput = "";
+            ArrayList<Schueler> schüler = kurs.getSchueler();
+            for (Schueler schueler : schüler) {
+                textOutput += schueler.name + System.lineSeparator();
+            }
+            output = new File(path + "/iSM Export/Seminare/W-Seminare/" + kurs.getName() + ".csv");
+            output.createNewFile();
+            try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
+                out.print(textOutput);
+                out.flush();
+            }
+        }
+
+        for (Kurs kurs : pSeminare) {
+            String textOutput = "";
+            ArrayList<Schueler> schüler = kurs.getSchueler();
+            for (Schueler schueler : schüler) {
+                textOutput += schueler.name + System.lineSeparator();
+            }
+            output = new File(path + "/iSM Export/Seminare/P-Seminare/" + kurs.getName() + ".csv");
+            output.createNewFile();
+            try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
+                out.print(textOutput);
+                out.flush();
+            }
+        }
 
     }
 }

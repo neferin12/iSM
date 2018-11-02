@@ -57,4 +57,13 @@ public class Schueler implements Serializable {
     public int[] kurse() {
         return ergebnis;
     }
+
+
+    public int[] getPseminarwahl() {
+        return pseminarwahl;
+    }
+
+    public int[] getWseminarwahl() {
+        return wseminarwahl;
+    }
 }
