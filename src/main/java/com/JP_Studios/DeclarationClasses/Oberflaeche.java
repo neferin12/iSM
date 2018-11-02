@@ -1,10 +1,9 @@
 package com.JP_Studios.DeclarationClasses;
 
 import com.JP_Studios.Verteiler;
-import java.net.SocketAddress;
 
 /**
- * Created by Julian Pollinger
+ * Interface zum Implementieren einer Oberfläche. Sie funktioniert nur, wenn die Verteilung über den Controller erfolgt
  */
 public interface Oberflaeche {
     /**
@@ -13,13 +12,10 @@ public interface Oberflaeche {
      */
     void handleProgress(int p);
 
-
+    /**
+     * Methode, die ausgeführt wird, wenn der Verteilvorgang abgschlossen ist
+     *
+     * @param bester Der beste {@link Verteiler}
+     */
     void verteilenFinished(Verteiler bester);
-
-
-    void client_connected();
-
-    void server_newClientConnected(int port, SocketAddress remoteSocketAddress);
-
-    void client_connecting(int port);
 }

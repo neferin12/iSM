@@ -5,7 +5,7 @@ import com.JP_Studios.Verteiler;
 import java.util.Comparator;
 
 /**
- * Created by Julian Pollinger
+ * {@link Comparator} zum Sortieren der Verteiler nach Gesamt-MiMiMiPunktzahl
  */
 public class VerteilerComparator implements Comparator<Verteiler> {
     @Override

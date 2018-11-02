@@ -3,10 +3,11 @@ package com.JP_Studios.Helper;
 import java.awt.*;
 
 /**
- * Created by Julian Pollinger
+ * Klasse, die das Steuern der Taskbar ermöglicht
  */
 public abstract class TaskbarHandler {
     private static Taskbar taskbar = Taskbar.getTaskbar();
+
     public static void setTaskbarProgress(int progress, Frame frame) {
         if (Taskbar.isTaskbarSupported()) {
             taskbar.setWindowProgressValue(frame, progress);

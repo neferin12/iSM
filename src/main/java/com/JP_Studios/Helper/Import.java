@@ -9,6 +9,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Klasse zum einfachen importieren der Schüler und Kurse aus csv-Dateien
+ */
 public abstract class Import {
 
     /**

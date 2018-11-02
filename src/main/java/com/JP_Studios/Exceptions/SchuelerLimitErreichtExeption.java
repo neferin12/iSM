@@ -1,5 +1,6 @@
 package com.JP_Studios.Exceptions;
 
+@Deprecated
 public class SchuelerLimitErreichtExeption extends Exception {
     /**
      *

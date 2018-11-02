@@ -5,7 +5,7 @@ import com.JP_Studios.Schueler;
 import java.util.Comparator;
 
 /**
- * Created by Julian Pollinger
+ * {@link Comparator} zum Sortieren der Schüler nach Name (alphabetisch)
  */
 public class SchuelerNameComparator implements Comparator<Schueler> {
 

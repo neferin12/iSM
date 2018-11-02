@@ -2,12 +2,13 @@ package com.JP_Studios;
 
 import com.JP_Studios.DeclarationClasses.Comparator.SchuelerNameComparator;
 import com.JP_Studios.DeclarationClasses.GlobalConstants;
-import com.JP_Studios.Exceptions.SchuelerLimitErreichtExeption;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 
+/**
+ * Jedes Objekt dieser Klasse repräsentiert ein Seminar
+ */
 public class Kurs implements Serializable {
     private String name;
     private int pOw;
@@ -19,6 +20,7 @@ public class Kurs implements Serializable {
      * @param name Name des Kurses
      * @param pOw Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      * @param maximaleSchueler Maximale Anzahl an {@link Schueler Schülern}, die den Kurs besuchen dürfen
+     * @param i Index des Kurses in der {@link Verteiler#kurses Kursliste}
      */
     public Kurs(String name, int pOw, int maximaleSchueler, int i) {
         this.name = name;
@@ -50,18 +52,19 @@ public class Kurs implements Serializable {
     public int getIndex() {
         return index;
     }
+
     /**
      *
-     * @return Gibt die {@link Schueler Schueler} als Array zurück, die an dem Kurs teilnehmen
+     * @return Gibt die {@link Schueler Schüler} als Array zurück, die an dem Kurs teilnehmen
      */
     public ArrayList<Schueler> getSchueler() {
         return schuelers;
     }
 
     /**
-     * @return Anzahl der Schueler in dem Kurs
+     * @return Anzahl der {@link Schueler Schüler} in dem Kurs
      */
-    public int getSchülerZahl() {
+    public int getSchuelerZahl() {
         return schuelers.size();
     }
 

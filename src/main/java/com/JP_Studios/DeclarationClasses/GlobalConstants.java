@@ -1,5 +1,8 @@
 package com.JP_Studios.DeclarationClasses;
 
+/**
+ * Alle wichtigen Konstanten
+ */
 public abstract class GlobalConstants {
 
     public static final int W_SEMINAR = 0;

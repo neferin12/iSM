@@ -6,9 +6,6 @@ import com.JP_Studios.DeclarationClasses.Comparator.VerteilerComparator;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/*
-  Created by Julian Pollinger
- */
 
 /**
  * Diese Klasse erstellt und verwaltet eine beliebige Anzahl an Verteildurchläufen des Algorithmus, also der Klasse {@link Verteiler}.
@@ -19,7 +16,9 @@ public class Controller implements Runnable {
     private int iterations;
     private Oberflaeche oberflaeche;
 
-
+    /**
+     * Größe der einzelnen Berechnungspakete
+     */
     private static int PART_SIZE = 200000;
 
     /**

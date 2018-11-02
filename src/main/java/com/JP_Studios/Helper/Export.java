@@ -15,8 +15,12 @@ import java.util.ArrayList;
 import static com.JP_Studios.DeclarationClasses.GlobalConstants.P_SEMINAR;
 import static com.JP_Studios.DeclarationClasses.GlobalConstants.W_SEMINAR;
 
+/**
+ * Klasse zum exportieren der Ergebnisse
+ */
 public abstract class Export {
     /**
+     * @param verteiler Der {@link Verteiler}, dessen Ergebnisse ausgegeben werden sollen
      * @return Ausgabe der Ergebnisse als Text
      */
     @Deprecated
@@ -57,6 +61,11 @@ public abstract class Export {
         return results;
     }
 
+    /**
+     * @param verteiler Der {@link Verteiler}, dessen Ergebnisse ausgegeben werden sollen
+     * @param path      Der Pfad, zu dem die Dateien ausgegeben werden sollen
+     * @throws IOException Falls das Exportieren nicht möglich war
+     */
     public static void saveCSVFiles(Verteiler verteiler, String path) throws IOException {
         ArrayList<Schueler> schuelers = verteiler.getSchueler();
         File folder = new File(path + "/iSM Export");

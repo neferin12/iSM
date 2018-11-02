@@ -5,6 +5,9 @@ import com.JP_Studios.DeclarationClasses.GlobalConstants;
 
 import java.io.Serializable;
 
+/**
+ * Jedes Objekt dieser Klasse repräsentiert einen Schüler
+ */
 public class Schueler implements Serializable {
     public String name;
     int [] pseminarwahl;
@@ -29,6 +32,8 @@ public class Schueler implements Serializable {
      * @param seminar Seminar, das der Schueler bekommt
      * @param pOw Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      * @param wahlPunktzahl Die Punkte die zur "Glückwertung" des Schülers hinzuzufügen sind. Möglich  sind {@link GlobalConstants#ERSTE_WAHL}, {@link GlobalConstants#ZWEITE_WAHL}, {@link GlobalConstants#DRITTE_WAHL} oder, falls keiner der Wünsche berücksichtigt werden konnte, {@link GlobalConstants#KEINE_WAHL}
+     * @param forceAdd Gibt an, ob das Hinzufügen des {@link Schueler Schülers} zum {@link Kurs} erzwungen werden soll, falls letzterer voll ist
+     * @param verteiler Der Verteiler zu dessen Kurs der Schüler hinzugefügt werden soll
      * @return Gibt zurück, ob das Zuweisen erfolgreich war
      */
     public boolean kursSetzen(int seminar, int pOw, int wahlPunktzahl, boolean forceAdd, Verteiler verteiler) {
