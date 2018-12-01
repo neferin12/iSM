@@ -3,7 +3,7 @@ package com.JP_Studios.DeclarationClasses;
 import com.JP_Studios.Verteiler;
 
 /**
- * Interface zum Implementieren einer Oberfläche. Sie funktioniert nur, wenn die Verteilung über den Controller erfolgt
+ * Interface zum Implementieren einer Oberfläche
  */
 public interface Oberflaeche {
     /**
