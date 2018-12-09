@@ -17,10 +17,10 @@ public class Kurs implements Serializable {
     private int index;
 
     /**
-     * @param name Name des Kurses
-     * @param pOw Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
+     * @param name             Name des Kurses
+     * @param pOw              Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      * @param maximaleSchueler Maximale Anzahl an {@link Schueler Schülern}, die den Kurs besuchen dürfen
-     * @param i Index des Kurses in der {@link Verteiler#kurses Kursliste}
+     * @param i                Index des Kurses in der {@link Verteiler#kurses Kursliste}
      */
     public Kurs(String name, int pOw, int maximaleSchueler, int i) {
         this.name = name;
@@ -30,7 +30,6 @@ public class Kurs implements Serializable {
     }
 
     /**
-     *
      * @return Name des Kurses
      */
     public String getName() {
@@ -38,15 +37,13 @@ public class Kurs implements Serializable {
     }
 
     /**
-     *
-     *@return Bezeichner ob das gewählte Seminar p oder w  ist. Möglich sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
+     * @return Bezeichner ob das gewählte Seminar p oder w  ist. Möglich sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      */
     public int getpOw() {
         return pOw;
     }
 
     /**
-     *
      * @return Gibt Index des Kurses zurück
      */
     public int getIndex() {
@@ -54,7 +51,6 @@ public class Kurs implements Serializable {
     }
 
     /**
-     *
      * @return Gibt die {@link Schueler Schüler} als Array zurück, die an dem Kurs teilnehmen
      */
     public ArrayList<Schueler> getSchueler() {
@@ -69,7 +65,6 @@ public class Kurs implements Serializable {
     }
 
     /**
-     *
      * @return Maximale Anzahl an Schülern im Kurs
      */
     int getMaximaleSchueler() {

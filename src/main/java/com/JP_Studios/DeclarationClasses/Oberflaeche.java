@@ -8,6 +8,7 @@ import com.JP_Studios.Verteiler;
 public interface Oberflaeche {
     /**
      * Methode, um den Fortschritt des Controllers an die Oberflaeche zu übermitteln
+     *
      * @param p Fortschritt in Prozent
      */
     void handleProgress(int p);

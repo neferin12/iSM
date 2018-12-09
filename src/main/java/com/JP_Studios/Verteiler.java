@@ -1,8 +1,8 @@
 package com.JP_Studios;
 
 import com.JP_Studios.DeclarationClasses.Comparator.SchuelerNameComparator;
-import com.JP_Studios.DeclarationClasses.GlobalConstants;
 import com.JP_Studios.DeclarationClasses.Comparator.SchuelerPunktzahlComparator;
+import com.JP_Studios.DeclarationClasses.GlobalConstants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,15 +11,15 @@ import java.util.Collections;
  * Mit dieser Klasse werden die Schüler auf die Seminare verteilt
  */
 public class Verteiler {
-    private ArrayList<Schueler> schueler = new ArrayList<>();
     public int punktzahl;
+    private ArrayList<Schueler> schueler = new ArrayList<>();
     private ArrayList<Kurs>[] kurses = new ArrayList[2];
-    private ArrayList<Schueler> überschuss[] = new ArrayList[2];
+    private ArrayList<Schueler>[] überschuss = new ArrayList[2];
 
 
     /**
      * @param schueler Die Schueler
-     * @param kurse Die Kurs
+     * @param kurse    Die Kurs
      */
     Verteiler(ArrayList<Schueler> schueler, ArrayList<Kurs>[] kurse) {
         for (Schueler schueler1 : schueler) {
@@ -39,6 +39,7 @@ public class Verteiler {
 
     /**
      * Weißt die Schueler den Kursen zu
+     *
      * @return Gibt die {@link Schueler Schueler} zurueck, die keinen ihrer Wuensche bekommen haben. Das Array ist aufgeteilt in {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      */
     void seminareVerteilen() {
@@ -114,7 +115,6 @@ public class Verteiler {
     }
 
     /**
-     *
      * @return Gibt alle Kurse zurück
      */
     public ArrayList<Kurs>[] getKurse() {
@@ -122,7 +122,6 @@ public class Verteiler {
     }
 
     /**
-     *
      * @return Gibt die Schüler zurück, die kein Seminar bekommen haben
      */
     public ArrayList<Schueler>[] getÜberschuss() {

@@ -1,7 +1,7 @@
 package com.JP_Studios;
 
-import com.JP_Studios.DeclarationClasses.Oberflaeche;
 import com.JP_Studios.DeclarationClasses.Comparator.VerteilerComparator;
+import com.JP_Studios.DeclarationClasses.Oberflaeche;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,17 +11,16 @@ import java.util.Arrays;
  * Diese Klasse erstellt und verwaltet eine beliebige Anzahl an Verteildurchläufen des Algorithmus, also der Klasse {@link Verteiler}.
  */
 public class Controller implements Runnable {
+    private static int PART_SIZE = 200000;
     private ArrayList<Schueler> schuelers;
     private ArrayList<Kurs>[] kurses;
     private int iterations;
     private Oberflaeche oberflaeche;
-    private static int PART_SIZE = 200000;
 
     /**
-     *
-     * @param schuelers Die Schueler
-     * @param kurses Die Seminare
-     * @param iterations Die Anzahl, wie oft der Algorithmus, also das Verteilen der Seminare durchlaufen werden soll.
+     * @param schuelers   Die Schueler
+     * @param kurses      Die Seminare
+     * @param iterations  Die Anzahl, wie oft der Algorithmus, also das Verteilen der Seminare durchlaufen werden soll.
      * @param oberflaeche Dies muss angegeben werden, damit der Controller Rückmeldung oder Ergebnis an die Oberfläche zuückgeben kann.
      */
     public Controller(ArrayList<Schueler> schuelers, ArrayList<Kurs>[] kurses, int iterations, Oberflaeche oberflaeche) {
@@ -29,6 +28,14 @@ public class Controller implements Runnable {
         this.kurses = kurses;
         this.iterations = iterations;
         this.oberflaeche = oberflaeche;
+    }
+
+    public static int getPartSize() {
+        return PART_SIZE;
+    }
+
+    public static void setPartSize(int partSize) {
+        PART_SIZE = partSize;
     }
 
     /**
@@ -59,7 +66,6 @@ public class Controller implements Runnable {
     }
 
     /**
-     *
      * @param lowerEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus beginnen soll
      * @param upperEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus aufhören soll
      * @return Gibt den besten Durchlauf aus diesem Abschnitt zurück
@@ -79,15 +85,6 @@ public class Controller implements Runnable {
         }
         Arrays.sort(verteiler, new VerteilerComparator());
         return verteiler[0];
-    }
-
-
-    public static int getPartSize() {
-        return PART_SIZE;
-    }
-
-    public static void setPartSize(int partSize) {
-        PART_SIZE = partSize;
     }
 
 
