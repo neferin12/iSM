@@ -10,18 +10,20 @@ import java.util.Collections;
 /**
  * Mit dieser Klasse werden die Schüler auf die Seminare verteilt
  */
-public class Verteiler {
+public class Verteiler extends Thread{
     public int punktzahl;
     private ArrayList<Schueler> schueler = new ArrayList<>();
     private ArrayList<Kurs>[] kurses = new ArrayList[2];
     private ArrayList<Schueler>[] überschuss = new ArrayList[2];
+    private Controller controller;
 
 
     /**
      * @param schueler Die Schueler
      * @param kurse    Die Kurs
      */
-    Verteiler(ArrayList<Schueler> schueler, ArrayList<Kurs>[] kurse) {
+    Verteiler(ArrayList<Schueler> schueler, ArrayList<Kurs>[] kurse, Controller controller) {
+        this.controller = controller;
         for (Schueler schueler1 : schueler) {
             this.schueler.add(new Schueler(schueler1.name, schueler1.pseminarwahl, schueler1.wseminarwahl));
         }
@@ -36,6 +38,10 @@ public class Verteiler {
         punktzahl = 0;
     }
 
+    @Override
+    public void run() {
+        seminareVerteilen();
+    }
 
     /**
      * Weißt die Schueler den Kursen zu
@@ -78,13 +84,17 @@ public class Verteiler {
             punktzahl += schueler1.punktzahl;
         }
 
+        sort();
+
+        controller.setResult(this);
+
     }
 
     /**
      * Sortiert alle Schülerlisten dieses Verteilers und der Kurse des Verteilers nach Alphabet. Sollte aus Performancegründen so selten wie möglich angewandt werden
      */
 
-    public void sort() {
+    private void sort() {
         schueler.sort(new SchuelerNameComparator());
         überschuss[0].sort(new SchuelerNameComparator());
         überschuss[1].sort(new SchuelerNameComparator());

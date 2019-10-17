@@ -11,11 +11,13 @@ import java.util.Arrays;
  * Diese Klasse erstellt und verwaltet eine beliebige Anzahl an Verteildurchläufen des Algorithmus, also der Klasse {@link Verteiler}.
  */
 public class Controller implements Runnable {
+    private int progress, done = 0;
     private static int PART_SIZE = 200000;
     private ArrayList<Schueler> schuelers;
     private ArrayList<Kurs>[] kurses;
     private int iterations;
     private Oberflaeche oberflaeche;
+    private Verteiler bester;
 
     /**
      * @param schuelers   Die Schueler
@@ -42,27 +44,52 @@ public class Controller implements Runnable {
      * Hier werden die einzelnen Durchläufe durchgeführt. Anschließend werden die Verteildurchläufe nach MimimiPunktzahl sortiert, und der mit den wenigsten Punkten wird nach Abschluss mit {@link Oberflaeche#verteilenFinished(Verteiler)} zurück an die {@link Oberflaeche} übermittelt.
      * Während des Vorgangs wird auch der aktuelle Fortschritt mit {@link Oberflaeche#handleProgress(int)} an die {@link Oberflaeche} übermittelt. Hier wird die Anzahl nochmals in einzelne Blöcke zerlegt, die dann von der Funktion {@link Controller#calculatePart(int, int)} berechnet werden, damit der PC nicht überfordert ist.
      */
+//    Alte run Anweisung
+//    @Override
+//    public void run() {
+//        int rest = iterations % PART_SIZE;
+//        int times = (iterations - rest) / PART_SIZE;
+//
+//        Verteiler[] results = new Verteiler[times + 1];
+//
+//        for (int i = 0; i < results.length - 1; i++) {
+//            results[i] = calculatePart(i * PART_SIZE, (i + 1) * PART_SIZE);
+//        }
+//        if (rest != 0) {
+//            results[results.length - 1] = calculatePart(iterations - (rest), iterations - 1);
+//        } else {
+//            results[results.length - 1] = new Verteiler(schuelers, kurses);
+//            results[results.length - 1].seminareVerteilen();
+//            oberflaeche.handleProgress(100);
+//        }
+//
+//
+//        Arrays.sort(results, new VerteilerComparator());
+//        oberflaeche.verteilenFinished(results[0]);
+//    }
+
+
     @Override
     public void run() {
-        int rest = iterations % PART_SIZE;
-        int times = (iterations - rest) / PART_SIZE;
-
-        Verteiler[] results = new Verteiler[times + 1];
-
-        for (int i = 0; i < results.length - 1; i++) {
-            results[i] = calculatePart(i * PART_SIZE, (i + 1) * PART_SIZE);
+        for (int i = 0; i < iterations; i++) {
+            Verteiler v = new Verteiler(schuelers, kurses, this);
+            v.start();
         }
-        if (rest != 0) {
-            results[results.length - 1] = calculatePart(iterations - (rest), iterations - 1);
+    }
+
+
+
+    synchronized void setResult(Verteiler result) {
+        done++;
+        progress = (int) ((double) done / iterations);
+        oberflaeche.handleProgress(progress);
+        if (bester == null) {
+            bester = result;
         } else {
-            results[results.length - 1] = new Verteiler(schuelers, kurses);
-            results[results.length - 1].seminareVerteilen();
-            oberflaeche.handleProgress(100);
+            if (result.punktzahl < bester.punktzahl) {
+                bester = result;
+            }
         }
-
-
-        Arrays.sort(results, new VerteilerComparator());
-        oberflaeche.verteilenFinished(results[0]);
     }
 
     /**
@@ -74,7 +101,7 @@ public class Controller implements Runnable {
     private Verteiler calculatePart(int lowerEnd, int upperEnd) {
         Verteiler[] verteiler = new Verteiler[upperEnd - lowerEnd];
         for (int i = 0; i < verteiler.length; i++) {
-            verteiler[i] = new Verteiler(schuelers, kurses);
+            verteiler[i] = new Verteiler(schuelers, kurses, this);
         }
         for (int i = 0; i < verteiler.length; i++) {
             verteiler[i].seminareVerteilen();
