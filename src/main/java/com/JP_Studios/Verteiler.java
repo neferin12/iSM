@@ -65,7 +65,6 @@ public class Verteiler extends Thread{
                 }
             }
         }
-        Collections.shuffle(schueler);
         schueler.sort(new SchuelerPunktzahlComparator());
 
 //       W-Seminare
