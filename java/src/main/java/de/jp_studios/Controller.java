@@ -1,7 +1,7 @@
-package com.JP_Studios;
+package de.jp_studios;
 
-import com.JP_Studios.DeclarationClasses.Comparator.VerteilerComparator;
-import com.JP_Studios.DeclarationClasses.Oberflaeche;
+import de.jp_studios.DeclarationClasses.Comparator.VerteilerComparator;
+import de.jp_studios.DeclarationClasses.Oberflaeche;
 
 import java.util.ArrayList;
 import java.util.Arrays;

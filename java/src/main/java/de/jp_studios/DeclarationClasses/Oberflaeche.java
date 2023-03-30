@@ -1,6 +1,6 @@
-package com.JP_Studios.DeclarationClasses;
+package de.jp_studios.DeclarationClasses;
 
-import com.JP_Studios.Verteiler;
+import de.jp_studios.Verteiler;
 
 /**
  * Interface zum Implementieren einer Oberfläche

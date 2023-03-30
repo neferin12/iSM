@@ -1,6 +1,6 @@
-package com.JP_Studios.DeclarationClasses.Comparator;
+package de.jp_studios.DeclarationClasses.Comparator;
 
-import com.JP_Studios.Schueler;
+import de.jp_studios.Schueler;
 
 import java.util.Comparator;
 

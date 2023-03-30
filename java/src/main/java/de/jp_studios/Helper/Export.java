@@ -1,9 +1,9 @@
-package com.JP_Studios.Helper;
+package de.jp_studios.Helper;
 
-import com.JP_Studios.DeclarationClasses.GlobalConstants;
-import com.JP_Studios.Kurs;
-import com.JP_Studios.Schueler;
-import com.JP_Studios.Verteiler;
+import de.jp_studios.DeclarationClasses.GlobalConstants;
+import de.jp_studios.Kurs;
+import de.jp_studios.Schueler;
+import de.jp_studios.Verteiler;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,9 +11,6 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-
-import static com.JP_Studios.DeclarationClasses.GlobalConstants.P_SEMINAR;
-import static com.JP_Studios.DeclarationClasses.GlobalConstants.W_SEMINAR;
 
 /**
  * Klasse zum exportieren der Ergebnisse
@@ -28,7 +25,7 @@ public abstract class Export {
         ArrayList<Schueler>[] ueberschuss = verteiler.getUeberschuss();
         String results = "";
         results += "______________Seminare______________ " + System.lineSeparator() + "W-Seminare:" + System.lineSeparator();
-        ArrayList<Kurs> WSeminar = verteiler.getKurse(W_SEMINAR);
+        ArrayList<Kurs> WSeminar = verteiler.getKurse(GlobalConstants.W_SEMINAR);
         for (Kurs kurs : WSeminar) {
             results += "  " + kurs.getName() + ":" + System.lineSeparator();
             ArrayList<Schueler> schuelers = kurs.getSchueler();
@@ -38,7 +35,7 @@ public abstract class Export {
         }
         results += System.lineSeparator() + "P-Seminare:" + System.lineSeparator();
 
-        ArrayList<Kurs> PSeminar = verteiler.getKurse(P_SEMINAR);
+        ArrayList<Kurs> PSeminar = verteiler.getKurse(GlobalConstants.P_SEMINAR);
         for (Kurs kurs : PSeminar) {
             results += "  " + kurs.getName() + ":" + System.lineSeparator();
             ArrayList<Schueler> schuelers = kurs.getSchueler();
@@ -48,11 +45,11 @@ public abstract class Export {
         }
 
         results += System.lineSeparator() + System.lineSeparator() + "______________Schüler_ohne_Seminar______________ " + System.lineSeparator() + "W-Seminare:" + System.lineSeparator();
-        for (Schueler schueler : ueberschuss[W_SEMINAR]) {
+        for (Schueler schueler : ueberschuss[GlobalConstants.W_SEMINAR]) {
             results += "        " + schueler.name + System.lineSeparator();
         }
         results += "P-Seminare:" + System.lineSeparator();
-        for (Schueler schueler : ueberschuss[P_SEMINAR]) {
+        for (Schueler schueler : ueberschuss[GlobalConstants.P_SEMINAR]) {
             results += "        " + schueler.name + System.lineSeparator();
         }
 
@@ -80,8 +77,8 @@ public abstract class Export {
             String wSeminar = "KEINES";
             String pSeminar = "KEINES";
 
-            if (schueler.kurse()[W_SEMINAR] != -1) {
-                wSeminar = verteiler.getKurse(W_SEMINAR).get(schueler.kurse()[W_SEMINAR]).getName();
+            if (schueler.kurse()[GlobalConstants.W_SEMINAR] != -1) {
+                wSeminar = verteiler.getKurse(GlobalConstants.W_SEMINAR).get(schueler.kurse()[GlobalConstants.W_SEMINAR]).getName();
             } else {
                 int[] wünsche = schueler.getWseminarwahl();
                 wSeminar += " (Wünsche: ";
@@ -91,8 +88,8 @@ public abstract class Export {
                 wSeminar += ")";
             }
 
-            if (schueler.kurse()[P_SEMINAR] != -1) {
-                pSeminar = verteiler.getKurse(P_SEMINAR).get(schueler.kurse()[P_SEMINAR]).getName();
+            if (schueler.kurse()[GlobalConstants.P_SEMINAR] != -1) {
+                pSeminar = verteiler.getKurse(GlobalConstants.P_SEMINAR).get(schueler.kurse()[GlobalConstants.P_SEMINAR]).getName();
             } else {
                 int[] wünsche = schueler.getPseminarwahl();
                 pSeminar += " (Wünsche: ";

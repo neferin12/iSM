@@ -1,4 +1,4 @@
-package com.JP_Studios.DeclarationClasses;
+package de.jp_studios.DeclarationClasses;
 
 /**
  * Alle wichtigen Konstanten

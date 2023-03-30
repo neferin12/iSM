@@ -1,7 +1,7 @@
-package com.JP_Studios;
+package de.jp_studios;
 
 
-import com.JP_Studios.DeclarationClasses.GlobalConstants;
+import de.jp_studios.DeclarationClasses.GlobalConstants;
 
 import java.io.Serializable;
 

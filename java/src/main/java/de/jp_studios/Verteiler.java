@@ -1,8 +1,8 @@
-package com.JP_Studios;
+package de.jp_studios;
 
-import com.JP_Studios.DeclarationClasses.Comparator.SchuelerNameComparator;
-import com.JP_Studios.DeclarationClasses.Comparator.SchuelerPunktzahlComparator;
-import com.JP_Studios.DeclarationClasses.GlobalConstants;
+import de.jp_studios.DeclarationClasses.Comparator.SchuelerNameComparator;
+import de.jp_studios.DeclarationClasses.Comparator.SchuelerPunktzahlComparator;
+import de.jp_studios.DeclarationClasses.GlobalConstants;
 
 import java.util.ArrayList;
 import java.util.Collections;
