@@ -1,0 +1,6 @@
+ism
+*.o
+.idea
+build
+/cism
+cmake-build-*
