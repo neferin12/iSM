@@ -1,7 +1,7 @@
-package de.jp_studios;
+package ism;
 
-import de.jp_studios.DeclarationClasses.Comparator.SchuelerNameComparator;
-import de.jp_studios.DeclarationClasses.GlobalConstants;
+import ism.DeclarationClasses.Comparator.SchuelerNameComparator;
+import ism.DeclarationClasses.GlobalConstants;
 
 import java.io.Serializable;
 import java.util.ArrayList;

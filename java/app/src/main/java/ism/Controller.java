@@ -1,7 +1,7 @@
-package de.jp_studios;
+package ism;
 
-import de.jp_studios.DeclarationClasses.Comparator.VerteilerComparator;
-import de.jp_studios.DeclarationClasses.Oberflaeche;
+import ism.DeclarationClasses.Comparator.VerteilerComparator;
+import ism.DeclarationClasses.Oberflaeche;
 
 import java.util.ArrayList;
 import java.util.Arrays;

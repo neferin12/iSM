@@ -1,9 +1,9 @@
-package de.jp_studios.Helper;
+package ism.Helper;
 
-import de.jp_studios.DeclarationClasses.GlobalConstants;
-import de.jp_studios.Kurs;
-import de.jp_studios.Schueler;
-import de.jp_studios.Verteiler;
+import ism.DeclarationClasses.GlobalConstants;
+import ism.Kurs;
+import ism.Schueler;
+import ism.Verteiler;
 
 import java.io.File;
 import java.io.IOException;

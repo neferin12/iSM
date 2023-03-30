@@ -1,4 +1,4 @@
-package de.jp_studios.Helper;
+package ism.Helper;
 
 import java.awt.*;
 

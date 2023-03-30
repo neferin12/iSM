@@ -1,6 +1,6 @@
-package de.jp_studios.DeclarationClasses;
+package ism.DeclarationClasses;
 
-import de.jp_studios.Verteiler;
+import ism.Verteiler;
 
 /**
  * Interface zum Implementieren einer Oberfläche

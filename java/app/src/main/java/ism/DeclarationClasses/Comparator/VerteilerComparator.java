@@ -1,6 +1,6 @@
-package de.jp_studios.DeclarationClasses.Comparator;
+package ism.DeclarationClasses.Comparator;
 
-import de.jp_studios.Verteiler;
+import ism.Verteiler;
 
 import java.util.Comparator;
 

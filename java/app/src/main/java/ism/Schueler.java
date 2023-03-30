@@ -1,7 +1,7 @@
-package de.jp_studios;
+package ism;
 
 
-import de.jp_studios.DeclarationClasses.GlobalConstants;
+import ism.DeclarationClasses.GlobalConstants;
 
 import java.io.Serializable;
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/Controller.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/DeclarationClasses/Comparator/SchuelerPunktzahlComparator.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/Helper/Export.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/Helper/Import.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/Kurs.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/Schueler.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/de/jp_studios/Verteiler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/Controller.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/DeclarationClasses/Comparator/SchuelerPunktzahlComparator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/Helper/Export.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/Helper/Import.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/Kurs.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/Schueler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/ism/Verteiler.java" charset="UTF-8" />
   </component>
 </project>
