@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"com.JP_Studios"},{"l":"com.JP_Studios.DeclarationClasses"},{"l":"com.JP_Studios.DeclarationClasses.Comparator"},{"l":"com.JP_Studios.Exceptions"},{"l":"com.JP_Studios.Helper"}]

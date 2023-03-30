@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Jedes Objekt dieser Klasse repräsentiert ein Seminar
+ * Jedes Objekt dieser Klasse reprÃ¤sentiert ein Seminar
  */
 public class Kurs implements Serializable {
     private String name;
@@ -18,8 +18,8 @@ public class Kurs implements Serializable {
 
     /**
      * @param name             Name des Kurses
-     * @param pOw              Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
-     * @param maximaleSchueler Maximale Anzahl an {@link Schueler Schülern}, die den Kurs besuchen dürfen
+     * @param pOw              Bezeichner ob das gewÃ¤hlte Seminar p oder w ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
+     * @param maximaleSchueler Maximale Anzahl an {@link Schueler SchÃ¼lern}, die den Kurs besuchen dÃ¼rfen
      * @param i                Index des Kurses in der {@link Verteiler#kurses Kursliste}
      */
     public Kurs(String name, int pOw, int maximaleSchueler, int i) {
@@ -37,44 +37,44 @@ public class Kurs implements Serializable {
     }
 
     /**
-     * @return Bezeichner ob das gewählte Seminar p oder w  ist. Möglich sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
+     * @return Bezeichner ob das gewÃ¤hlte Seminar p oder w  ist. MÃ¶glich sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      */
     public int getpOw() {
         return pOw;
     }
 
     /**
-     * @return Gibt Index des Kurses zurück
+     * @return Gibt Index des Kurses zurÃ¼ck
      */
     public int getIndex() {
         return index;
     }
 
     /**
-     * @return Gibt die {@link Schueler Schüler} als Array zurück, die an dem Kurs teilnehmen
+     * @return Gibt die {@link Schueler SchÃ¼ler} als Array zurÃ¼ck, die an dem Kurs teilnehmen
      */
     public ArrayList<Schueler> getSchueler() {
         return schuelers;
     }
 
     /**
-     * @return Anzahl der {@link Schueler Schüler} in dem Kurs
+     * @return Anzahl der {@link Schueler SchÃ¼ler} in dem Kurs
      */
     public int getSchuelerZahl() {
         return schuelers.size();
     }
 
     /**
-     * @return Maximale Anzahl an Schülern im Kurs
+     * @return Maximale Anzahl an SchÃ¼lern im Kurs
      */
     int getMaximaleSchueler() {
         return maximaleSchueler;
     }
 
     /**
-     * @param schueler Hier kann ein {@link Schueler Schueler} zum Seminar hinzugefügt werden
-     * @param forceAdd Wenn {@code true}, wird das hinzufügen des {@link Schueler Schülers} erzwungen
-     * @return Gibt zurück, ob das Hinzufügen des Schülers erfolgreich war
+     * @param schueler Hier kann ein {@link Schueler Schueler} zum Seminar hinzugefÃ¼gt werden
+     * @param forceAdd Wenn {@code true}, wird das hinzufÃ¼gen des {@link Schueler SchÃ¼lers} erzwungen
+     * @return Gibt zurÃ¼ck, ob das HinzufÃ¼gen des SchÃ¼lers erfolgreich war
      */
     boolean addSchueler(Schueler schueler, boolean forceAdd) {
         if (forceAdd) {
@@ -91,7 +91,7 @@ public class Kurs implements Serializable {
 
 
     /**
-     * Sortiert die Schüler des Kurses nach Alphabet
+     * Sortiert die SchÃ¼ler des Kurses nach Alphabet
      */
     void sort() {
         schuelers.sort(new SchuelerNameComparator());

@@ -25,7 +25,7 @@ public abstract class Export {
      */
     @Deprecated
     public static String getResultsAsText(Verteiler verteiler) {
-        ArrayList<Schueler>[] überschuss = verteiler.getÜberschuss();
+        ArrayList<Schueler>[] ueberschuss = verteiler.getUeberschuss();
         String results = "";
         results += "______________Seminare______________ " + System.lineSeparator() + "W-Seminare:" + System.lineSeparator();
         ArrayList<Kurs> WSeminar = verteiler.getKurse(W_SEMINAR);
@@ -38,7 +38,7 @@ public abstract class Export {
         }
         results += System.lineSeparator() + "P-Seminare:" + System.lineSeparator();
 
-        ArrayList<Kurs> PSeminar = verteiler.getKurse(GlobalConstants.P_SEMINAR);
+        ArrayList<Kurs> PSeminar = verteiler.getKurse(P_SEMINAR);
         for (Kurs kurs : PSeminar) {
             results += "  " + kurs.getName() + ":" + System.lineSeparator();
             ArrayList<Schueler> schuelers = kurs.getSchueler();
@@ -47,12 +47,12 @@ public abstract class Export {
             }
         }
 
-        results += System.lineSeparator() + System.lineSeparator() + "______________Schüler_ohne_Seminar______________ " + System.lineSeparator() + "W-Seminare:" + System.lineSeparator();
-        for (Schueler schueler : überschuss[W_SEMINAR]) {
+        results += System.lineSeparator() + System.lineSeparator() + "______________SchÃ¼ler_ohne_Seminar______________ " + System.lineSeparator() + "W-Seminare:" + System.lineSeparator();
+        for (Schueler schueler : ueberschuss[W_SEMINAR]) {
             results += "        " + schueler.name + System.lineSeparator();
         }
         results += "P-Seminare:" + System.lineSeparator();
-        for (Schueler schueler : überschuss[GlobalConstants.P_SEMINAR]) {
+        for (Schueler schueler : ueberschuss[P_SEMINAR]) {
             results += "        " + schueler.name + System.lineSeparator();
         }
 
@@ -64,7 +64,7 @@ public abstract class Export {
     /**
      * @param verteiler Der {@link Verteiler}, dessen Ergebnisse ausgegeben werden sollen
      * @param path      Der Pfad, zu dem die Dateien ausgegeben werden sollen
-     * @throws IOException Falls das Exportieren nicht möglich war
+     * @throws IOException Falls das Exportieren nicht mÃ¶glich war
      */
     public static void saveCSVFiles(Verteiler verteiler, String path) throws IOException {
         ArrayList<Schueler> schuelers = verteiler.getSchueler();
@@ -83,9 +83,9 @@ public abstract class Export {
             if (schueler.kurse()[W_SEMINAR] != -1) {
                 wSeminar = verteiler.getKurse(W_SEMINAR).get(schueler.kurse()[W_SEMINAR]).getName();
             } else {
-                int[] wünsche = schueler.getWseminarwahl();
-                wSeminar += " (Wünsche: ";
-                for (int i : wünsche) {
+                int[] wÃ¼nsche = schueler.getWseminarwahl();
+                wSeminar += " (WÃ¼nsche: ";
+                for (int i : wÃ¼nsche) {
                     wSeminar += " " + i + " ";
                 }
                 wSeminar += ")";
@@ -94,9 +94,9 @@ public abstract class Export {
             if (schueler.kurse()[P_SEMINAR] != -1) {
                 pSeminar = verteiler.getKurse(P_SEMINAR).get(schueler.kurse()[P_SEMINAR]).getName();
             } else {
-                int[] wünsche = schueler.getPseminarwahl();
-                pSeminar += " (Wünsche: ";
-                for (int i : wünsche) {
+                int[] wÃ¼nsche = schueler.getPseminarwahl();
+                pSeminar += " (WÃ¼nsche: ";
+                for (int i : wÃ¼nsche) {
                     pSeminar += " " + i + " ";
                 }
                 pSeminar += ")";
@@ -104,7 +104,7 @@ public abstract class Export {
             outputSchueler += schueler.name + ";" + wSeminar + ";" + pSeminar + System.lineSeparator();
         }
 
-        File output = new File(path + "/iSM Export/Schüler.csv");
+        File output = new File(path + "/iSM Export/SchÃ¼ler.csv");
         output.createNewFile();
         try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
             out.print(outputSchueler);
@@ -133,8 +133,8 @@ public abstract class Export {
 
         for (Kurs kurs : wSeminare) {
             String textOutput = "";
-            ArrayList<Schueler> schüler = kurs.getSchueler();
-            for (Schueler schueler : schüler) {
+            ArrayList<Schueler> schÃ¼ler = kurs.getSchueler();
+            for (Schueler schueler : schÃ¼ler) {
                 textOutput += schueler.name + System.lineSeparator();
             }
             output = new File(path + "/iSM Export/Seminare/W-Seminare/" + kurs.getName() + ".csv");
@@ -147,8 +147,8 @@ public abstract class Export {
 
         for (Kurs kurs : pSeminare) {
             String textOutput = "";
-            ArrayList<Schueler> schüler = kurs.getSchueler();
-            for (Schueler schueler : schüler) {
+            ArrayList<Schueler> schÃ¼ler = kurs.getSchueler();
+            for (Schueler schueler : schÃ¼ler) {
                 textOutput += schueler.name + System.lineSeparator();
             }
             output = new File(path + "/iSM Export/Seminare/P-Seminare/" + kurs.getName() + ".csv");

@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 
 /**
- * Diese Klasse erstellt und verwaltet eine beliebige Anzahl an Verteildurchläufen des Algorithmus, also der Klasse {@link Verteiler}.
+ * Diese Klasse erstellt und verwaltet eine beliebige Anzahl an VerteildurchlÃ¤ufen des Algorithmus, also der Klasse {@link Verteiler}.
  */
 public class Controller implements Runnable {
     private static int PART_SIZE = 200000;
@@ -21,7 +21,7 @@ public class Controller implements Runnable {
      * @param schuelers   Die Schueler
      * @param kurses      Die Seminare
      * @param iterations  Die Anzahl, wie oft der Algorithmus, also das Verteilen der Seminare durchlaufen werden soll.
-     * @param oberflaeche Dies muss angegeben werden, damit der Controller Rückmeldung oder Ergebnis an die Oberfläche zuückgeben kann.
+     * @param oberflaeche Dies muss angegeben werden, damit der Controller RÃ¼ckmeldung oder Ergebnis an die OberflÃ¤che zuÃ¼ckgeben kann.
      */
     public Controller(ArrayList<Schueler> schuelers, ArrayList<Kurs>[] kurses, int iterations, Oberflaeche oberflaeche) {
         this.schuelers = schuelers;
@@ -39,8 +39,8 @@ public class Controller implements Runnable {
     }
 
     /**
-     * Hier werden die einzelnen Durchläufe durchgeführt. Anschließend werden die Verteildurchläufe nach MimimiPunktzahl sortiert, und der mit den wenigsten Punkten wird nach Abschluss mit {@link Oberflaeche#verteilenFinished(Verteiler)} zurück an die {@link Oberflaeche} übermittelt.
-     * Während des Vorgangs wird auch der aktuelle Fortschritt mit {@link Oberflaeche#handleProgress(int)} an die {@link Oberflaeche} übermittelt. Hier wird die Anzahl nochmals in einzelne Blöcke zerlegt, die dann von der Funktion {@link Controller#calculatePart(int, int)} berechnet werden, damit der PC nicht überfordert ist.
+     * Hier werden die einzelnen DurchlÃ¤ufe durchgefÃ¼hrt. AnschlieÃŸend werden die VerteildurchlÃ¤ufe nach MimimiPunktzahl sortiert, und der mit den wenigsten Punkten wird nach Abschluss mit {@link Oberflaeche#verteilenFinished(Verteiler)} zurÃ¼ck an die {@link Oberflaeche} Ã¼bermittelt.
+     * WÃ¤hrend des Vorgangs wird auch der aktuelle Fortschritt mit {@link Oberflaeche#handleProgress(int)} an die {@link Oberflaeche} Ã¼bermittelt. Hier wird die Anzahl nochmals in einzelne BlÃ¶cke zerlegt, die dann von der Funktion {@link Controller#calculatePart(int, int)} berechnet werden, damit der PC nicht Ã¼berfordert ist.
      */
     @Override
     public void run() {
@@ -67,8 +67,8 @@ public class Controller implements Runnable {
 
     /**
      * @param lowerEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus beginnen soll
-     * @param upperEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus aufhören soll
-     * @return Gibt den besten Durchlauf aus diesem Abschnitt zurück
+     * @param upperEnd An welcher Stelle in der GesamtIterationszahl der Algorithmus aufhÃ¶ren soll
+     * @return Gibt den besten Durchlauf aus diesem Abschnitt zurÃ¼ck
      */
 
     private Verteiler calculatePart(int lowerEnd, int upperEnd) {

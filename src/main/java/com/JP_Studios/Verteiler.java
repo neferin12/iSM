@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Mit dieser Klasse werden die Schüler auf die Seminare verteilt
+ * Mit dieser Klasse werden die SchÃ¼ler auf die Seminare verteilt
  */
 public class Verteiler {
     public int punktzahl;
     private ArrayList<Schueler> schueler = new ArrayList<>();
     private ArrayList<Kurs>[] kurses = new ArrayList[2];
-    private ArrayList<Schueler>[] überschuss = new ArrayList[2];
+    private ArrayList<Schueler>[] ueberschuss = new ArrayList[2];
 
 
     /**
      * @param schueler Die Schueler
-     * @param kurse    Die Kurs
+     * @param kurse    Die Kurse
      */
     Verteiler(ArrayList<Schueler> schueler, ArrayList<Kurs>[] kurse) {
         for (Schueler schueler1 : schueler) {
@@ -38,14 +38,14 @@ public class Verteiler {
 
 
     /**
-     * Weißt die Schueler den Kursen zu
+     * WeiÃŸt die Schueler den Kursen zu
      *
      * @return Gibt die {@link Schueler Schueler} zurueck, die keinen ihrer Wuensche bekommen haben. Das Array ist aufgeteilt in {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      */
     void seminareVerteilen() {
 
-        überschuss[0] = new ArrayList<>();
-        überschuss[1] = new ArrayList<>();
+        ueberschuss[0] = new ArrayList<>();
+        ueberschuss[1] = new ArrayList<>();
 
 //        P-Seminare
         Collections.shuffle(schueler);
@@ -54,7 +54,7 @@ public class Verteiler {
                 if (!schueler1.kursSetzen(schueler1.pseminarwahl[1], GlobalConstants.P_SEMINAR, GlobalConstants.ZWEITE_WAHL, false, this)) {
                     if (!schueler1.kursSetzen(schueler1.pseminarwahl[2], GlobalConstants.P_SEMINAR, GlobalConstants.DRITTE_WAHL, false, this)) {
                         schueler1.keineWahlBekommen();
-                        überschuss[GlobalConstants.P_SEMINAR].add(schueler1);
+                        ueberschuss[GlobalConstants.P_SEMINAR].add(schueler1);
                     }
                 }
             }
@@ -68,7 +68,7 @@ public class Verteiler {
                 if (!schueler1.kursSetzen(schueler1.wseminarwahl[1], GlobalConstants.W_SEMINAR, GlobalConstants.ZWEITE_WAHL, false, this)) {
                     if (!schueler1.kursSetzen(schueler1.wseminarwahl[2], GlobalConstants.W_SEMINAR, GlobalConstants.DRITTE_WAHL, false, this)) {
                         schueler1.keineWahlBekommen();
-                        überschuss[GlobalConstants.W_SEMINAR].add(schueler1);
+                        ueberschuss[GlobalConstants.W_SEMINAR].add(schueler1);
                     }
                 }
             }
@@ -81,13 +81,13 @@ public class Verteiler {
     }
 
     /**
-     * Sortiert alle Schülerlisten dieses Verteilers und der Kurse des Verteilers nach Alphabet. Sollte aus Performancegründen so selten wie möglich angewandt werden
+     * Sortiert alle SchÃ¼lerlisten dieses Verteilers und der Kurse des Verteilers nach Alphabet. Sollte aus PerformancegrÃ¼nden so selten wie mÃ¶glich angewandt werden
      */
 
     public void sort() {
         schueler.sort(new SchuelerNameComparator());
-        überschuss[0].sort(new SchuelerNameComparator());
-        überschuss[1].sort(new SchuelerNameComparator());
+        ueberschuss[0].sort(new SchuelerNameComparator());
+        ueberschuss[1].sort(new SchuelerNameComparator());
         for (ArrayList<Kurs> kurs : kurses) {
             for (Kurs kur : kurs) {
                 kur.sort();
@@ -98,14 +98,14 @@ public class Verteiler {
 
 
     /**
-     * @return Gibt eine Liste der Schüler zurück
+     * @return Gibt eine Liste der SchÃ¼ler zurÃ¼ck
      */
     public ArrayList<Schueler> getSchueler() {
         return schueler;
     }
 
     /**
-     * Gibt die P- oder W-Seminare zurück
+     * Gibt die P- oder W-Seminare zurÃ¼ck
      *
      * @param typ {@link GlobalConstants#W_SEMINAR} oder {@link GlobalConstants#P_SEMINAR}
      * @return Die entsprechenden Seminare
@@ -115,17 +115,17 @@ public class Verteiler {
     }
 
     /**
-     * @return Gibt alle Kurse zurück
+     * @return Gibt alle Kurse zurÃ¼ck
      */
     public ArrayList<Kurs>[] getKurse() {
         return kurses;
     }
 
     /**
-     * @return Gibt die Schüler zurück, die kein Seminar bekommen haben
+     * @return Gibt die SchÃ¼ler zurÃ¼ck, die kein Seminar bekommen haben
      */
-    public ArrayList<Schueler>[] getÜberschuss() {
-        return überschuss;
+    public ArrayList<Schueler>[] getUeberschuss() {
+        return ueberschuss;
     }
 
 }

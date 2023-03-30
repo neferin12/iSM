@@ -6,7 +6,7 @@ import com.JP_Studios.DeclarationClasses.GlobalConstants;
 import java.io.Serializable;
 
 /**
- * Jedes Objekt dieser Klasse repräsentiert einen Schüler
+ * Jedes Objekt dieser Klasse reprÃ¤sentiert einen SchÃ¼ler
  */
 public class Schueler implements Serializable {
     public String name;
@@ -17,8 +17,8 @@ public class Schueler implements Serializable {
 
     /**
      * @param name         Name des Schuelers
-     * @param pseminarwahl 1. und 2. Wahl des Schülers bezüglich des P-Seminars
-     * @param wseminarwahl 1. und 2. Wahl des Schülers bezüglich des W-Seminars
+     * @param pseminarwahl 1. und 2. Wahl des SchÃ¼lers bezÃ¼glich des P-Seminars
+     * @param wseminarwahl 1. und 2. Wahl des SchÃ¼lers bezÃ¼glich des W-Seminars
      */
     public Schueler(String name, int[] pseminarwahl, int[] wseminarwahl) {
         this.name = name;
@@ -29,11 +29,11 @@ public class Schueler implements Serializable {
 
     /**
      * @param seminar       Seminar, das der Schueler bekommt
-     * @param pOw           Bezeichner ob das gewählte Seminar p oder w  ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
-     * @param wahlPunktzahl Die Punkte die zur "Glückwertung" des Schülers hinzuzufügen sind. Möglich  sind {@link GlobalConstants#ERSTE_WAHL}, {@link GlobalConstants#ZWEITE_WAHL}, {@link GlobalConstants#DRITTE_WAHL} oder, falls keiner der Wünsche berücksichtigt werden konnte, {@link GlobalConstants#KEINE_WAHL}
-     * @param forceAdd      Gibt an, ob das Hinzufügen des {@link Schueler Schülers} zum {@link Kurs} erzwungen werden soll, falls letzterer voll ist
-     * @param verteiler     Der Verteiler zu dessen Kurs der Schüler hinzugefügt werden soll
-     * @return Gibt zurück, ob das Zuweisen erfolgreich war
+     * @param pOw           Bezeichner ob das gewÃ¤hlte Seminar p oder w ist. Einsetzbar sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
+     * @param wahlPunktzahl Die Punkte die zur "GlÃ¼ckwertung" des SchÃ¼lers hinzuzufÃ¼gen sind. MÃ¶glich  sind {@link GlobalConstants#ERSTE_WAHL}, {@link GlobalConstants#ZWEITE_WAHL}, {@link GlobalConstants#DRITTE_WAHL} oder, falls keiner der WÃ¼nsche berÃ¼cksichtigt werden konnte, {@link GlobalConstants#KEINE_WAHL}
+     * @param forceAdd      Gibt an, ob das HinzufÃ¼gen des {@link Schueler SchÃ¼lers} zum {@link Kurs} erzwungen werden soll, falls letzterer voll ist
+     * @param verteiler     Der Verteiler zu dessen Kurs der SchÃ¼ler hinzugefÃ¼gt werden soll
+     * @return Gibt zurÃ¼ck, ob das Zuweisen erfolgreich war
      */
     public boolean kursSetzen(int seminar, int pOw, int wahlPunktzahl, boolean forceAdd, Verteiler verteiler) {
         boolean result = verteiler.getKurse(pOw).get(seminar).addSchueler(this, forceAdd);
@@ -50,7 +50,7 @@ public class Schueler implements Serializable {
     }
 
     /**
-     * @return Gibt die Indices der Kurs der zurück, die  der Schueler  bekommen hat. Index für die jeweiligen Seminare sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
+     * @return Gibt die Indices der Kurs der zurÃ¼ck, die  der Schueler  bekommen hat. Index fÃ¼r die jeweiligen Seminare sind {@link GlobalConstants#W_SEMINAR} und {@link GlobalConstants#P_SEMINAR}
      */
     public int[] kurse() {
         return ergebnis;

@@ -5,7 +5,7 @@ import com.JP_Studios.Schueler;
 import java.util.Comparator;
 
 /**
- * {@link Comparator} zum Sortieren der Schüler nach MiMiMiPunktzahl
+ * {@link Comparator} zum Sortieren der SchÃ¼ler nach MiMiMiPunktzahl
  */
 public class SchuelerPunktzahlComparator implements Comparator<Schueler> {
     @Override

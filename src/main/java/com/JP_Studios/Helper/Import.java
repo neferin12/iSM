@@ -9,13 +9,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 /**
- * Klasse zum einfachen importieren der Sch¸ler und Kurse aus csv-Dateien
+ * Klasse zum einfachen importieren der Sch√ºler und Kurse aus csv-Dateien
  */
 public abstract class Import {
 
     /**
-     * @param wahlen Die CSV-Datei, die die Schueler und deren Wahlen enth‰lt. Zum Format: Ein Schueler pro Zeile, erste Spalte der Name, die n‰chsten drei die W-Seminarwahlen, die n‰chsten drei die P-Seminarwahlen
-     * @return Gibt den Dateiinhalt als eine {@link ArrayList} der Klasse {@link Schueler} zur¸ck.
+     * @param wahlen Die CSV-Datei, die die Schueler und deren Wahlen enth√§lt. Zum Format: Ein Schueler pro Zeile, erste Spalte der Name, die n√§chsten drei die W-Seminarwahlen, die n√§chsten drei die P-Seminarwahlen
+     * @return Gibt den Dateiinhalt als eine {@link ArrayList} der Klasse {@link Schueler} zur√ºck.
      * @throws FileNotFoundException Datei nicht gefunden
      */
     public static ArrayList<Schueler> importSchuelerFromCSV(File wahlen) throws IOException {
@@ -38,8 +38,8 @@ public abstract class Import {
     }
 
     /**
-     * @param kurse Die CSV-Datei, die die Seminare enth‰lt. Zum Format: Erste Spalte die Namen der W-Seminare, zweite Spalte jeweils deren maximale Teilnehmerzahl. Dritte Spalte die Namen der P-Seminare, vierte Spalte jeweils deren maximale Teilnehmerzahl.
-     * @return Gibt ein Array zur¸ck. Dieses enth‰lt die W-Seminare als {@link ArrayList} am Index {@link GlobalConstants#W_SEMINAR} und die P-Seminare als {@link ArrayList} am Index {@link GlobalConstants#P_SEMINAR}
+     * @param kurse Die CSV-Datei, die die Seminare enth√§lt. Zum Format: Erste Spalte die Namen der W-Seminare, zweite Spalte jeweils deren maximale Teilnehmerzahl. Dritte Spalte die Namen der P-Seminare, vierte Spalte jeweils deren maximale Teilnehmerzahl.
+     * @return Gibt ein Array zur√ºck. Dieses enth√§lt die W-Seminare als {@link ArrayList} am Index {@link GlobalConstants#W_SEMINAR} und die P-Seminare als {@link ArrayList} am Index {@link GlobalConstants#P_SEMINAR}
      * @throws FileNotFoundException Datei nicht gefunden
      */
     public static ArrayList<Kurs>[] importKurseFromCSV(File kurse) throws IOException {
