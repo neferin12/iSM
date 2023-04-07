@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 4) {
-        fprintf(stderr, "Benutzung: ism <Wahldatei> <Seminardatei> <runs>\n");
+        fprintf(stderr, "Benutzung: cism <Wahldatei> <Seminardatei> <runs>\n");
         exit(1);
     }
 
