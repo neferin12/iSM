@@ -36,7 +36,7 @@ static GArray *copyStudents(const GArray *students) {
     GArray *lStudents = g_array_new(FALSE, FALSE, sizeof(student));
     //g_array_set_clear_func(lStudents, (GDestroyNotify) freeStudent);
     failIfNull(lStudents, "could not create copy of lStudents (malloc)");
-    for (int i = 0; i < students->len; i++) {
+    for (guint i = 0; i < students->len; i++) {
         student h = g_array_index(students, student, i);
         student t = {.mimiPoints = 0, .name=h.name, .pSeminar=NULL, .wSeminar = NULL, .pVotes = h.pVotes, .wVotes = h.wVotes};
         lStudents = g_array_append_vals(lStudents, &t, 1);
@@ -93,7 +93,7 @@ GArray *runAlgorithm(const GArray *students, const GArray *w_seminars, const GAr
     GArray *cStudents = copyStudents(students);
     int *intrange = getIntRange(cStudents->len);
     shuffle(intrange, cStudents->len);
-    for (int i = 0; i < cStudents->len; i++) {
+    for (guint i = 0; i < cStudents->len; i++) {
         student *s = &g_array_index(cStudents, student, intrange[i]);
         if (!tryAssignment(s, s->wVotes[0], assignments, default_points.first_selection, 'w')) {
             if (!tryAssignment(s, s->wVotes[1], assignments, default_points.second_selection, 'w')) {
@@ -106,7 +106,7 @@ GArray *runAlgorithm(const GArray *students, const GArray *w_seminars, const GAr
     }
     free(intrange);
     g_array_sort(cStudents, (GCompareFunc) compareStudentsByPoints);
-    for (int i = 0; i < cStudents->len; i++) {
+    for (guint i = 0; i < cStudents->len; i++) {
         student *s = &g_array_index(cStudents, student, i);
         if (!tryAssignment(s, s->pVotes[0], assignments, default_points.first_selection, 'p')) {
             if (!tryAssignment(s, s->pVotes[1], assignments, default_points.second_selection, 'p')) {

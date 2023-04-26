@@ -1,4 +1,4 @@
-set(CMAKE_C_FLAGS "-Wall -Wextra -DLOG_USE_COLOR")
+set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-missing-braces -DLOG_USE_COLOR")
 set(CMAKE_C_FLAGS_DEBUG "-g")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 

@@ -24,7 +24,7 @@ void freeStudents(GArray *students){
 
 int accumulatePoints(const GArray *students){
     int p = 0;
-    for (int i = 0; i < students->len; i++) {
+    for (guint i = 0; i < students->len; i++) {
         p += g_array_index(students, student, i).mimiPoints;
     }
     return p;

@@ -80,9 +80,9 @@ GArray *getStudents(const char *filename, GArray *wSeminars, GArray *pSeminars) 
         lStudent.wVotes = malloc(sizeof(seminar) * 3);
         for (int i = 0; i < 3; ++i) {
             parsed = strtok(NULL, ";");
-            int ind = strtol(parsed, NULL, 10);
+            guint ind = strtol(parsed, NULL, 10);
             failIfNull(parsed, buf);
-            if (ind < 0 || ind > wSeminars->len-1 ) {
+            if (ind > wSeminars->len-1 ) {
                 dieWithoutErrno(buf);
             }
             lStudent.wVotes[i] = g_array_index(wSeminars, seminar, ind);
@@ -92,8 +92,8 @@ GArray *getStudents(const char *filename, GArray *wSeminars, GArray *pSeminars) 
         for (int i = 0; i < 3; ++i) {
             parsed = strtok(NULL, ";");
             failIfNull(parsed, buf);
-            int ind = strtol(parsed, NULL, 10);
-            if (ind < 0 || ind > pSeminars->len-1) {
+            guint ind = strtol(parsed, NULL, 10);
+            if ( ind > pSeminars->len-1) {
                 dieWithoutErrno(buf);
             }
             lStudent.pVotes[i] = g_array_index(pSeminars, seminar, ind);
@@ -113,7 +113,7 @@ void outputResult(const GArray *finished){
     GString *result = g_string_new(NULL);
     g_string_append_printf(result,"Result:\n---------|%i|---------\n", accumulatePoints(finished));
 
-    for (int i = 0; i < finished->len; i++) {
+    for (guint i = 0; i < finished->len; i++) {
         student s = g_array_index(finished, student, i);
         g_string_append_printf(result, "(%i) %s, %i, (W: %s | P: %s)\n", i + 1, s.name, s.mimiPoints, s.wSeminar.name, s.pSeminar.name);
     }

@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include "headers/cismMPI.h"
 #include "headers/errorHandling.h"
+#include "headers/log.h"
 
 int main(int argc, char *argv[]){
+    if (argc < 4) {
+        log_fatal("Benutzung: cism <Wahldatei> <Seminardatei> <runs>");
+        exit(1);
+    }
     long runs = strtol(argv[3], NULL, 10);
     if (runs == LONG_MIN || runs == LONG_MAX) {
         dieWithErrno("Failed to parse runs argument");
