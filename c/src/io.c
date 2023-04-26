@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <glib.h>
 #include "headers/io.h"
 #include "headers/organization.h"
 #include "headers/errorHandling.h"
+#include "headers/log.h"
 
 
 GArray* getSeminars(const char *filename, char type) {
@@ -108,10 +110,15 @@ GArray *getStudents(const char *filename, GArray *wSeminars, GArray *pSeminars) 
 }
 
 void outputResult(const GArray *finished){
-    printf("---------|%i|---------\n", accumulatePoints(finished));
+    GString *result = g_string_new(NULL);
+    g_string_append_printf(result,"Result:\n---------|%i|---------\n", accumulatePoints(finished));
 
     for (int i = 0; i < finished->len; i++) {
         student s = g_array_index(finished, student, i);
-        printf("(%i) %s, %i, (W: %s | P: %s)\n", i + 1, s.name, s.mimiPoints, s.wSeminar.name, s.pSeminar.name);
+        g_string_append_printf(result, "(%i) %s, %i, (W: %s | P: %s)\n", i + 1, s.name, s.mimiPoints, s.wSeminar.name, s.pSeminar.name);
     }
+
+    log_info(result->str);
+
+    g_string_free(result,TRUE);
 }

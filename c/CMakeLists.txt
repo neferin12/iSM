@@ -19,7 +19,7 @@ find_package(MPI REQUIRED)
 pkg_check_modules(deps REQUIRED IMPORTED_TARGET glib-2.0)
 
 
-add_executable(testISM tests/testIsm.c src/algorithm.c src/cismMPI.c src/constants.c src/errorHandling.c src/io.c src/organization.c)
+add_executable(testISM tests/testIsm.c src/algorithm.c src/cismMPI.c src/constants.c src/errorHandling.c src/io.c src/organization.c src/log.c)
 target_link_libraries(testISM PkgConfig::deps MPI::MPI_C)
 add_test(NAME IO COMMAND testISM io ${PROJECT_SOURCE_DIR}/example-files/Wahlen.csv ${PROJECT_SOURCE_DIR}/example-files/Seminare.csv)
 add_test(NAME Algorithm COMMAND testISM alg ${PROJECT_SOURCE_DIR}/example-files/Wahlen.csv ${PROJECT_SOURCE_DIR}/example-files/Seminare.csv)

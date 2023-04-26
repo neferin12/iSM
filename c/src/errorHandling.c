@@ -1,13 +1,14 @@
 #include "headers/errorHandling.h"
+#include "headers/log.h"
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 void dieWithErrno(const char *msg){
-    perror(msg);
+    log_fatal(msg);
     exit(errno);
 }
 void dieWithoutErrno(const char *msg){
-    fprintf(stderr, "%s", msg);
+    log_fatal("%s", msg);
     exit(EXIT_FAILURE);
 }
 

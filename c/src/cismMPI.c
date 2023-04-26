@@ -2,11 +2,14 @@
 #include "headers/io.h"
 #include "headers/algorithm.h"
 #include "headers/errorHandling.h"
+#include "headers/log.h"
 #include <mpi.h>
 #include <stdio.h>
 #include <stdbool.h>
 
 GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filenameSeminars) {
+    log_set_level(LOG_INFO);
+
     int process_Rank, size_Of_Comm, points;
     bool iAmBest;
 
@@ -19,11 +22,11 @@ GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filena
 
     GArray *students = getStudents(filenameVotes, wSeminars, pSeminars);
 
-//    printf("%i running algorithm\n", process_Rank);
+    log_debug("%i running algorithm", process_Rank);
     GArray *finished = batchRunAlgorithmn(runsPerProcess, students, wSeminars, pSeminars);
 
     points = accumulatePoints(finished);
-    //printf("%i finished algorithm\n", process_Rank);
+    log_debug("%i finished algorithm", process_Rank);
 
     if (0 == process_Rank) {
         int *allPoints = calloc(size_Of_Comm, sizeof(int));
@@ -32,7 +35,7 @@ GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filena
         allPoints[0] = points;
 
         for (int i = 1; i < size_Of_Comm; i++) {
-            //printf("Receiving points from %i\n", i);
+            log_debug("Receiving points from %i", i);
             MPI_Recv(&allPoints[i], 1, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
 
@@ -42,19 +45,19 @@ GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filena
                 bestIndex = j;
             }
         }
-        //printf("Best index: %i\n", bestIndex);
+        log_debug("Best index: %i", bestIndex);
         if (bestIndex == 0) {
             outputResult(finished);
         }
         for (int i = 1; i < size_Of_Comm; i++) {
-            //printf("Send result to %i\n", i);
+            log_debug("Send result to %i", i);
             bool best = i == bestIndex;
             MPI_Send(&best, 1, MPI_C_BOOL, i, 2, MPI_COMM_WORLD);
         }
     } else {
         for (int i = 1; i < size_Of_Comm; i++) {
             if (i == process_Rank) {
-                //printf("Sending points from %i\n", i);
+                log_debug("Sending points from %i", i);
                 MPI_Send(&points, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
             }
         }
@@ -62,15 +65,18 @@ GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filena
             if (i == process_Rank) {
                 MPI_Recv(&iAmBest, 1, MPI_C_BOOL, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                 if (iAmBest) {
+                    log_debug("%i is printing results, because it's best", i);
                     outputResult(finished);
                 }
             }
         }
     }
 
+    log_debug("%i is awaiting barrier", process_Rank);
     MPI_Barrier(MPI_COMM_WORLD);
+    log_debug("%i is after barrier", process_Rank);
 
-    //printf("%i points from process %d of %d\n", points, process_Rank, size_Of_Comm);
+    log_debug("%i points from process %d of %d", points, process_Rank, size_Of_Comm);
     freeStudents(students);
     freeSeminars(wSeminars);
     freeSeminars(pSeminars);
