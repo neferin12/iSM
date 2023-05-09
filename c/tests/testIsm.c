@@ -5,8 +5,14 @@
 #include "algorithm.h"
 
 int main(int argc, char *argv[]){
+
+    if (strcmp(argv[1], "version") == 0) {
+        printf("1.0");
+        return 0;
+    }
+
     if (argc < 3) {
-        printf("Usage: testISM <Votes.csv> <Seminars.csv>");
+        printf("Usage: testISM <command> <Votes.csv> <Seminars.csv>");
         return -1;
     }
     GArray *wSeminars = getSeminars(argv[3], 'W');
