@@ -10,7 +10,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src/headers)
 
 add_subdirectory(src)
 
-install(TARGETS cism cismMPI)
+install(TARGETS cism)
 
 # Tests
 enable_testing()
