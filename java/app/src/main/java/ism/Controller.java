@@ -1,10 +1,10 @@
 package ism;
 
 import ism.DeclarationClasses.Comparator.VerteilerComparator;
-import ism.DeclarationClasses.Oberflaeche;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 
 /**
@@ -15,19 +15,18 @@ public class Controller implements Runnable {
     private ArrayList<Schueler> schuelers;
     private ArrayList<Kurs>[] kurses;
     private int iterations;
-    private Oberflaeche oberflaeche;
+    private Consumer<Verteiler> callback;
 
     /**
      * @param schuelers   Die Schueler
      * @param kurses      Die Seminare
      * @param iterations  Die Anzahl, wie oft der Algorithmus, also das Verteilen der Seminare durchlaufen werden soll.
-     * @param oberflaeche Dies muss angegeben werden, damit der Controller Rückmeldung oder Ergebnis an die Oberfläche zuückgeben kann.
      */
-    public Controller(ArrayList<Schueler> schuelers, ArrayList<Kurs>[] kurses, int iterations, Oberflaeche oberflaeche) {
+    public Controller(ArrayList<Schueler> schuelers, ArrayList<Kurs>[] kurses, int iterations, Consumer<Verteiler> callback) {
         this.schuelers = schuelers;
         this.kurses = kurses;
         this.iterations = iterations;
-        this.oberflaeche = oberflaeche;
+        this.callback = callback;
     }
 
     public static int getPartSize() {
@@ -39,8 +38,7 @@ public class Controller implements Runnable {
     }
 
     /**
-     * Hier werden die einzelnen Durchläufe durchgeführt. Anschließend werden die Verteildurchläufe nach MimimiPunktzahl sortiert, und der mit den wenigsten Punkten wird nach Abschluss mit {@link Oberflaeche#verteilenFinished(Verteiler)} zurück an die {@link Oberflaeche} übermittelt.
-     * Während des Vorgangs wird auch der aktuelle Fortschritt mit {@link Oberflaeche#handleProgress(int)} an die {@link Oberflaeche} übermittelt. Hier wird die Anzahl nochmals in einzelne Blöcke zerlegt, die dann von der Funktion {@link Controller#calculatePart(int, int)} berechnet werden, damit der PC nicht überfordert ist.
+     * Hier werden die einzelnen Durchläufe durchgeführt. Anschließend werden die Verteildurchläufe nach MimimiPunktzahl sortiert.
      */
     @Override
     public void run() {
@@ -57,12 +55,12 @@ public class Controller implements Runnable {
         } else {
             results[results.length - 1] = new Verteiler(schuelers, kurses);
             results[results.length - 1].seminareVerteilen();
-            oberflaeche.handleProgress(100);
         }
 
 
         Arrays.sort(results, new VerteilerComparator());
-        oberflaeche.verteilenFinished(results[0]);
+
+        this.callback.accept(results[0]);
     }
 
     /**
@@ -72,19 +70,15 @@ public class Controller implements Runnable {
      */
 
     private Verteiler calculatePart(int lowerEnd, int upperEnd) {
-        Verteiler[] verteiler = new Verteiler[upperEnd - lowerEnd];
-        for (int i = 0; i < verteiler.length; i++) {
-            verteiler[i] = new Verteiler(schuelers, kurses);
+        Verteiler bester = null;
+        for (int i = 0; i < upperEnd-lowerEnd; i++) {
+             Verteiler v = new Verteiler(schuelers, kurses);
+             v.seminareVerteilen();
+            if (bester == null || bester.punktzahl > v.punktzahl) {
+                bester = v;
+            }
         }
-        for (int i = 0; i < verteiler.length; i++) {
-            verteiler[i].seminareVerteilen();
-            double iterationsD = iterations;
-            double tpD = (double) (i + lowerEnd) / iterationsD;
-            int p = (int) (tpD * 100);
-            oberflaeche.handleProgress(p);
-        }
-        Arrays.sort(verteiler, new VerteilerComparator());
-        return verteiler[0];
+        return bester;
     }
 
 

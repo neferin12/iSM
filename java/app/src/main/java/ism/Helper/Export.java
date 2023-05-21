@@ -20,7 +20,6 @@ public abstract class Export {
      * @param verteiler Der {@link Verteiler}, dessen Ergebnisse ausgegeben werden sollen
      * @return Ausgabe der Ergebnisse als Text
      */
-    @Deprecated
     public static String getResultsAsText(Verteiler verteiler) {
         ArrayList<Schueler>[] ueberschuss = verteiler.getUeberschuss();
         String results = "";
@@ -103,7 +102,7 @@ public abstract class Export {
 
         File output = new File(path + "/iSM Export/Schüler.csv");
         output.createNewFile();
-        try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
+        try (PrintWriter out = new PrintWriter(new PrintStream(output))) {
             out.print(outputSchueler);
             out.flush();
         }
@@ -136,7 +135,7 @@ public abstract class Export {
             }
             output = new File(path + "/iSM Export/Seminare/W-Seminare/" + kurs.getName() + ".csv");
             output.createNewFile();
-            try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
+            try (PrintWriter out = new PrintWriter(new PrintStream(output))) {
                 out.print(textOutput);
                 out.flush();
             }
@@ -150,7 +149,7 @@ public abstract class Export {
             }
             output = new File(path + "/iSM Export/Seminare/P-Seminare/" + kurs.getName() + ".csv");
             output.createNewFile();
-            try (PrintWriter out = new PrintWriter(new PrintStream(output, StandardCharsets.ISO_8859_1))) {
+            try (PrintWriter out = new PrintWriter(new PrintStream(output))) {
                 out.print(textOutput);
                 out.flush();
             }

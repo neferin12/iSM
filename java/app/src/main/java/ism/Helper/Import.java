@@ -52,8 +52,16 @@ public abstract class Import {
                 if (!line.isEmpty()) {
                     i++;
                     String[] daten = line.split(";");
-                    w.add(new Kurs(daten[0], GlobalConstants.W_SEMINAR, Integer.parseInt(daten[1]), i));
-                    p.add(new Kurs(daten[2], GlobalConstants.P_SEMINAR, Integer.parseInt(daten[3]), i));
+                    switch (daten[2]) {
+                        case "W":
+                            w.add(new Kurs(daten[0], GlobalConstants.W_SEMINAR, Integer.parseInt(daten[1]), i));
+                            break;
+                        case "P":
+                            p.add(new Kurs(daten[0], GlobalConstants.W_SEMINAR, Integer.parseInt(daten[1]), i));
+                            break;
+                        default:
+                            throw new RuntimeException("Unbekannter Seminarstyp");
+                    }
                 }
             }
         } catch (IOException e) {

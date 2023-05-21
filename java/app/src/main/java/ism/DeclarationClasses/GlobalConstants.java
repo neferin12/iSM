@@ -11,7 +11,7 @@ public abstract class GlobalConstants {
     public static int ERSTE_WAHL = 0;
     public static int ZWEITE_WAHL = 5;
     public static int DRITTE_WAHL = 10;
-    public static int KEINE_WAHL = 20;
+    public static int KEINE_WAHL = 30;
 
     public static void setErsteWahl(int miMiMiPunktzahl) {
         ERSTE_WAHL = miMiMiPunktzahl;
