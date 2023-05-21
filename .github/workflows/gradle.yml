@@ -36,5 +36,5 @@ jobs:
     - name: Upload distribution
       uses: actions/upload-artifact@v2
       with:
-        name: distribution
+        name: java-dist
         path: java/app/build/distributions/app.zip
