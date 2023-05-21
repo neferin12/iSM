@@ -31,5 +31,10 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: build
+        arguments: distZip
         build-root-directory: java
+    - name: Upload distribution
+      uses: actions/upload-artifact@v2
+      with:
+        name: distribution
+        path: java/app/build/distributions/app.zip
