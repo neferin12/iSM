@@ -1,6 +1,6 @@
 {
   "name": "tsism",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "iSM in TypeScript",
   "author": "Julian Pollinger",
   "bin": {
@@ -23,7 +23,7 @@
     "@oclif/plugin-not-found": "^2.3.23",
     "@oclif/plugin-plugins": "^2.4.7",
     "csv-parse": "^5.3.10",
-    "tsism-lib": "^1.0.0"
+    "tsism-lib": "^1.0.1"
   },
   "devDependencies": {
     "@oclif/test": "^2.3.20",
