@@ -1,0 +1,65 @@
+{
+  "name": "tsism",
+  "version": "0.0.0",
+  "description": "iSM in TypeScript",
+  "author": "Julian Pollinger",
+  "bin": {
+    "tsism": "./bin/run"
+  },
+  "homepage": "https://github.com/neferin12/iSM",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "neferin12/iSM",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^2",
+    "@oclif/plugin-autocomplete": "^2.2.0",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-not-found": "^2.3.23",
+    "@oclif/plugin-plugins": "^2.4.7",
+    "csv-parse": "^5.3.10"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2.3.20",
+    "@types/node": "^16.18.31",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1.0.3",
+    "oclif": "^3",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.2",
+    "typescript": "^4.9.5"
+  },
+  "oclif": {
+    "bin": "tsism",
+    "dirname": "tsism",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-autocomplete",
+      "@oclif/plugin-not-found"
+    ]
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "bugs": "https://github.com/neferin12/iSM/issues",
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts"
+}
