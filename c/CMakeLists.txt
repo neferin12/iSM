@@ -31,5 +31,5 @@ add_test(test_build
 set_tests_properties(test_build PROPERTIES FIXTURES_SETUP    test_fixture)
 add_test(testISM testISM version)
 set_tests_properties(testISM       PROPERTIES FIXTURES_REQUIRED test_fixture)
-add_test(NAME IO COMMAND testISM io ${PROJECT_SOURCE_DIR}/example-files/Wahlen.csv ${PROJECT_SOURCE_DIR}/example-files/Seminare.csv)
-add_test(NAME Algorithm COMMAND testISM alg ${PROJECT_SOURCE_DIR}/example-files/Wahlen.csv ${PROJECT_SOURCE_DIR}/example-files/Seminare.csv)
+add_test(NAME IO COMMAND testISM io ${PROJECT_SOURCE_DIR}/../example-files/Wahlen.csv ${PROJECT_SOURCE_DIR}/../example-files/Seminare.csv)
+add_test(NAME Algorithm COMMAND testISM alg ${PROJECT_SOURCE_DIR}/../example-files/Wahlen.csv ${PROJECT_SOURCE_DIR}/../example-files/Seminare.csv)
