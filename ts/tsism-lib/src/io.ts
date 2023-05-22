@@ -1,10 +1,8 @@
-import Seminar, {SeminarType} from './seminar'
+import {Seminar, SeminarType} from './seminar'
 import * as fs from 'node:fs'
 import {parse} from 'csv-parse'
-import Student from './student'
+import {Student} from './student'
 import {Iteration} from './algorithm'
-
-const assert = require('node:assert')
 
 export type SeminarData = { wSeminars: Seminar[], pSeminars: Seminar[] }
 

@@ -1,6 +1,6 @@
-import Seminar from './seminar'
+import {Seminar} from './seminar'
 
-export default class Student {
+export class Student {
   readonly name: string
   readonly wWishes: [Seminar, Seminar, Seminar]
   readonly pWishes: [Seminar, Seminar, Seminar]

@@ -1,6 +1,5 @@
 import {Args, Command} from '@oclif/core'
-import {importSeminars, importStudents, printStudents} from '../../io'
-import runAlgorithm from '../../algorithm'
+import {importSeminars, importStudents, printStudents, runAlgorithm} from 'tsism-lib'
 
 export default class Run extends Command {
   static description = 'Run the algorithm';

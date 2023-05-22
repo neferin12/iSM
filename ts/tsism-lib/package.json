@@ -1,0 +1,29 @@
+{
+  "name": "tsism-lib",
+  "version": "1.0.0",
+  "description": "Lib for tsism",
+  "main": "dist/index.js",
+  "files": ["dist"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "shx rm -rf dist && tsc -b",
+    "prepack": "yarn run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neferin12/iSM.git"
+  },
+  "author": "Julian Pollinger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neferin12/iSM/issues"
+  },
+  "homepage": "https://github.com/neferin12/iSM#readme",
+  "devDependencies": {
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

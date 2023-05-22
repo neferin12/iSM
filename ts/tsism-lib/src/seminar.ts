@@ -3,7 +3,7 @@ export enum SeminarType {
   P_SEMINAR,
 }
 
-export default class Seminar {
+export class Seminar {
   readonly name: string
   readonly capacity: number
   readonly type: SeminarType

@@ -1,7 +1,7 @@
-import Student from './student'
-import Seminar from './seminar'
+import {Student} from './student'
+import {Seminar} from './seminar'
 
-enum Points {
+export enum Points {
   FIRST_SELECTION = 0,
   SECOND_SELECTION = 5,
   THIRD_SELECTION = 10,
@@ -23,7 +23,7 @@ function shuffle<T>(a: Array<T>) {
   return a
 }
 
-export default async function runAlgorithm(iterations: number, students: Student[]): Promise<Iteration> {
+export async function runAlgorithm(iterations: number, students: Student[]): Promise<Iteration> {
   // TODO Multithreading
   return execute(iterations, students)
 }
