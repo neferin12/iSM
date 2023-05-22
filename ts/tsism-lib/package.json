@@ -4,7 +4,9 @@
   "description": "Lib for tsism",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/commands"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

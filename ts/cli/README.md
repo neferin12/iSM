@@ -18,7 +18,7 @@ $ npm install -g tsism
 $ tsism COMMAND
 running command...
 $ tsism (--version)
-tsism/1.0.0 linux-x64 node-v18.16.0
+tsism/1.0.1 linux-x64 node-v18.16.0
 $ tsism --help [COMMAND]
 USAGE
   $ tsism COMMAND
@@ -99,5 +99,5 @@ DESCRIPTION
   Run the algorithm
 ```
 
-_See code: [dist/commands/run/index.ts](https://github.com/neferin12/iSM/blob/v1.0.0/dist/commands/run/index.ts)_
+_See code: [dist/commands/run/index.ts](https://github.com/neferin12/iSM/blob/v1.0.1/dist/commands/run/index.ts)_
 <!-- commandsstop -->
