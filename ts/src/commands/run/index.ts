@@ -1,5 +1,5 @@
 import {Args, Command} from '@oclif/core'
-import {importSeminars, importStudents} from '../../io'
+import {importSeminars, importStudents, printStudents} from '../../io'
 import runAlgorithm from '../../algorithm'
 
 export default class Run extends Command {
@@ -16,7 +16,7 @@ export default class Run extends Command {
     const seminars = await importSeminars(args.seminars)
     const students = await importStudents(args.students, seminars)
     const it = await runAlgorithm(args.runs, students)
-    console.log(it.points)
+    printStudents(students, it)
     return null
   }
 }

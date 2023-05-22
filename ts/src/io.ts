@@ -2,6 +2,8 @@ import Seminar, {SeminarType} from './seminar'
 import * as fs from 'node:fs'
 import {parse} from 'csv-parse'
 import Student from './student'
+import {Iteration} from './algorithm'
+
 const assert = require('node:assert')
 
 export type SeminarData = { wSeminars: Seminar[], pSeminars: Seminar[] }
@@ -70,3 +72,9 @@ export function importStudents(file: string, seminars: SeminarData): Promise<Stu
   })
 }
 
+export function printStudents(students: Student[], iteration: Iteration): void {
+  console.log(`---------|${iteration.points}|---------`)
+  for (const [i, student] of students.entries()) {
+    console.log(`(${i + 1}) ${student.name}, ${student.pointsPerRun.get(iteration.id)}, (W: ${iteration.assignments.get(student)?.wSeminar?.name || 'none'} | P: ${iteration.assignments.get(student)?.pSeminar?.name || 'none'})`)
+  }
+}
