@@ -1,5 +1,11 @@
 #!/bin/bash
-cd ../ts/cli
+cd ../ts
+yarn install --frozen-lockfile
+cd tsism-lib
+yarn run build
+cd ..
+yarn install --frozen-lockfile
+cd cli
 yarn run build
 hyperfine \
 --warmup 3 \
