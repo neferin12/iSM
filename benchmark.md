@@ -13,15 +13,8 @@
 ## Iterations per second of the algorithm in C with different number of threads
 
 
-
-
-    Text(0, 0.5, 'Iterations per second')
-
-
-
-
     
-![png](benchmark_files/benchmark_7_1.png)
+![png](benchmark_files/benchmark_7_0.png)
     
 
 
