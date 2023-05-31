@@ -11,7 +11,7 @@ single_core_results: benchmarking/results/c_benchmark.csv benchmarking/results/j
 
 multi_core_results: benchmarking/results/c_multicore_benchmark.csv
 
-benchmark.md: benchmark.ipynb single_core_results
+benchmark.md: benchmark.ipynb single_core_results multi_core_results
 	jupyter nbconvert --to markdown --output $@ --no-input --execute $<
 
 benchmarking/results/java_benchmark.csv: benchmarking/java_benchmark.sh $(java_source)
