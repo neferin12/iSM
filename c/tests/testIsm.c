@@ -3,6 +3,7 @@
 #include <io.h>
 #include <glib.h>
 #include "algorithm.h"
+#include "copy.h"
 
 int main(int argc, char *argv[]){
 
@@ -51,6 +52,10 @@ int main(int argc, char *argv[]){
             return -1;
         }
         return 0;
+    }
+
+    if (strcmp(argv[1], "copy") == 0) {
+        return run_copyStudents_test();
     }
 
     return -1;

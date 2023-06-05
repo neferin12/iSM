@@ -32,7 +32,7 @@ static int *getIntRange(int n){
     return ints;
 }
 
-static GArray *copyStudents(const GArray *students) {
+GArray *copyStudents(const GArray *students) {
     GArray *lStudents = g_array_new(FALSE, FALSE, sizeof(student));
     //g_array_set_clear_func(lStudents, (GDestroyNotify) freeStudent);
     failIfNull(lStudents, "could not create copy of lStudents (malloc)");
