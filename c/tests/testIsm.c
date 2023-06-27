@@ -7,15 +7,17 @@
 
 int main(int argc, char *argv[]){
 
-    if (strcmp(argv[1], "version") == 0) {
-        printf("1.0");
+
+    if (argc == 2 && strcmp(argv[1], "version") == 0) {
+        printf("1.0\n");
         return 0;
     }
 
-    if (argc < 3) {
-        printf("Usage: testISM <command> <Votes.csv> <Seminars.csv>");
+    if (argc < 4) {
+        printf("Usage: testISM <command> <Votes.csv> <Seminars.csv>\n");
         return -1;
     }
+
     GArray *wSeminars = getSeminars(argv[3], 'W');
     GArray *pSeminars = getSeminars(argv[3], 'P');
     GArray *students = getStudents(argv[2], wSeminars, pSeminars);
