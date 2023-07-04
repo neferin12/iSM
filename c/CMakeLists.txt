@@ -16,7 +16,7 @@ install(TARGETS cism)
 enable_testing()
 find_package(PkgConfig REQUIRED)
 find_package(MPI REQUIRED)
-pkg_check_modules(deps REQUIRED IMPORTED_TARGET glib-2.0 cunit)
+pkg_check_modules(deps REQUIRED IMPORTED_TARGET glib-2.0)
 
 
 add_executable(testISM tests/testIsm.c tests/copy.c src/algorithm.c src/cismMPI.c src/constants.c src/errorHandling.c src/io.c src/organization.c src/log.c)
