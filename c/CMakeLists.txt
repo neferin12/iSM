@@ -6,6 +6,14 @@ set(CMAKE_C_STANDARD 11)
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-missing-braces -DLOG_USE_COLOR")
+set(CMAKE_C_FLAGS_DEBUG "-g")
+set(CMAKE_C_FLAGS_RELEASE "-O3")
+
 include_directories(${PROJECT_SOURCE_DIR}/src/headers)
 
 add_subdirectory(src)
