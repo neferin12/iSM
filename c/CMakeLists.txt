@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(cISM)
+project(cISM VERSION 1.0.0 DESCRIPTION "C implementation of iSM")
+
+include(GNUInstallDirs)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -17,19 +19,21 @@ set(CMAKE_C_FLAGS_RELEASE "-O3")
 include_directories(${PROJECT_SOURCE_DIR}/src/headers)
 
 add_subdirectory(src)
+configure_file(ism.pc.in ism.pc @ONLY)
 
-install(TARGETS cism)
+install(TARGETS ism cism
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES ${CMAKE_BINARY_DIR}/ism.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
 
 # Tests
 enable_testing()
 find_package(PkgConfig REQUIRED)
 find_package(MPI REQUIRED)
 pkg_check_modules(deps REQUIRED IMPORTED_TARGET glib-2.0)
-
-
-add_executable(testISM tests/testIsm.c tests/copy.c src/algorithm.c src/cismMPI.c src/constants.c src/errorHandling.c src/io.c src/organization.c src/log.c)
+add_executable(testISM tests/testIsm.c tests/copy.c src/cismMPI.c)
 set_target_properties(testISM PROPERTIES EXCLUDE_FROM_ALL TRUE)
-target_link_libraries(testISM PkgConfig::deps MPI::MPI_C)
+target_link_libraries(testISM PkgConfig::deps MPI::MPI_C ism)
 add_test(test_build
   "${CMAKE_COMMAND}"
   --build "${CMAKE_BINARY_DIR}"

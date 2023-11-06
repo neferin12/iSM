@@ -4,7 +4,6 @@
 #include "headers/errorHandling.h"
 #include "headers/log.h"
 #include <mpi.h>
-#include <stdio.h>
 #include <stdbool.h>
 
 GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filenameSeminars) {
