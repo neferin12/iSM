@@ -16,15 +16,28 @@ set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-missing-braces -DLOG_USE_COLOR")
 set(CMAKE_C_FLAGS_DEBUG "-g")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 
+option(INSTALL_LIB "Install the ism library" ON)
+option(INSTALL_EXEC "Install the cism executable" ON)
+
 include_directories(${PROJECT_SOURCE_DIR}/src/headers)
 
 add_subdirectory(src)
 configure_file(ism.pc.in ism.pc @ONLY)
 
-install(TARGETS ism cism
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(FILES ${CMAKE_BINARY_DIR}/ism.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+# Conditional install for the library
+if(INSTALL_LIB)
+    install(TARGETS ism
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    install(FILES ${CMAKE_BINARY_DIR}/ism.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+endif()
+
+# Conditional install for the executable
+if(INSTALL_EXEC)
+    install(TARGETS cism
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()
+
 
 # Tests
 enable_testing()
