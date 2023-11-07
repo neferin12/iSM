@@ -19,8 +19,6 @@ set(CMAKE_C_FLAGS_RELEASE "-O3")
 option(INSTALL_LIB "Install the ism library" ON)
 option(INSTALL_EXEC "Install the cism executable" ON)
 
-include_directories(${PROJECT_SOURCE_DIR}/src/headers)
-
 add_subdirectory(src)
 configure_file(ism.pc.in ism.pc @ONLY)
 
