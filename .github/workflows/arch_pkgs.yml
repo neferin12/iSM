@@ -92,7 +92,7 @@ jobs:
           repo-add -p -R pollinger.db.tar.gz *.pkg.tar.zst
       - name: Commit changes
         run: |
-            git config --global --add safe.directory /__w/cvc5-aur/cvc5-aur
+            git config --global --add safe.directory /__w/iSM/iSM
             git add arch
             git config --global user.name 'GitHub Actions [Bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
