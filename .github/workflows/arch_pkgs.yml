@@ -1,8 +1,9 @@
 name: PKGBUILD CI
 
 on:
-  tags:
-    - '*'
+  push:
+    tags:
+      - '*'
 
 jobs:
   build-packages:
