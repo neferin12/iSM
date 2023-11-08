@@ -1,5 +1,5 @@
-pkgbase = libism
-	pkgdesc = Libraries for the C implementation of iSM
+pkgbase = cism
+	pkgdesc = C implementation of iSM
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/neferin12/iSM
@@ -7,8 +7,14 @@ pkgbase = libism
 	license = MIT
 	makedepends = cmake
 	depends = glibc
-	provides = libism=1.0.3
+	depends = openmpi
 	source = libism-1.0.3.tar.gz::https://github.com/neferin12/iSM/archive/v1.0.3/libism-1.0.3.tar.gz
 	sha256sums = c19929a4e563aff8783b57715df2ca6221704d3ade0480bd556ce55ad5fb6a23
 
 pkgname = libism
+	depends = glibc
+
+pkgname = cism
+	depends = glibc
+	depends = openmpi
+	depends = libism
