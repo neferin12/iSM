@@ -2,7 +2,7 @@
 
 pkgbase='cism'
 pkgname=('libism' 'cism')
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='C implementation of iSM'
 arch=('x86_64')

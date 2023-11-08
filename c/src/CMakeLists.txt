@@ -1,7 +1,7 @@
 add_library(ism SHARED algorithm.c io.c log.c organization.c errorHandling.c constants.c)
 target_include_directories(ism PUBLIC ${PROJECT_SOURCE_DIR}/src/headers)
 
-add_executable(cism main.c cismMPI.c headers/cismMPI.h)
+add_executable(cism main.c cismMPI.c headers/cismMPI.h log.c headers/log.h)
 
 find_package(PkgConfig REQUIRED)
 find_package(MPI REQUIRED)
