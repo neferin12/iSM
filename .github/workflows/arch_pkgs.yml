@@ -9,7 +9,7 @@ jobs:
       matrix:
         package: 
           [
-            c/cism
+            c/cism,
             c/libism
           ]
     runs-on: ubuntu-latest
