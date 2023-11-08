@@ -25,11 +25,14 @@ jobs:
       run: |
         echo "Successfully created the following package archive"
         echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
+        echo "Package: ${{ steps.makepkg.outputs.pkgfile1 }}"
     - name: Upload Package Archive
       uses: actions/upload-artifact@v3
       with:
         name: pkgfiles
-        path: ${{ steps.makepkg.outputs.pkgfile0 }}
+        path: | 
+            ${{ steps.makepkg.outputs.pkgfile0 }}
+            ${{ steps.makepkg.outputs.pkgfile1 }}
 #   aur-publish:
 #     if: github.event_name != 'pull_request'
 #     needs: [build-packages]
