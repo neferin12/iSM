@@ -1,4 +1,4 @@
-#include "headers/organization.h"
+#include "ism/organization.h"
 #include <stdlib.h>
 
 void freeSeminar(seminar *sp){

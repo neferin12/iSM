@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <glib.h>
-#include "headers/io.h"
-#include "headers/organization.h"
-#include "headers/errorHandling.h"
-#include "headers/log.h"
+#include "ism/io.h"
+#include "ism/organization.h"
+#include "ism/errorHandling.h"
+#include "ism/log.h"
 
 
 GArray* getSeminars(const char *filename, char type) {

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(cISM VERSION 1.0.4 DESCRIPTION "C implementation of iSM")
+project(cISM VERSION 1.1.0 DESCRIPTION "C implementation of iSM")
 
 include(GNUInstallDirs)
 
@@ -19,6 +19,8 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3")
 option(INSTALL_LIB "Install the ism library" ON)
 option(INSTALL_EXEC "Install the cism executable" ON)
 
+include_directories(ism PUBLIC ${PROJECT_SOURCE_DIR}/src/headers)
+
 add_subdirectory(src)
 configure_file(ism.pc.in ism.pc @ONLY)
 
@@ -28,6 +30,9 @@ if(INSTALL_LIB)
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
             PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
     install(FILES ${CMAKE_BINARY_DIR}/ism.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/headers/ism
+            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+            FILES_MATCHING PATTERN "*.h")
 endif()
 
 # Conditional install for the executable

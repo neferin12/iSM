@@ -1,8 +1,8 @@
 #include "headers/cismMPI.h"
-#include "headers/io.h"
-#include "headers/algorithm.h"
-#include "headers/errorHandling.h"
-#include "headers/log.h"
+#include "ism/io.h"
+#include "ism/algorithm.h"
+#include "ism/errorHandling.h"
+#include "ism/log.h"
 #include <mpi.h>
 #include <stdbool.h>
 

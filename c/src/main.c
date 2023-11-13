@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "headers/cismMPI.h"
-#include "headers/errorHandling.h"
-#include "headers/log.h"
+#include "ism/errorHandling.h"
+#include "ism/log.h"
 
 int main(int argc, char *argv[]){
     if (argc < 4) {

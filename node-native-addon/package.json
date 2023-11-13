@@ -1,0 +1,20 @@
+{
+    "main": "lib/binding.js",
+    "dependencies": {
+        "node-addon-api": "^1.1.0"
+    },
+    "scripts": {
+        "pretest": "tsc",
+        "test": "node --napi-modules ./test/test_binding.js"
+    },
+    "gypfile": true,
+    "name": "tsism-napi",
+    "version": "1.0.0",
+    "author": "Julian Pollinger",
+    "license": "MIT",
+    "description": "",
+    "devDependencies": {
+        "@types/node": "7.0.7",
+        "typescript": "^2.3.3"
+    }
+}

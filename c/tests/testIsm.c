@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#include <io.h>
+#include "ism/io.h"
 #include <glib.h>
-#include "algorithm.h"
+#include "ism/algorithm.h"
 #include "copy.h"
 
 int main(int argc, char *argv[]){

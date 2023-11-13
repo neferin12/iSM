@@ -1,6 +1,6 @@
-#include "headers/algorithm.h"
-#include "headers/errorHandling.h"
-#include "constants.h"
+#include "ism/algorithm.h"
+#include "ism/errorHandling.h"
+#include "ism/constants.h"
 #include <stdlib.h>
 #include <sys/time.h>
 #include <glib.h>

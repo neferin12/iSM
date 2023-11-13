@@ -1,4 +1,4 @@
-#include "../src/headers/algorithm.h"
+#include "ism/algorithm.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
