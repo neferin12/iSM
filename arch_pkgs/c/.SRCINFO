@@ -1,6 +1,6 @@
 pkgbase = cism
 	pkgdesc = C implementation of iSM
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/neferin12/iSM
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cism
 	makedepends = cmake
 	depends = glibc
 	depends = openmpi
-	source = libism-1.0.4.tar.gz::https://github.com/neferin12/iSM/archive/v1.0.4/libism-1.0.4.tar.gz
-	sha256sums = 1e03a6e0f4679098bd38ab79265b470e7ed1e3565f2e715157ee79e300f960f7
+	source = libism-1.1.0.tar.gz::https://github.com/neferin12/iSM/archive/v1.1.0/libism-1.1.0.tar.gz
+	sha256sums = 261fea49ef020e731999d1a9455685675bf0ece093ba281db6f892c138197d0e
 
 pkgname = libism
 	depends = glibc
