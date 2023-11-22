@@ -1,5 +1,10 @@
 #include "ism/constants.h"
 
+/**
+ * @brief Default points structure.
+ * 
+ * This structure represents the default points configuration for seminar assignments.
+ */
 const struct points default_points = {
         .first_selection = 0,
         .second_selection = 5,

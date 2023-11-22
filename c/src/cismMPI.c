@@ -6,6 +6,14 @@
 #include <mpi.h>
 #include <stdbool.h>
 
+/**
+ * Runs the MPI process for a given number of runs per process.
+ * 
+ * @param runsPerProcess The number of runs to be executed per process.
+ * @param filenameVotes The filename of the votes file.
+ * @param filenameSeminars The filename of the seminars file.
+ * @return A pointer to the GArray containing the results.
+ */
 GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filenameSeminars) {
     log_set_level(LOG_INFO);
 

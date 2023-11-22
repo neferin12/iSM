@@ -8,6 +8,16 @@
 #include "ism/log.h"
 
 
+/**
+ * Retrieves seminars from a file.
+ *
+ * This function reads seminars from a file specified by the filename parameter.
+ * The type parameter specifies the type of seminars to retrieve and must be either "W" or "P".
+ *
+ * @param filename The path to the file containing the seminars.
+ * @param type The type of seminars to retrieve. Must be either "W" or "P".
+ * @return A pointer to a GArray containing the retrieved seminars.
+ */
 GArray* getSeminars(const char *filename, char type) {
     GArray *seminars = g_array_new(FALSE, FALSE, sizeof(seminar));
     g_array_set_clear_func(seminars, (GDestroyNotify) freeSeminar);
@@ -55,6 +65,14 @@ GArray* getSeminars(const char *filename, char type) {
     return seminars;
 }
 
+/**
+ * Retrieves the list of students from a file.
+ *
+ * @param filename The name of the file to read from.
+ * @param wSeminars The array of workshops seminars.
+ * @param pSeminars The array of project seminars.
+ * @return A pointer to the GArray containing the list of students.
+ */
 GArray *getStudents(const char *filename, GArray *wSeminars, GArray *pSeminars) {
     GArray *students = g_array_new(FALSE, FALSE, sizeof(student));
     g_array_set_clear_func(students, (GDestroyNotify) freeStudent);
@@ -109,6 +127,13 @@ GArray *getStudents(const char *filename, GArray *wSeminars, GArray *pSeminars) 
     return students;
 }
 
+/**
+ * @brief Outputs the result of the algorithm for the given array of students.
+ *
+ * This function takes a GArray pointer as input and outputs the result of the algorithm for the given array of students.
+ *
+ * @param students A pointer to the GArray containing the array of students.
+ */
 void outputResult(const GArray *finished){
     GString *result = g_string_new(NULL);
     g_string_append_printf(result,"Result:\n---------|%i|---------\n", accumulatePoints(finished));

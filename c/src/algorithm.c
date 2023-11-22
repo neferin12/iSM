@@ -6,6 +6,12 @@
 #include <glib.h>
 #include <stdbool.h>
 
+/**
+ * Shuffles the elements of an integer array.
+ *
+ * @param array The array to be shuffled.
+ * @param n The number of elements in the array.
+ */
 static void shuffle(int *array, int n) {
     struct timeval tv;
     gettimeofday(&tv, NULL);
@@ -23,6 +29,16 @@ static void shuffle(int *array, int n) {
     }
 }
 
+/**
+ * @brief Returns an array of integers in the range [0, n-1].
+ *
+ * This function dynamically allocates an array of integers and fills it with
+ * values in the range [0, n-1]. The caller is responsible for freeing the
+ * memory allocated by this function.
+ *
+ * @param n The upper bound of the range (exclusive).
+ * @return A pointer to the dynamically allocated array of integers.
+ */
 static int *getIntRange(int n){
     int *ints = malloc(sizeof(int) * n);
     failIfNull(ints, "could not malloc ints range");
@@ -32,6 +48,13 @@ static int *getIntRange(int n){
     return ints;
 }
 
+
+/**
+ * Creates a copy of the given array of students.
+ *
+ * @param students The original array of students.
+ * @return A new array containing a copy of the students.
+ */
 GArray *copyStudents(const GArray *students) {
     GArray *lStudents = g_array_new(FALSE, FALSE, sizeof(student));
     //g_array_set_clear_func(lStudents, (GDestroyNotify) freeStudent);
@@ -44,10 +67,29 @@ GArray *copyStudents(const GArray *students) {
     return lStudents;
 }
 
+/**
+ * Compares two students based on their points.
+ *
+ * @param s1 Pointer to the first student.
+ * @param s2 Pointer to the second student.
+ * @return Negative value if s1 has fewer points than s2, positive value if s1 has more points than s2,
+ *         and 0 if both students have the same number of points.
+ */
 static int compareStudentsByPoints(const student *s1, const student *s2){
     return s2->mimiPoints-s1->mimiPoints;
 }
 
+
+/**
+ * Tries to assign a student to a seminar.
+ *
+ * @param s The student to assign.
+ * @param sel The seminar to assign the student to.
+ * @param assignments The array of number of assignments for each seminar.
+ * @param points The points to add to the student's mimiPoints.
+ * @param semType The type of the seminar ('w' for W-Seminar, 'p' for P-Seminar).
+ * @return TRUE if the assignment was successful, FALSE otherwise.
+ */
 static bool tryAssignment(student *s, seminar sel, int *assigments, int points, char semType){
     int assignedStudents = assigments[*sel.id];
     if (assignedStudents < sel.size) {
@@ -68,6 +110,15 @@ static bool tryAssignment(student *s, seminar sel, int *assigments, int points, 
     return FALSE;
 }
 
+/**
+ * Runs the algorithm multiple times on the given input data.
+ *
+ * @param times The number of times to run the algorithm.
+ * @param students The array of students.
+ * @param w_seminars The array of workshops for each student.
+ * @param p_seminars The array of presentations for each student.
+ * @return A pointer to the resulting array.
+ */
 GArray *batchRunAlgorithmn(int times,const GArray *students, const GArray *w_seminars, const GArray *p_seminars){
     GArray *best = NULL;
     int bestPoints = INT_MAX;
@@ -87,6 +138,14 @@ GArray *batchRunAlgorithmn(int times,const GArray *students, const GArray *w_sem
     return best;
 }
 
+/**
+ * Runs the algorithm to assign students to seminars based on their votes.
+ *
+ * @param students The array of students.
+ * @param w_seminars The array of seminars for the 'w' category.
+ * @param p_seminars The array of seminars for the 'p' category.
+ * @return The array of students with assigned seminars.
+ */
 GArray *runAlgorithm(const GArray *students, const GArray *w_seminars, const GArray *p_seminars) {
     int *assignments = calloc(w_seminars->len + p_seminars->len, sizeof(int));
 

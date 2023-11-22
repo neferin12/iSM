@@ -1,11 +1,11 @@
 #include <napi.h>
-#include <algorithm.h>
+#include <ism/algorithm.h>
 
 using namespace Napi;
 
-Napi::String Method(const Napi::CallbackInfo& info) {
+Napi::String Method(const Napi::CallbackInfo& info, const Napi::String& str) {
   Napi::Env env = info.Env();
-  return Napi::String::New(env, "world");
+  return Napi::String::New(env, str);
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
