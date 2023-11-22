@@ -3,7 +3,7 @@
 
 using namespace Napi;
 
-Napi::String Method(const Napi::CallbackInfo& info, const Napi::String& str) {
+Napi::String Method(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   return Napi::String::New(env, str);
 }
