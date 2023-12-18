@@ -1,12 +1,16 @@
-const TsismNapi = require("../dist/binding.js");
 const assert = require("assert");
+const {loadSeminars, runAlgorithm} = require("../dist/binding");
 
-assert(TsismNapi, "The expected function is undefined");
+assert(runAlgorithm, "The expected function is undefined");
 
 function testBasic()
 {
-    const result =  TsismNapi("hello", "hello2");
-    assert.strictEqual(result, "world", "Unexpected value returned");
+
+    const seminars = loadSeminars("../example-files/Seminare.csv");
+    assert(seminars.w_seminars.length > 0, "Empty w seminars");
+    assert(seminars.p_seminars.length > 0, "Empty p seminars");
+    const result =  runAlgorithm(seminars.w_seminars, seminars.p_seminars, []);
+    // assert.strictEqual(result, "world", "Unexpected value returned");
 }
 
 assert.doesNotThrow(testBasic, undefined, "testBasic threw an expection");

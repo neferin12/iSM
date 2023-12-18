@@ -4,7 +4,8 @@
         "node-addon-api": "^1.1.0"
     },
     "scripts": {
-        "pretest": "tsc",
+        "build": "tsc",
+        "pretest": "yarn run build",
         "test": "node --napi-modules ./test/test_binding.js"
     },
     "gypfile": true,

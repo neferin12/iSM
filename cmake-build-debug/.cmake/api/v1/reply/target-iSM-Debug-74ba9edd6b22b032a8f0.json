@@ -1,0 +1,1186 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "iSM"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++14 -fdiagnostics-color=always"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/home/julian/projects/privat/iSM/node-native-addon/node_modules/node-addon-api"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/julian/projects/privat/iSM/node-native-addon/node_modules/node-addon-api/external-napi"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/julian/projects/privat/iSM/node-native-addon/node_modules/node-addon-api/src"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				68,
+				72,
+				162
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/home/julian/projects/privat/iSM/node-native-addon/node_modules/node-addon-api"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/julian/projects/privat/iSM/node-native-addon/node_modules/node-addon-api/external-napi"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/julian/projects/privat/iSM/node-native-addon/node_modules/node-addon-api/src"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				74
+			]
+		}
+	],
+	"id" : "iSM::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "iSM",
+	"nameOnDisk" : "iSM",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				69,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142,
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				153,
+				154,
+				155,
+				156,
+				157,
+				158,
+				159,
+				160,
+				161,
+				163,
+				164,
+				165,
+				166,
+				167
+			]
+		},
+		{
+			"name" : "Object Files",
+			"sourceIndexes" : 
+			[
+				4
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				67,
+				70,
+				71,
+				73,
+				75,
+				76,
+				86,
+				87,
+				88
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				68,
+				72,
+				74,
+				162
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/node_modules/node-addon-api/src/node-api.target.mk",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/node_modules/node-addon-api/src/nothing.target.mk",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/Release/obj.target/node_modules/node-addon-api/src/nothing.a",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/Release/obj.target/node_modules/node-addon-api/src/nothing.a.ar-file-list",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/Release/obj.target/nothing/node_modules/node-addon-api/src/nothing.o",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/Release/nothing.a",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/binding.Makefile",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/config.gypi",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/Makefile",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/build/tsism-napi-native.target.mk",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/dist/binding.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/dist/binding.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/dist/types.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/dist/types.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/lib/binding.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/lib/types.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/@types/node/index.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/@types/node/package.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/@types/node/README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/array_buffer.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/async_context.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/async_operations.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/async_worker.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/basic_types.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/bigint.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/boolean.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/buffer.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/callback_scope.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/callbackinfo.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/checker-tool.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/class_property_descriptor.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/cmake-js.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/conversion-tool.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/creating_a_release.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/dataview.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/Doxyfile",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/env.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/error.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/error_handling.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/escapable_handle_scope.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/external.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/function.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/function_reference.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/generator.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/handle_scope.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/memory_management.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/node-gyp.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/number.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/object.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/object_lifetime_management.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/object_reference.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/object_wrap.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/prebuild_tools.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/promises.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/property_descriptor.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/range_error.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/reference.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/setup.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/string.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/symbol.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/threadsafe_function.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/type_error.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/typed_array.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/typed_array_of.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/value.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/version_management.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/doc/working_with_javascript_values.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/external-napi/node_api.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/node_api.cc",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/node_api.gyp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/node_api.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/node_api_types.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/node_internals.cc",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/node_internals.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/nothing.c",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/util-inl.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/src/util.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/tools/check-napi.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/tools/conversion.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/tools/README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/appveyor.yml",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/CHANGELOG.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/CODE_OF_CONDUCT.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/CONTRIBUTING.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/index.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/LICENSE.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/napi-inl.deprecated.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/napi-inl.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/napi.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/package.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/node-addon-api/README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/bin/tsc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/bin/tsserver",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/cs/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/de/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/es/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/fr/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/it/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/ja/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/ko/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/pl/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/pt-br/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/ru/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/tr/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/zh-cn/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/zh-tw/diagnosticMessages.generated.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/cancellationToken.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.dom.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.core.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2016.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2016.full.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.full.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.object.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.string.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2018.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2018.full.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es5.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.es6.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.esnext.array.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.esnext.asynciterable.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.esnext.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.esnext.full.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.scripthost.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/lib.webworker.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/protocol.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/tsc.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/tsserver.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/tsserverlibrary.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/tsserverlibrary.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/typescript.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/typescript.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/typescriptServices.d.ts",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/typescriptServices.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/typesMap.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/typingsInstaller.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/lib/watchGuard.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/AUTHORS.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/CopyrightNotice.txt",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/LICENSE.txt",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/package.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/node_modules/typescript/ThirdPartyNoticeText.txt",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "node-native-addon/src/tsism_napi.cc",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/test/test_binding.js",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/binding.gyp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/package.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/tsconfig.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "node-native-addon/yarn.lock",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
