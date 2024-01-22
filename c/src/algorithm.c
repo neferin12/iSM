@@ -119,7 +119,7 @@ static bool tryAssignment(student *s, seminar sel, int *assigments, int points, 
  * @param p_seminars The array of presentations for each student.
  * @return A pointer to the resulting array.
  */
-GArray *batchRunAlgorithmn(int times,const GArray *students, const GArray *w_seminars, const GArray *p_seminars){
+GArray *batchRunAlgorithm(int times, const GArray *students, const GArray *w_seminars, const GArray *p_seminars){
     GArray *best = NULL;
     int bestPoints = INT_MAX;
     for (int i = 0; i < times; i++) {

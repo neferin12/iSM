@@ -30,7 +30,7 @@ GArray *mpiRun(int runsPerProcess, const char *filenameVotes, const char *filena
     GArray *students = getStudents(filenameVotes, wSeminars, pSeminars);
 
     log_debug("%i running algorithm", process_Rank);
-    GArray *finished = batchRunAlgorithmn(runsPerProcess, students, wSeminars, pSeminars);
+    GArray *finished = batchRunAlgorithm(runsPerProcess, students, wSeminars, pSeminars);
 
     points = accumulatePoints(finished);
     log_debug("%i finished algorithm", process_Rank);

@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
             return -1;
         }
 
-        finished = batchRunAlgorithmn(10000, students, wSeminars, pSeminars);
+        finished = batchRunAlgorithm(10000, students, wSeminars, pSeminars);
         if (accumulatePoints(finished) > 1000) {
             printf("Large mimi points");
             return -1;
