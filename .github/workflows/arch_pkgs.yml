@@ -23,6 +23,7 @@ jobs:
         filters: |
           pkgbuild: 
             - arch_pkgs/**
+            - c/src/**
   build-packages:
     strategy:
       fail-fast: false
