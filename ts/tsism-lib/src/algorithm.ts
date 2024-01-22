@@ -1,34 +1,12 @@
-import {NumberToNumberMapInterface, Student} from './student'
+import {Student} from './student'
 import {Seminar} from './seminar'
+import {Iteration} from "./iteration";
 
 export enum Points {
     FIRST_SELECTION = 0,
     SECOND_SELECTION = 5,
     THIRD_SELECTION = 10,
     NO_SELECTION = 30
-}
-
-interface AssignmentMapInterface {
-    get: (s: Student) => { wSeminar?: Seminar, pSeminar?: Seminar } | undefined
-    set: (s: Student, value: { wSeminar?: Seminar, pSeminar?: Seminar }) => void
-}
-
-class AssignmentMapArray implements AssignmentMapInterface {
-    readonly a: Array<{ wSeminar?: Seminar; pSeminar?: Seminar }> = []
-
-    get(s: Student): { wSeminar?: Seminar; pSeminar?: Seminar } | undefined {
-        return this.a[s.id];
-    }
-
-    set(s: Student, value: { wSeminar?: Seminar; pSeminar?: Seminar }): void {
-        this.a[s.id] = value;
-    }
-}
-
-export type Iteration = {
-    id: number,
-    points: number,
-    assignments: AssignmentMapInterface
 }
 
 function shuffle<T>(a: Array<T>) {
@@ -46,14 +24,13 @@ export async function runAlgorithm(iterations: number, students: Student[]): Pro
 }
 
 function tryAssignment(seminar: Seminar, student: Student, currentIteration: Iteration, seminarType: 'W' | 'P', points: Points) {
-    let cap = seminar.remainingCapacityPerRun.get(currentIteration.id)
+    let cap = currentIteration.seminarCapacity.get(seminar.id)
     if (cap === undefined) {
         cap = seminar.capacity
     }
 
     if (cap > 0) {
-        seminar.remainingCapacityPerRun.set(currentIteration.id, cap - 1)
-        currentIteration.points += points
+        currentIteration.seminarCapacity.set(seminar.id, cap - 1);
 
         const previousAssignment = currentIteration.assignments.get(student) || {}
         if (seminarType === 'W') {
@@ -64,7 +41,7 @@ function tryAssignment(seminar: Seminar, student: Student, currentIteration: Ite
             currentIteration.assignments.set(student, {...previousAssignment, pSeminar: seminar})
         }
 
-        student.pointsPerRun.set(currentIteration.id, (student.pointsPerRun.get(currentIteration.id) || 0) + points)
+        currentIteration.pointsPerStudent.set(student.id, (currentIteration.pointsPerStudent.get(student.id) || 0) + points)
 
         return true
     }
@@ -75,7 +52,8 @@ function tryAssignment(seminar: Seminar, student: Student, currentIteration: Ite
 function execute(iterations: number, students: Student[]): Iteration {
     let best: Iteration | null = null
     for (let i = 0; i < iterations; i++) {
-        const currentIteration: Iteration = {id: i, points: 0, assignments: new AssignmentMapArray()}
+        const algRun = new Iteration();
+        const currentIteration = new Iteration();
         const studentsCopy = shuffle([...students])
         for (const student of studentsCopy) {
             if (
@@ -83,13 +61,13 @@ function execute(iterations: number, students: Student[]): Iteration {
                 !tryAssignment(student.wWishes[1], student, currentIteration, 'W', Points.SECOND_SELECTION) &&
                 !tryAssignment(student.wWishes[2], student, currentIteration, 'W', Points.THIRD_SELECTION)
             ) {
-                student.pointsPerRun.set(i, Points.NO_SELECTION)
-                currentIteration.points += Points.NO_SELECTION
+                currentIteration.pointsPerStudent.set(student.id, Points.NO_SELECTION)
+                algRun.pointsPerStudent.set(student.id, Points.NO_SELECTION)
             }
         }
 
         studentsCopy.sort((a, b) => {
-            return (b.pointsPerRun.get(i) || 0) - (a.pointsPerRun.get(i) || 0)
+            return (currentIteration.pointsPerStudent.get(b.id) || 0) - (currentIteration.pointsPerStudent.get(a.id) || 0)
         })
 
         for (const student of studentsCopy) {
@@ -98,12 +76,11 @@ function execute(iterations: number, students: Student[]): Iteration {
                 !tryAssignment(student.pWishes[1], student, currentIteration, 'P', Points.SECOND_SELECTION) &&
                 !tryAssignment(student.pWishes[2], student, currentIteration, 'P', Points.THIRD_SELECTION)
             ) {
-                student.pointsPerRun.set(i, Points.NO_SELECTION + (student.pointsPerRun.get(i) || 0))
-                currentIteration.points += Points.NO_SELECTION
+                currentIteration.pointsPerStudent.set(student.id, Points.NO_SELECTION + (currentIteration.pointsPerStudent.get(student.id) || 0))
             }
         }
 
-        if (best === null || best.points > currentIteration.points) {
+        if (best === null || best.totalPoints() > currentIteration.totalPoints()) {
             best = currentIteration
         }
     }

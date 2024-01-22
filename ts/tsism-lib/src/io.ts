@@ -2,7 +2,7 @@ import {Seminar, SeminarType} from './seminar'
 import * as fs from 'node:fs'
 import {parse} from 'csv-parse'
 import {Student} from './student'
-import {Iteration} from './algorithm'
+import {Iteration} from './iteration'
 
 export type SeminarData = { wSeminars: Seminar[], pSeminars: Seminar[] }
 
@@ -17,6 +17,7 @@ export function importSeminars(file: string): Promise<SeminarData> {
                     wSeminars: [],
                     pSeminars: [],
                 }
+                let currID = 0;
                 for (const result of results) {
                     if (!Array.isArray(result) || result.length < 3) {
                         console.warn(`Skip invalid line: "${result}"`)
@@ -25,14 +26,15 @@ export function importSeminars(file: string): Promise<SeminarData> {
 
                     switch (result[2]) {
                         case 'W':
-                            ret.wSeminars.push(new Seminar(result[0], Number.parseInt(result[1], 10), SeminarType.W_SEMINAR))
+                            ret.wSeminars.push(new Seminar(currID, result[0], Number.parseInt(result[1], 10), SeminarType.W_SEMINAR))
                             break
                         case 'P':
-                            ret.pSeminars.push(new Seminar(result[0], Number.parseInt(result[1], 10), SeminarType.P_SEMINAR))
+                            ret.pSeminars.push(new Seminar(currID, result[0], Number.parseInt(result[1], 10), SeminarType.P_SEMINAR))
                             break
                         default:
                             throw new Error('Unknown Seminar Type ' + result[3])
                     }
+                    currID++;
                 }
 
                 resolve(ret)
@@ -72,8 +74,8 @@ export function importStudents(file: string, seminars: SeminarData): Promise<Stu
 }
 
 export function printStudents(students: Student[], iteration: Iteration): void {
-    console.log(`---------|${iteration.points}|---------`)
+    console.log(`---------|${iteration.totalPoints()}|---------`)
     for (const [i, student] of students.entries()) {
-        console.log(`(${i + 1}) ${student.name}, ${student.pointsPerRun.get(iteration.id)}, (W: ${iteration.assignments.get(student)?.wSeminar?.name || 'none'} | P: ${iteration.assignments.get(student)?.pSeminar?.name || 'none'})`)
+        console.log(`(${i + 1}) ${student.name}, ${iteration.pointsPerStudent.get(student.id)}, (W: ${iteration.assignments.get(student)?.wSeminar?.name || 'none'} | P: ${iteration.assignments.get(student)?.pSeminar?.name || 'none'})`)
     }
 }
