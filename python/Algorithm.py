@@ -6,13 +6,6 @@ from Iteration import Iteration
 from Seminar import Seminar, SeminarType
 from Student import Student
 
-points = {
-    'FIRST_SELECTION': 0,
-    'SECOND_SELECTION': 5,
-    'THIRD_SELECTION': 10,
-    'NO_SELECTION': 30
-}
-
 
 def try_assignment(iteration: Iteration, student: Student, seminar: Seminar, seminar_type: SeminarType,
                    selection_points: int) -> bool:
@@ -28,7 +21,15 @@ def try_assignment(iteration: Iteration, student: Student, seminar: Seminar, sem
 
 
 def run_algorithm(students: List[Student], iterations: int) -> Iteration:
+    points = {
+        'FIRST_SELECTION': 0,
+        'SECOND_SELECTION': 5,
+        'THIRD_SELECTION': 10,
+        'NO_SELECTION': 30
+    }
+
     best_iteration: Iteration | None = None
+
     for i in range(iterations):
         iteration = Iteration()
         iteration.points_per_student = {student: 0 for student in students}
@@ -47,8 +48,6 @@ def run_algorithm(students: List[Student], iterations: int) -> Iteration:
                                        points['THIRD_SELECTION'])
             ):
                 iteration.points_per_student[student] += points['NO_SELECTION']
-
-            students = sorted(students, key=lambda student: iteration.points_per_student[student], reverse=True)
 
             if (
                     not try_assignment(iteration, student, student.p_wishes[0], SeminarType.PRACTICAL,
