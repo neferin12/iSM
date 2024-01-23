@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ../python
+source venv/bin/activate
 pip install -r requirements.txt
 hyperfine \
 --warmup 3 \
