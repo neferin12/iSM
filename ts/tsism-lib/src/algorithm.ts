@@ -52,7 +52,6 @@ function tryAssignment(seminar: Seminar, student: Student, currentIteration: Ite
 function execute(iterations: number, students: Student[]): Iteration {
     let best: Iteration | null = null
     for (let i = 0; i < iterations; i++) {
-        const algRun = new Iteration();
         const currentIteration = new Iteration();
         const studentsCopy = shuffle([...students])
         for (const student of studentsCopy) {
@@ -62,7 +61,6 @@ function execute(iterations: number, students: Student[]): Iteration {
                 !tryAssignment(student.wWishes[2], student, currentIteration, 'W', Points.THIRD_SELECTION)
             ) {
                 currentIteration.pointsPerStudent.set(student.id, Points.NO_SELECTION)
-                algRun.pointsPerStudent.set(student.id, Points.NO_SELECTION)
             }
         }
 
