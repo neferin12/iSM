@@ -1,5 +1,5 @@
 use clap::Parser;
-use librism::io::{import_students, import_seminars};
+use rism::io::{import_students, import_seminars};
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -21,4 +21,5 @@ fn main() {
     let args = Args::parse();
     let seminars = import_seminars(&args.seminars_path);
     let students = import_students(&args.students_path, seminars);
+    print!("students");
 }
