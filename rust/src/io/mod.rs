@@ -19,7 +19,7 @@ pub fn import_students(students_path: &str, seminars: Vec<Seminar>) -> Vec<Stude
         let w_wishes: Vec<Seminar> = split[1..=3].iter().map(|id| w_seminars[id.parse::<usize>().unwrap()].clone()).collect();
         let p_wishes: Vec<Seminar> = split[4..=6].iter().map(|id| p_seminars[id.parse::<usize>().unwrap()].clone()).collect();
 
-        let student = Student::new(String::from(split[0]), w_wishes, p_wishes);
+        let student = Student::new(id_counter, String::from(split[0]), w_wishes, p_wishes);
         students.push(student);
 
         id_counter += 1;

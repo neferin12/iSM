@@ -1,8 +1,8 @@
 mod iteration;
-pub type Iteration = iteration::Iteration;
+pub type Iteration<'b> = iteration::Iteration<'b>;
 
 mod assignment;
-pub type Assignment = assignment::Assignment;
+pub type Assignment<'a> = assignment::Assignment<'a>;
 
 mod student;
 pub type Student = student::Student;

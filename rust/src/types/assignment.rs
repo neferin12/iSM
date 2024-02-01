@@ -1,15 +1,15 @@
 use crate::types::{Seminar, Student, SeminarType};
 
 #[derive(Debug)]
-pub struct Assignment {
-    pub student: Student,
-    pub w_seminar: Option<Seminar>,
-    pub p_seminar: Option<Seminar>,
+pub struct Assignment<'a> {
+    pub student: &'a Student,
+    pub w_seminar: Option<&'a Seminar>,
+    pub p_seminar: Option<&'a Seminar>,
     pub points: u16,
 }
 
-impl Assignment {
-    pub fn new(student: Student) -> Assignment {
+impl<'a> Assignment<'a> {
+    pub fn new(student: &'a Student) -> Assignment<'a> {
         Assignment {
             student,
             w_seminar: None,
@@ -18,7 +18,7 @@ impl Assignment {
         }
     }
 
-    pub fn assign_seminar(&mut self, seminar: Seminar, points: u16) {
+    pub fn assign_seminar(&mut self, seminar: &'a Seminar, points: u16) {
         self.points += points;
         match seminar.seminar_type {
             SeminarType::Scientific => self.w_seminar = Some(seminar),
