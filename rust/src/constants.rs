@@ -1,8 +1,8 @@
 pub struct Points {
-    first_selection: u16,
-    second_selection: u16,
-    third_selection: u16,
-    no_selection: u16
+    pub first_selection: u16,
+    pub second_selection: u16,
+    pub third_selection: u16,
+    pub no_selection: u16
 }
 
 pub fn get_default_points() -> Points {

@@ -3,31 +3,32 @@ use rand::thread_rng;
 use rand::seq::SliceRandom;
 use crate::constants::Points;
 
-fn try_assignment(student: &Student, seminar: &Seminar, iteration: &mut Iteration, points: u16) -> bool {
-    let remaining_capacity: &u16 = iteration.capacities.get(seminar.id as usize).unwrap_or(&seminar.capacity);
-
-    if (remaining_capacity <= &0) {
-        return false;
+fn try_assignment<'a, 'b: 'a>(student: &Student, seminar: &'b Seminar, iteration: &'a mut Iteration<'a>, points: u16) -> bool {
+    if iteration.decrease_capacity_if_left(seminar) {
+        iteration.assign_student_to_seminar(student, seminar, points);
+        return true;
     }
-
-    iteration.capacities[seminar.id as usize] = remaining_capacity - 1;
-
-    let assignment: &mut Assignment = iteration.assignments.get_mut(student.id as usize).unwrap();
-    assignment.assign_seminar(seminar, points);
-
-    return true;
+    return false;
 }
 
-pub fn run_algorithm(mut students: Vec<Student>, seminars: Vec<Seminar>, iterations: u16, points: Points) {
+pub fn run_algorithm(students: &Vec<Student>, seminars: &Vec<Seminar>, iterations: u16, points: Points) {
     let best_iteration: Option<Iteration> = None;
 
     for i in 0..iterations {
-        students.shuffle(&mut thread_rng());
+        let mut sc = students.clone();
+        sc.shuffle(&mut thread_rng());
 
         let mut iteration: Iteration = Iteration::new(Vec::new(), &seminars, Vec::new());
 
         for s in students {
             iteration.assignments[s.id as usize] = Assignment::new(&s);
+        }
+
+        for s in sc {
+            let w_wish: &Seminar = &s.w_wishes[0];
+            {
+                if !try_assignment(&s, w_wish , &mut iteration, points.first_selection) {}
+            }
         }
     }
 }

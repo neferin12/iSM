@@ -1,6 +1,6 @@
 use crate::types::Seminar;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Student {
     pub id: u16,
     pub name: String,
