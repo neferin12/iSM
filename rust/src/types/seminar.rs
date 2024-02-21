@@ -1,10 +1,10 @@
-#[derive(PartialEq, Debug, Clone)]
+#[derive(PartialEq, Debug, Clone, Eq)]
 pub enum SeminarType {
     Scientific,
     Practical
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Seminar {
     pub name: String,
     pub capacity: u16,

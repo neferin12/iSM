@@ -1,7 +1,7 @@
 use std::fs;
 use crate::types::{Seminar, SeminarType, Student};
 
-pub fn import_students(students_path: &str, seminars: Vec<Seminar>) -> Vec<Student> {
+pub fn import_students(students_path: &str, seminars: &Vec<Seminar>) -> Vec<Student> {
     println!("Importing students from {students_path}");
     let mut students: Vec<Student> = Vec::new();
 

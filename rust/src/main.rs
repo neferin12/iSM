@@ -1,4 +1,6 @@
 use clap::Parser;
+use rism::algorithm::run_algorithm;
+use rism::constants::get_default_points;
 use rism::io::{import_students, import_seminars};
 
 #[derive(Parser, Debug)]
@@ -20,6 +22,8 @@ struct Args {
 fn main() {
     let args = Args::parse();
     let seminars = import_seminars(&args.seminars_path);
-    let students = import_students(&args.students_path, seminars);
-    print!("students");
+    let students = import_students(&args.students_path, &seminars);
+
+    let best_iteration = run_algorithm(&students, &seminars, args.iterations, get_default_points());
+    print!("Points: {}", best_iteration.total_points());
 }

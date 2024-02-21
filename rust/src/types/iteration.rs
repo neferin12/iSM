@@ -1,7 +1,7 @@
-use crate::constants::Points;
+use std::cmp::Ordering;
 use crate::types::{Assignment, Seminar, Student};
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub struct Iteration<'a> {
     points: Option<u16>,
     pub assignments: Vec<Assignment<'a>>,
@@ -10,28 +10,55 @@ pub struct Iteration<'a> {
 }
 
 impl<'a> Iteration<'a> {
-    pub fn decrease_capacity_if_left(&mut self, seminar: &Seminar) -> bool {
-        let remaining_capacity: u16 = *self.capacities.get(seminar.id as usize).unwrap_or(&seminar.capacity);
+    pub fn get_capacity(&self, seminar: &Seminar) -> u16 {
+        *self.capacities.get(seminar.id as usize).unwrap_or(&seminar.capacity)
+    }
 
+    fn decrease_capacity_helper(&mut self, seminar: &Seminar) -> Result<(), &str> {
+        let remaining_capacity = self.get_capacity(seminar);
         if remaining_capacity <= 0 {
-            return false;
+            return Err("Capacity would have been decreased below 0")
         }
-
         self.capacities[seminar.id as usize] = remaining_capacity - 1;
 
-        return true;
+        Ok(())
     }
-    pub fn assign_student_to_seminar(&mut self, student: &Student, seminar: &'a Seminar, points: u16) {
+
+    pub fn decrease_capacity_if_left(&mut self, seminar: &Seminar) -> bool {
+        self.decrease_capacity_helper(seminar).is_ok()
+    }
+
+    pub fn decrease_capacity(&mut self, seminar: &Seminar) {
+        self.decrease_capacity_helper(seminar).unwrap();
+    }
+    pub fn assign_student_to_seminar(&mut self, student: &Student, seminar: Option<&'a Seminar>, points: u16) {
         let assignment: &mut Assignment = self.assignments.get_mut(student.id as usize).unwrap();
         assignment.assign_seminar(seminar, points);
     }
-    pub fn total_points(&mut self) -> u16 {
-        if self.points.is_none() {
-            self.points = Some(self.assignments.iter().map(|a| a.points).sum());
+    
+    pub fn calculate_points(&mut self) {
+        self.points = Some(self.assignments.iter().map(|a| a.points).sum());
+    }
+    
+    pub fn total_points(&self) -> u16 {
+        match self.points {  
+            Some(p) => p,
+            None => panic!("Tried to access points before calculating them")
         }
-        self.points.unwrap()
     }
     pub fn new(assignments: Vec<Assignment<'a>>, seminars: &'a Vec<Seminar>, capacities: Vec<u16>) -> Self {
         Self { points: None, assignments, seminars, capacities }
+    }
+}
+
+impl<'a> PartialOrd<Self> for Iteration<'a> {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl<'a> Ord for Iteration<'a>{
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.total_points().cmp(&other.total_points())
     }
 }
