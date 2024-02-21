@@ -13,6 +13,9 @@ single_core_results: benchmarking/results/c_benchmark.csv benchmarking/results/j
 
 multi_core_results: benchmarking/results/c_multicore_benchmark.csv
 
+python/venv:
+	cd python && python3 -m venv venv
+
 benchmark.md: benchmark.ipynb single_core_results multi_core_results
 	jupyter nbconvert --to markdown --output $@ --no-input --execute $<
 
@@ -28,7 +31,7 @@ benchmarking/results/c_multicore_benchmark.csv: benchmarking/c_multicore_benchma
 benchmarking/results/ts_benchmark.csv: benchmarking/ts_benchmark.sh $(ts_source)
 	cd benchmarking && bash ts_benchmark.sh || rm $@
 
-benchmarking/results/python_benchmark.csv: benchmarking/python_benchmark.sh $(python_source)
+benchmarking/results/python_benchmark.csv: benchmarking/python_benchmark.sh $(python_source) python/venv
 	cd benchmarking && bash python_benchmark.sh || rm $@
 
 benchmarking/results/rust_benchmark.csv: benchmarking/rust_benchmark.sh $(rust_source)
