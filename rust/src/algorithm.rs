@@ -13,7 +13,7 @@ fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, itera
         (Some(&wishes[2]), points.third_selection)
     } else {
         (None, points.no_selection)
-    }
+    };
 }
 
 pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points) -> Iteration<'a> {
@@ -23,14 +23,11 @@ pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>,
         let mut shuffled_indices: Vec<usize> = (0..students.len()).collect();
         shuffled_indices.shuffle(&mut thread_rng());
 
-        let mut iteration: Iteration = Iteration::new(Vec::with_capacity(students.len()), &seminars, Vec::with_capacity(seminars.len()));
-
-
-        for i in &shuffled_indices {
-            let s = &students[*i];
-            iteration.assignments[s.id as usize] = Assignment::new(s);
-        }
-
+        let mut iteration: Iteration = Iteration::new(
+            students.iter().map(|s| Assignment::new(s)).collect(), 
+            &seminars, 
+            vec![None; seminars.len()]);
+        
         for i in &shuffled_indices {
             let s = &students[*i];
             let w_wishes: &Vec<Seminar> = &s.w_wishes;
@@ -53,8 +50,8 @@ pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>,
         iteration.calculate_points();
 
         best_iteration = match best_iteration {
-            None => {Some(iteration)}
-            Some(b_it_unwrap) => {Some(cmp::min(b_it_unwrap, iteration))}
+            None => { Some(iteration) }
+            Some(b_it_unwrap) => { Some(cmp::min(b_it_unwrap, iteration)) }
         }
     }
 

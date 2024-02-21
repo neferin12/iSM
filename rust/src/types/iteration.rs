@@ -6,12 +6,12 @@ pub struct Iteration<'a> {
     points: Option<u16>,
     pub assignments: Vec<Assignment<'a>>,
     pub seminars: &'a Vec<Seminar>,
-    pub capacities: Vec<u16>,
+    pub capacities: Vec<Option<u16>>,
 }
 
 impl<'a> Iteration<'a> {
     pub fn get_capacity(&self, seminar: &Seminar) -> u16 {
-        *self.capacities.get(seminar.id as usize).unwrap_or(&seminar.capacity)
+        self.capacities.get(seminar.id as usize).unwrap().unwrap_or(seminar.capacity)
     }
 
     fn decrease_capacity_helper(&mut self, seminar: &Seminar) -> Result<(), &str> {
@@ -19,7 +19,7 @@ impl<'a> Iteration<'a> {
         if remaining_capacity <= 0 {
             return Err("Capacity would have been decreased below 0")
         }
-        self.capacities[seminar.id as usize] = remaining_capacity - 1;
+        self.capacities[seminar.id as usize] = Some(remaining_capacity - 1);
 
         Ok(())
     }
@@ -46,7 +46,7 @@ impl<'a> Iteration<'a> {
             None => panic!("Tried to access points before calculating them")
         }
     }
-    pub fn new(assignments: Vec<Assignment<'a>>, seminars: &'a Vec<Seminar>, capacities: Vec<u16>) -> Self {
+    pub fn new(assignments: Vec<Assignment<'a>>, seminars: &'a Vec<Seminar>, capacities: Vec<Option<u16>>) -> Self {
         Self { points: None, assignments, seminars, capacities }
     }
 }
