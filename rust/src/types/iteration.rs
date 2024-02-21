@@ -28,8 +28,10 @@ impl<'a> Iteration<'a> {
         self.decrease_capacity_helper(seminar).is_ok()
     }
 
-    pub fn decrease_capacity(&mut self, seminar: &Seminar) {
-        self.decrease_capacity_helper(seminar).unwrap();
+    pub fn decrease_capacity(&mut self, seminar: Option<&Seminar>) {
+        if let Some(seminar_unwr) = seminar {
+            self.decrease_capacity_helper(seminar_unwr).unwrap();
+        }
     }
     pub fn assign_student_to_seminar(&mut self, student: &Student, seminar: Option<&'a Seminar>, points: u16) {
         let assignment: &mut Assignment = self.assignments.get_mut(student.id as usize).unwrap();

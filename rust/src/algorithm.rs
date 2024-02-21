@@ -34,6 +34,7 @@ pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>,
             let (assigned_seminar_opt, assigned_points) = find_possible_assignment(w_wishes, &points, &iteration);
 
             iteration.assign_student_to_seminar(s, assigned_seminar_opt, assigned_points);
+            iteration.decrease_capacity(assigned_seminar_opt);
         }
 
         iteration.assignments.sort();
@@ -45,6 +46,7 @@ pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>,
             let (assigned_seminar_opt, assigned_points) = find_possible_assignment(p_wishes, &points, &iteration);
 
             iteration.assignments[i].assign_seminar(assigned_seminar_opt, assigned_points);
+            iteration.decrease_capacity(assigned_seminar_opt);
         }
 
         iteration.calculate_points();
