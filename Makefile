@@ -3,12 +3,13 @@ c_source = $(shell find c/src -type f)
 java_source = $(shell find java/app/src -type f)
 ts_source = $(shell find ts/*/src -type f) $(shell find ts/*/package.json -type f)
 python_source = $(shell find python/*.py -type f)
+rust_source = $(shell find rust/src/*.rs -type f)
 
 .PHONY: benchmark clean single_core_results multi_core_results
 
 benchmark: benchmark.md
 
-single_core_results: benchmarking/results/c_benchmark.csv benchmarking/results/java_benchmark.csv benchmarking/results/ts_benchmark.csv benchmarking/results/python_benchmark.csv
+single_core_results: benchmarking/results/c_benchmark.csv benchmarking/results/java_benchmark.csv benchmarking/results/ts_benchmark.csv benchmarking/results/python_benchmark.csv benchmarking/results/rust_benchmark.csv
 
 multi_core_results: benchmarking/results/c_multicore_benchmark.csv
 
@@ -29,6 +30,9 @@ benchmarking/results/ts_benchmark.csv: benchmarking/ts_benchmark.sh $(ts_source)
 
 benchmarking/results/python_benchmark.csv: benchmarking/python_benchmark.sh $(python_source)
 	cd benchmarking && bash python_benchmark.sh || rm $@
+
+benchmarking/results/rust_benchmark.csv: benchmarking/rust_benchmark.sh $(rust_source)
+	cd benchmarking && bash rust_benchmark.sh || rm $@
 
 clean:
 	rm -rf benchmarking/results/*_benchmark.csv
