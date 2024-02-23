@@ -2,14 +2,14 @@ use std::cmp::Ordering;
 use crate::types::{Assignment, Seminar, Student};
 
 #[derive(Debug, PartialEq, Eq)]
-pub struct Iteration<'a> {
+pub struct RismResult<'a> {
     points: Option<u16>,
     pub assignments: Vec<Assignment<'a>>,
     pub seminars: &'a Vec<Seminar>,
     pub capacities: Vec<Option<u16>>,
 }
 
-impl<'a> Iteration<'a> {
+impl<'a> RismResult<'a> {
     pub fn get_capacity(&self, seminar: &Seminar) -> u16 {
         self.capacities.get(seminar.id as usize).unwrap().unwrap_or(seminar.capacity)
     }
@@ -53,13 +53,13 @@ impl<'a> Iteration<'a> {
     }
 }
 
-impl<'a> PartialOrd<Self> for Iteration<'a> {
+impl<'a> PartialOrd<Self> for RismResult<'a> {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
     }
 }
 
-impl<'a> Ord for Iteration<'a>{
+impl<'a> Ord for RismResult<'a>{
     fn cmp(&self, other: &Self) -> Ordering {
         self.total_points().cmp(&other.total_points())
     }

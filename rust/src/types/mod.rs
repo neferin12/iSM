@@ -1,5 +1,5 @@
-mod iteration;
-pub type Iteration<'b> = iteration::Iteration<'b>;
+mod results;
+pub type RismResult<'b> = results::RismResult<'b>;
 
 mod assignment;
 pub type Assignment<'a> = assignment::Assignment<'a>;

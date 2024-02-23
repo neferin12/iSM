@@ -1,4 +1,5 @@
 pub mod io;
 pub mod types;
-pub mod algorithm;
 pub mod constants;
+pub mod rism_classic;
+pub mod rism_model_checking;

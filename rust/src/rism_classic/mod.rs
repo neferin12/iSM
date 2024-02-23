@@ -1,10 +1,11 @@
-use crate::types::{Assignment, Iteration, Seminar, Student};
+use crate::types::{Assignment, RismResult, Seminar, Student};
 use rand::thread_rng;
 use rand::seq::SliceRandom;
 use crate::constants::Points;
 use std::cmp;
+use indicatif::ProgressIterator;
 
-fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, iteration: &Iteration) -> (Option<&'a Seminar>, u16) {
+fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, iteration: &RismResult) -> (Option<&'a Seminar>, u16) {
     return if iteration.get_capacity(&wishes[0]) > 0 {
         (Some(&wishes[0]), points.first_selection)
     } else if iteration.get_capacity(&wishes[1]) > 0 {
@@ -16,14 +17,14 @@ fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, itera
     };
 }
 
-pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points) -> Iteration<'a> {
-    let mut best_iteration: Option<Iteration> = None;
+pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points) -> RismResult<'a> {
+    let mut best_iteration: Option<RismResult> = None;
 
-    for _ in 0..iterations {
+    for _ in (0..iterations).progress() {
         let mut shuffled_indices: Vec<usize> = (0..students.len()).collect();
         shuffled_indices.shuffle(&mut thread_rng());
 
-        let mut iteration: Iteration = Iteration::new(
+        let mut iteration: RismResult = RismResult::new(
             students.iter().map(|s| Assignment::new(s)).collect(), 
             &seminars, 
             vec![None; seminars.len()]);

@@ -2,7 +2,7 @@ use std::fs;
 use crate::types::{Seminar, SeminarType, Student};
 
 pub fn import_students(students_path: &str, seminars: &Vec<Seminar>) -> Vec<Student> {
-    println!("Importing students from {students_path}");
+    // println!("Importing students from {students_path}");
     let mut students: Vec<Student> = Vec::new();
 
     let contents = fs::read_to_string(students_path)
@@ -30,7 +30,7 @@ pub fn import_students(students_path: &str, seminars: &Vec<Seminar>) -> Vec<Stud
 }
 
 pub fn import_seminars(seminars_path: &str) -> Vec<Seminar> {
-    println!("Importing seminars from {seminars_path}");
+    // println!("Importing seminars from {seminars_path}");
     let mut seminars: Vec<Seminar> =Vec::new();
     let contents = fs::read_to_string(seminars_path)
         .expect(&*format!("Could not read file {seminars_path}"));
