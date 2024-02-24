@@ -1,7 +1,19 @@
+use std::fmt::Display;
+
 #[derive(PartialEq, Debug, Clone, Eq)]
 pub enum SeminarType {
     Scientific,
     Practical
+}
+
+impl Display for SeminarType{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let str = match self {
+            SeminarType::Scientific => "Scientific".to_string(),
+            SeminarType::Practical => "Practical".to_string()
+        };
+        write!(f, "{}", str)
+    }
 }
 
 #[derive(Debug, Clone, Eq, PartialEq)]

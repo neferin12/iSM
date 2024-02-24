@@ -18,3 +18,4 @@ serde = { version = "1.0.197", features = ["derive"] }
 indicatif = "0.17.8"
 console = "0.15.8"
 tabled = "0.15.0"
+z3 = "0.12.1"
