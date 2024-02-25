@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use std::fmt::Display;
 
 #[derive(PartialEq, Debug, Clone, Eq)]
@@ -32,5 +33,17 @@ impl Seminar {
             id,
             seminar_type
         }
+    }
+}
+
+impl Ord for Seminar {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.id.cmp(&other.id)
+    }
+}
+
+impl PartialOrd for Seminar {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
     }
 }

@@ -1,16 +1,26 @@
 use std::collections::BTreeMap;
 use std::ops::Add;
 use z3::ast::{Ast, Bool, Int};
-use z3::{Context, Optimize, Solver};
+use z3::{Context, Optimize};
 use crate::constants::Points;
+use crate::rism_model_checking::seminars::seminar_to_string_id;
 use crate::types::{SeminarType, Student};
 
 pub(crate) fn student_to_string_id(student: &Student) -> String {
-    format!("stu{}", student.id)
+    student.id.to_string()
 }
 
 pub(crate) fn vote_to_string_id(student: &Student, seminar_type: &SeminarType, index: usize) -> String {
-    format!("{0}-{1}-v{2}", student_to_string_id(student), seminar_type, index)
+    let sem;
+    if index < 3 {
+        sem = Some(match seminar_type {
+            SeminarType::Scientific => &student.w_wishes[index],
+            SeminarType::Practical => &student.p_wishes[index],
+        })
+    }else { 
+        sem = None
+    }
+    format!("{0}-{1}-{2}-{3}", student_to_string_id(student), seminar_to_string_id(sem), seminar_type, index)
 }
 
 pub(crate) fn student_to_points_id(student: &Student, seminar_type: SeminarType) -> String {
