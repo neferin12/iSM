@@ -55,7 +55,7 @@ fn main() {
 
     let best_iteration = match args.variant {
         ExecutionVariants::Classic => Some(run_algorithm(&students, &seminars, args.iterations, get_default_points())),
-        ExecutionVariants::ModelChecking => run_model_check(&students, &seminars, get_default_points(), 400)
+        ExecutionVariants::ModelChecking => run_model_check(&students, &seminars, get_default_points())
     };
     if let Some(bi_unwr) = best_iteration {
 
