@@ -1,0 +1,3 @@
+benchmark.* linguist-vendored
+benchmarking/** linguist-vendored
+benchmark_files/** linguist-vendored
