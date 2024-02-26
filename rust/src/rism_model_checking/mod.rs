@@ -10,9 +10,10 @@ use crate::rism_model_checking::seminars::sort_votes_to_seminars;
 use crate::rism_model_checking::students::{votes_to_string_id, student_to_points_id, assert_student_votes, assert_student_points};
 
 pub fn run_model_check<'a>(students: &Vec<Student>, seminars: &Vec<Seminar>, points: Points) -> Option<RismResult<'a>> {
+    z3::set_global_param("parallel.enable", "true");
+    
     let mut cfg = Config::new();
     cfg.set_model_generation(true);
-    cfg.set_bool_param_value("parallel.enable", true);
     let ctx = Context::new(&cfg);
     let opt = Optimize::new(&ctx);
     // let opt = Solver::new(&ctx);
