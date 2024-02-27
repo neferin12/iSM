@@ -6,6 +6,7 @@ pkgbase = rism
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = clang
 	depends = z3
 	source = rism-1.0.0.tar.gz::https://github.com/neferin12/iSM/archive/refs/tags/rust-v1.0.0.tar.gz
 	sha256sums = 58238748395ecca6ac747cd3c04f5613a9f10e06463f32190a64b6af8c7e165f
