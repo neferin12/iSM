@@ -23,14 +23,14 @@ jobs:
         filters: |
           pkgbuild: 
             - arch_pkgs/**
-            - c/src/**
   build-packages:
     strategy:
       fail-fast: false
       matrix:
         package: 
           [
-            c
+            c,
+            rust
           ]
     runs-on: ubuntu-latest
     steps:

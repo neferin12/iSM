@@ -1,0 +1,32 @@
+# Maintainer: Julian Pollinger <julian@pollinger.dev>
+
+pkgname=('rism')
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Rust implementation of iSM'
+arch=('x86_64')
+url='https://github.com/neferin12/iSM'
+license=('MIT')
+depends=('z3')
+makedepends=(cargo)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rust-v$pkgver.tar.gz")
+
+prepare() {
+    cd "iSM-rust-v$pkgver/rust"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+
+build() {
+    cd "iSM-rust-v$pkgver/rust"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features --offline
+}
+
+package() {
+    cd "iSM-rust-v$pkgver/rust"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+}
+sha256sums=('58238748395ecca6ac747cd3c04f5613a9f10e06463f32190a64b6af8c7e165f')
