@@ -3,6 +3,7 @@ use serde::Serialize;
 use rism::rism_classic::run_algorithm;
 use rism::constants::get_default_points;
 use rism::io::{import_students, import_seminars};
+#[cfg(feature = "model-checking")]
 use rism::rism_model_checking::run_model_check;
 use console::style;
 use tabled::{Table, Tabled};
@@ -16,6 +17,7 @@ enum ExecutionVariants {
     #[default]
     Classic,
 
+    #[cfg(feature = "model-checking")]
     ModelChecking,
 }
 
@@ -55,6 +57,7 @@ fn main() {
 
     let best_iteration = match args.variant {
         ExecutionVariants::Classic => Some(run_algorithm(&students, &seminars, args.iterations, get_default_points())),
+        #[cfg(feature = "model-checking")]
         ExecutionVariants::ModelChecking => run_model_check(&students, &seminars, get_default_points())
     };
     if let Some(bi_unwr) = best_iteration {
