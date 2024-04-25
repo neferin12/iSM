@@ -1,7 +1,7 @@
 use std::cmp::Ordering;
 use crate::types::{Seminar, Student, SeminarType};
 
-#[derive(Debug, Eq)]
+#[derive(Debug, Eq, Clone)]
 pub struct Assignment<'a> {
     pub student: &'a Student,
     pub w_seminar: Option<&'a Seminar>,

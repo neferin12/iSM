@@ -1,7 +1,7 @@
 use std::cmp::Ordering;
 use crate::types::{Assignment, Seminar, Student};
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct RismResult<'a> {
     points: Option<u16>,
     pub assignments: Vec<Assignment<'a>>,

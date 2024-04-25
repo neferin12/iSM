@@ -1,3 +1,4 @@
+#[derive(Debug, Clone)]
 pub struct Points {
     pub first_selection: u16,
     pub second_selection: u16,

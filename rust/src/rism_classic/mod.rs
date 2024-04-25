@@ -2,8 +2,8 @@ use crate::types::{Assignment, RismResult, Seminar, Student};
 use rand::thread_rng;
 use rand::seq::SliceRandom;
 use crate::constants::Points;
-use std::cmp;
-use indicatif::ProgressIterator;
+use std::{cmp, thread};
+use std::sync::{Arc, Mutex};
 
 fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, iteration: &RismResult) -> (Option<&'a Seminar>, u16) {
     return if iteration.get_capacity(&wishes[0]) > 0 {
@@ -17,18 +17,43 @@ fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, itera
     };
 }
 
+pub fn run<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points, threads: u16) -> RismResult<'a> {
+
+    let results = Arc::new(Mutex::new(Vec::new()));
+
+    let thread_iterations = iterations.div_ceil(threads as u32);
+    thread::scope(|s| {
+        for _ in 0..threads {
+            s.spawn(|| {
+                let results_arc = results.clone();
+                let res = run_algorithm(students, seminars, thread_iterations, points.clone());
+                let mut res_unwr = results_arc.lock().unwrap();
+                (*res_unwr).push(res);
+            });
+        }
+    });
+
+    let mut res_unwr = (*results.lock().unwrap()).clone();
+
+    res_unwr.sort();
+    
+    return res_unwr[0].clone();
+    
+}
+
 pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points) -> RismResult<'a> {
     let mut best_iteration: Option<RismResult> = None;
 
-    for _ in (0..iterations).progress() {
+    // TODO Reintroduce progress
+    for _ in 0..iterations {
         let mut shuffled_indices: Vec<usize> = (0..students.len()).collect();
         shuffled_indices.shuffle(&mut thread_rng());
 
         let mut iteration: RismResult = RismResult::new(
-            students.iter().map(|s| Assignment::new(s)).collect(), 
-            &seminars, 
+            students.iter().map(|s| Assignment::new(s)).collect(),
+            &seminars,
             vec![None; seminars.len()]);
-        
+
         for i in &shuffled_indices {
             let s = &students[*i];
             let w_wishes: &Vec<Seminar> = &s.w_wishes;
