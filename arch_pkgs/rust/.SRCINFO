@@ -1,6 +1,6 @@
 pkgbase = rism
 	pkgdesc = Rust implementation of iSM
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/neferin12/iSM
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rism
 	makedepends = cargo
 	makedepends = clang
 	depends = z3
-	source = rism-1.0.0.tar.gz::https://github.com/neferin12/iSM/archive/refs/tags/rust-v1.0.0.tar.gz
-	sha256sums = 58238748395ecca6ac747cd3c04f5613a9f10e06463f32190a64b6af8c7e165f
+	source = rism-1.1.1.tar.gz::https://github.com/neferin12/iSM/archive/refs/tags/rust-v1.1.1.tar.gz
+	sha256sums = 46823700d6663cf59125d0ce5a78dfcb0a36fb30db6d1d83c6231835d27448f8
 
 pkgname = rism
