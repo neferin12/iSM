@@ -1,7 +1,7 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 
 pkgname=('rism')
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Rust implementation of iSM'
 arch=('x86_64')
@@ -22,11 +22,11 @@ build() {
     cd "iSM-rust-v$pkgver/rust"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features --offline
+    cargo build --frozen --release --offline
 }
 
 package() {
     cd "iSM-rust-v$pkgver/rust"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('58238748395ecca6ac747cd3c04f5613a9f10e06463f32190a64b6af8c7e165f')
+sha256sums=('46823700d6663cf59125d0ce5a78dfcb0a36fb30db6d1d83c6231835d27448f8')
