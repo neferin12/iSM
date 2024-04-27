@@ -85,8 +85,9 @@ jobs:
 #           commit_message: Update package
 #           ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
 #           allow_empty_commits: false
+# if: ${{ github.event_name != 'pull_request' && needs.changes.outputs.pgkbuild == 'true' }}
   publish-to-repo:
-    if: ${{ github.event_name != 'pull_request' && needs.changes.outputs.pgkbuild == 'true' }}
+    if: ${{ github.event_name != 'pull_request'}}
     runs-on: ubuntu-latest
     needs: [build-packages, changes]
     container: 
