@@ -4,6 +4,7 @@ use rand::seq::SliceRandom;
 use crate::constants::Points;
 use std::{cmp, thread};
 use std::sync::{Arc, Mutex};
+use std::thread::ThreadId;
 
 fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, iteration: &RismResult) -> (Option<&'a Seminar>, u16) {
     return if iteration.get_capacity(&wishes[0]) > 0 {
@@ -17,7 +18,7 @@ fn find_possible_assignment<'a>(wishes: &'a Vec<Seminar>, points: &Points, itera
     };
 }
 
-pub fn run<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points, threads: u16) -> RismResult<'a> {
+pub fn run<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points, threads: u16, progress: fn(ThreadId, u32, u32)) -> RismResult<'a> {
 
     let results = Arc::new(Mutex::new(Vec::new()));
 
@@ -26,7 +27,7 @@ pub fn run<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iteration
         for _ in 0..threads {
             s.spawn(|| {
                 let results_arc = results.clone();
-                let res = run_algorithm(students, seminars, thread_iterations, points.clone());
+                let res = run_algorithm(students, seminars, thread_iterations, points.clone(), progress);
                 let mut res_unwr = results_arc.lock().unwrap();
                 (*res_unwr).push(res);
             });
@@ -41,11 +42,11 @@ pub fn run<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iteration
     
 }
 
-pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points) -> RismResult<'a> {
+pub fn run_algorithm<'a>(students: &'a Vec<Student>, seminars: &'a Vec<Seminar>, iterations: u32, points: Points, progress: fn(ThreadId, u32, u32)) -> RismResult<'a> {
     let mut best_iteration: Option<RismResult> = None;
 
-    // TODO Reintroduce progress
-    for _ in 0..iterations {
+    for p in 0..iterations {
+        progress(thread::current().id(), p, iterations);
         let mut shuffled_indices: Vec<usize> = (0..students.len()).collect();
         shuffled_indices.shuffle(&mut thread_rng());
 
