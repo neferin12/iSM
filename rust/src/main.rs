@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+use std::thread::ThreadId;
 use clap::Parser;
 use serde::Serialize;
 use rism::rism_classic::run;
@@ -6,6 +8,8 @@ use rism::io::{import_students, import_seminars};
 #[cfg(feature = "model-checking")]
 use rism::rism_model_checking::run_model_check;
 use console::style;
+use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
+use once_cell::sync::Lazy;
 use tabled::{Table, Tabled};
 use tabled::settings::Style;
 
@@ -53,19 +57,43 @@ struct PrintableStudent {
     p_seminar: String,
 }
 
+static mut PROGRESS_BARS: Lazy<HashMap<ThreadId, ProgressBar>> = Lazy::new(HashMap::new);
+static mut MULTI_PROGRESS: Lazy<MultiProgress> = Lazy::new(MultiProgress::new);
+
+fn update_progress(thread: ThreadId, p: u32, total: u32) {
+    unsafe {
+        let opt_prog = PROGRESS_BARS.get(&thread);
+        match opt_prog {
+            None => {
+                let loc_prog = ProgressBar::new(total as u64);
+                MULTI_PROGRESS.add(loc_prog.clone());
+                loc_prog.set_position(p as u64);
+                loc_prog.set_style(ProgressStyle::with_template("[{per_sec:15}] {wide_bar:.cyan/blue} {percent:>2}% ({pos:>8}/{len:>8}) ")
+                    .unwrap()
+                    .progress_chars("#>-"));
+                PROGRESS_BARS.insert(thread, loc_prog);
+            }
+            Some(prog) => {
+                prog.set_position(p as u64);
+            }
+        }
+    }
+}
+
 fn main() {
     let args = Args::parse();
     let seminars = import_seminars(&args.seminars_path);
     let students = import_students(&args.students_path, &seminars);
 
-
     let best_iteration = match args.variant {
-        ExecutionVariants::Classic => Some(run(&students, &seminars, args.iterations, get_default_points(), args.threads)),
+        ExecutionVariants::Classic => Some(run(&students, &seminars, args.iterations, get_default_points(), args.threads, update_progress)),
         #[cfg(feature = "model-checking")]
         ExecutionVariants::ModelChecking => run_model_check(&students, &seminars, get_default_points())
     };
-    if let Some(bi_unwr) = best_iteration {
 
+    unsafe { PROGRESS_BARS.iter().for_each(|(_, p)| p.finish_and_clear()); }
+
+    if let Some(bi_unwr) = best_iteration {
         let mut students_table_data = Vec::new();
 
         for a in &bi_unwr.assignments {
