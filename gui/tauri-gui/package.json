@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "tauri-dev": "yarn tauri dev",
-    "tauri-build": "yarn tauri build",
+    "tauri-build": "yarn tauri build -b deb",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.5.4",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue-next": "^0.17.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
@@ -20,11 +23,13 @@
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.12",
     "@tsconfig/node20": "^20.1.4",
+    "@types/bootstrap": "^5",
     "@types/node": "^20.12.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/tsconfig": "^0.5.1",
     "npm-run-all2": "^6.1.2",
     "typescript": "~5.4.0",
+    "unplugin-vue-components": "^0.26.0",
     "vite": "^5.2.8",
     "vue-tsc": "^2.0.11"
   },
