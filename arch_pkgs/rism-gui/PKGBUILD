@@ -2,13 +2,13 @@
 
 pkgname=('rism-gui')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gui for RiSM'
 arch=('x86_64')
 url='https://github.com/neferin12/iSM'
 license=('MIT')
 depends=('webkit2gtk' 'z3')
-makedepends=('cargo' 'clang' 'binutils')
+makedepends=('cargo' 'clang' 'binutils' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rism-gui-v$pkgver.tar.gz")
 _dir="iSM-rism-gui-v$pkgver/gui/tauri-gui"
 prepare() {
