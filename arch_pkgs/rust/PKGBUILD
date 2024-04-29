@@ -1,7 +1,7 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 
 pkgname=('rism')
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Rust implementation of iSM'
 arch=('x86_64')
@@ -29,4 +29,4 @@ package() {
     cd "iSM-rust-v$pkgver/rust"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('46823700d6663cf59125d0ce5a78dfcb0a36fb30db6d1d83c6231835d27448f8')
+sha256sums=('7e88cdb8033c644238b093e395c45ac0f45d73978fe62fb9b313dc4f54098d00')
