@@ -30,7 +30,8 @@ jobs:
         package: 
           [
             c,
-            rust
+            rust,
+            rism-gui
           ]
     runs-on: ubuntu-latest
     steps:

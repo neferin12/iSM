@@ -1,0 +1,16 @@
+pkgbase = rism-gui
+	pkgdesc = Gui for RiSM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neferin12/iSM
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = binutils
+	depends = webkit2gtk
+	depends = z3
+	source = rism-gui-0.1.0.tar.gz::https://github.com/neferin12/iSM/archive/refs/tags/rism-gui-v0.1.0.tar.gz
+	sha256sums = ea1935cce053dc7f63d15990d2571015a404f6451bea60fccc364d213d31821c
+
+pkgname = rism-gui

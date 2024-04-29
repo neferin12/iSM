@@ -1,0 +1,33 @@
+# Maintainer: Julian Pollinger <julian@pollinger.dev>
+
+pkgname=('rism-gui')
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Gui for RiSM'
+arch=('x86_64')
+url='https://github.com/neferin12/iSM'
+license=('MIT')
+depends=('webkit2gtk' 'z3')
+makedepends=('cargo' 'clang' 'binutils')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rism-gui-v$pkgver.tar.gz")
+_dir="iSM-rism-gui-v$pkgver/gui/tauri-gui"
+prepare() {
+    cd $_dir
+    yarn install
+    cd src-tauri
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+
+build() {
+    cd $_dir
+    export RUSTUP_TOOLCHAIN=stable
+    yarn tauri build -b deb
+}
+
+package() {
+    cp -r $_dir/src-tauri/target/release/bundle/deb/rism-gui_${pkgver}_amd64/data/* $pkgdir
+    # install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+}
+sha256sums=('ea1935cce053dc7f63d15990d2571015a404f6451bea60fccc364d213d31821c')
