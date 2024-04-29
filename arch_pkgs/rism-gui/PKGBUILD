@@ -8,13 +8,14 @@ arch=('x86_64')
 url='https://github.com/neferin12/iSM'
 license=('MIT')
 depends=('webkit2gtk' 'z3')
-makedepends=('cargo' 'clang' 'binutils' 'nodejs' 'npm')
+makedepends=('cargo' 'clang' 'binutils' 'nodejs' 'npm' 'sed')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rism-gui-v$pkgver.tar.gz")
 _dir="iSM-rism-gui-v$pkgver/gui/tauri-gui"
 prepare() {
     cd $_dir
     npm install
     cd src-tauri
+    sed -i 's/yarn/npm/g' tauri.conf.json
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }

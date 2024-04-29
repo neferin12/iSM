@@ -10,6 +10,7 @@ pkgbase = rism-gui
 	makedepends = binutils
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = sed
 	depends = webkit2gtk
 	depends = z3
 	source = rism-gui-0.1.0.tar.gz::https://github.com/neferin12/iSM/archive/refs/tags/rism-gui-v0.1.0.tar.gz
