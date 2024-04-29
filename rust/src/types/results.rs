@@ -1,7 +1,8 @@
 use std::cmp::Ordering;
+use serde::Serialize;
 use crate::types::{Assignment, Seminar, Student};
 
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize)]
 pub struct RismResult<'a> {
     points: Option<u16>,
     pub assignments: Vec<Assignment<'a>>,

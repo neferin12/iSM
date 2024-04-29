@@ -922,6 +922,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bootswatch@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "bootswatch@npm:5.3.3"
+  checksum: 10c0/f32187686f1a2ca200267335d32ad95692b16af7de862c537bc0ffb8371947114bf556867eeef3de3d5ef0197ab6efabad34096b0a260d8b44700811cd72adf6
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^2.0.1":
   version: 2.0.1
   resolution: "brace-expansion@npm:2.0.1"
@@ -2181,6 +2188,7 @@ __metadata:
     "@vue/tsconfig": "npm:^0.5.1"
     bootstrap: "npm:^5.3.3"
     bootstrap-vue-next: "npm:^0.17.2"
+    bootswatch: "npm:^5.3.3"
     npm-run-all2: "npm:^6.1.2"
     pinia: "npm:^2.1.7"
     typescript: "npm:~5.4.0"

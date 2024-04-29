@@ -4,24 +4,35 @@ import {BNavbar} from "bootstrap-vue-next";
 </script>
 
 <template>
-    <BNavbar data-tauri-drag-region id="navbar" variant="primary-subtle" v-b-color-mode="'dark'">
-      <BNavbarBrand tag="h1" class="mb-0">RiSM GUI</BNavbarBrand>
-      <BCollapse id="nav-collapse" is-nav>
-        <BNavbarNav>
-          <BNavItem to="/">New calculation</BNavItem>
-          <BNavItem to="about">About</BNavItem>
-        </BNavbarNav>
-      </BCollapse>
+  <BNavbar data-tauri-drag-region id="navbar" variant="primary" v-b-color-mode="'dark'">
+    <BNavbarBrand tag="h1" class="mb-0">RiSM GUI</BNavbarBrand>
+    <BCollapse id="nav-collapse" is-nav>
+      <BNavbarNav>
+        <BNavItem to="/">New calculation</BNavItem>
+        <BNavItem to="/about">About</BNavItem>
+      </BNavbarNav>
+    </BCollapse>
 
-    </BNavbar>
-    <main class="content">
-      <RouterView/>
-    </main>
+  </BNavbar>
+  <main class="content">
+    <div>
+      <b-card>
+        <RouterView/>
+      </b-card>
+    </div>
+  </main>
 </template>
 
 <style scoped>
 .content {
   padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.content > div {
+  max-width: 100%;
+  width: 900px
 }
 
 #navbar {

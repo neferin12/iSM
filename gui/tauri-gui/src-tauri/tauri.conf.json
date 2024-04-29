@@ -59,8 +59,8 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 650,
-        "resizable": false,
+        "height": 700,
+        "resizable": true,
         "title": "RiSM",
         "width": 1000
       }

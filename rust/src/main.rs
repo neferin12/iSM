@@ -3,7 +3,6 @@ use std::thread::ThreadId;
 use clap::Parser;
 use serde::Serialize;
 use rism::rism_classic::run;
-use rism::constants::get_default_points;
 use rism::io::{import_students, import_seminars};
 #[cfg(feature = "model-checking")]
 use rism::rism_model_checking::run_model_check;
@@ -12,6 +11,7 @@ use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 use once_cell::sync::Lazy;
 use tabled::{Table, Tabled};
 use tabled::settings::Style;
+use rism::constants::Points;
 
 #[derive(
 clap::ValueEnum, Clone, Default, Debug, Serialize, PartialEq
@@ -86,9 +86,9 @@ fn main() {
     let students = import_students(&args.students_path, &seminars);
 
     let best_iteration = match args.variant {
-        ExecutionVariants::Classic => Some(run(&students, &seminars, args.iterations, get_default_points(), args.threads, update_progress)),
+        ExecutionVariants::Classic => Some(run(&students, &seminars, args.iterations, Points::default(), args.threads, update_progress)),
         #[cfg(feature = "model-checking")]
-        ExecutionVariants::ModelChecking => run_model_check(&students, &seminars, get_default_points())
+        ExecutionVariants::ModelChecking => run_model_check(&students, &seminars, Points::default())
     };
 
     unsafe { PROGRESS_BARS.iter().for_each(|(_, p)| p.finish_and_clear()); }

@@ -16,6 +16,7 @@
     "@tauri-apps/api": "^1.5.4",
     "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.17.2",
+    "bootswatch": "^5.3.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"

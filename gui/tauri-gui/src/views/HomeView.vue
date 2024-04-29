@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import {reactive} from "vue";
+import {onMounted, reactive} from "vue";
 import {open} from "@tauri-apps/api/dialog"
+import {useRouter} from "vue-router";
+import {storeToRefs} from "pinia";
+import {useDataStore} from "@/stores/data";
 
-const form = reactive({
-  votes: '',
-  seminars: '',
-  modelChecking: false,
-  iterations: 1000,
-  threads: 4
-})
+const {votes, seminars, modelChecking, iterations, threads, result} = storeToRefs(useDataStore());
 
 async function selectVotesFile() {
   const selected = await open({
@@ -19,9 +16,9 @@ async function selectVotesFile() {
   })
   if (selected) {
     if (Array.isArray(selected)) {
-      form.votes = selected[0];
+      votes.value = selected[0];
     } else {
-      form.votes = selected;
+      votes.value = selected;
     }
   }
 
@@ -36,21 +33,33 @@ async function selectSeminarsFile() {
   })
   if (selected) {
     if (Array.isArray(selected)) {
-      form.seminars = selected[0];
+      seminars.value = selected[0];
     } else {
-      form.seminars = selected;
+      seminars.value = selected;
     }
   }
 
 }
 
-function run() {
+const router = useRouter();
 
+function run(evt: Event) {
+  evt.preventDefault();
+  if (modelChecking.value) {
+    router.push({name: "run-model-checking"})
+  } else {
+    router.push({name: "run-normal"});
+  }
 }
+
+onMounted(() => {
+  result.value = null;
+});
+
 </script>
 
 <template>
-  <BForm>
+  <BForm @submit="run">
     <BFormGroup
         id="input-group-1"
         class="form-group"
@@ -61,11 +70,11 @@ function run() {
       <b-input-group>
         <BFormInput
             id="input-1"
-            v-model="form.votes"
+            v-model="votes"
             required
         />
         <template #append>
-          <b-button @click="selectVotesFile">Select</b-button>
+          <b-button @click="selectVotesFile" variant="outline-primary">Select</b-button>
         </template>
       </b-input-group>
 
@@ -81,17 +90,18 @@ function run() {
       <b-input-group>
         <BFormInput
             id="input-2"
-            v-model="form.seminars"
+            v-model="seminars"
             required
         />
         <template #append>
-          <b-button @click="selectSeminarsFile">Select</b-button>
+          <b-button @click="selectSeminarsFile" variant="outline-primary">Select</b-button>
         </template>
       </b-input-group>
 
     </BFormGroup>
 
-    <BFormGroup
+    <BCollapse :visible="!modelChecking">
+      <BFormGroup
         id="input-group-3"
         class="form-group"
         label="Iterations"
@@ -100,7 +110,7 @@ function run() {
     >
       <BFormInput
           id="input-3"
-          v-model="form.iterations"
+          v-model="iterations"
           type="number"
           required
       />
@@ -116,23 +126,24 @@ function run() {
     >
       <BFormInput
           id="input-3"
-          v-model="form.threads"
+          v-model="threads"
           type="number"
           required
       />
 
     </BFormGroup>
+    </BCollapse>
     <div class="form-group">
       <BFormCheckbox
           id="checkbox-1"
-          v-model="form.modelChecking"
+          v-model="modelChecking"
           name="checkbox-1"
       >
         Use model checking (<strong>experimental</strong>)
       </BFormCheckbox>
     </div>
 
-    <b-button type="submit" class="w-100">Calculate</b-button>
+    <b-button type="submit" class="w-100" variant="primary">Calculate</b-button>
   </BForm>
 </template>
 
