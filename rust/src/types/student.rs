@@ -1,7 +1,8 @@
 use std::cmp::Ordering;
+use serde::Serialize;
 use crate::types::Seminar;
 
-#[derive(Debug, Clone, Eq)]
+#[derive(Debug, Clone, Eq, Serialize)]
 pub struct Student {
     pub id: u16,
     pub name: String,

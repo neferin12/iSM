@@ -1,7 +1,8 @@
 use std::cmp::Ordering;
 use std::fmt::Display;
+use serde::Serialize;
 
-#[derive(PartialEq, Debug, Clone, Eq)]
+#[derive(PartialEq, Debug, Clone, Eq, Serialize)]
 pub enum SeminarType {
     Scientific,
     Practical
@@ -17,7 +18,7 @@ impl Display for SeminarType{
     }
 }
 
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Serialize)]
 pub struct Seminar {
     pub name: String,
     pub capacity: u16,
