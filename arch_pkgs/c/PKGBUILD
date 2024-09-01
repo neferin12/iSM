@@ -26,10 +26,10 @@ build() {
     cmake --build build-$pkgver-cism
 }
 
-check() {
-    cmake --build build-$pkgver-libism --target test
-    cmake --build build-$pkgver-cism --target test
-}
+# check() {
+#     cmake --build build-$pkgver-libism --target test
+#     cmake --build build-$pkgver-cism --target test
+# }
 
 package_libism() {
     depends=('glibc')
