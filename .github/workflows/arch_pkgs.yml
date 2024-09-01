@@ -109,7 +109,7 @@ jobs:
         env:
           EXTERNAL_TOKEN : ${{ secrets.EXTERNAL_TOKEN }}
         run: |
-          git clone https://username:$EXTERNAL_TOKEN@git.pollinger.dev/julian/repo.git
+          git clone https://julian:$EXTERNAL_TOKEN@git.pollinger.dev/julian/repo.git
       - name: Add packages to repo
         run: |
           cd repo
