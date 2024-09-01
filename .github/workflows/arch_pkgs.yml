@@ -55,38 +55,6 @@ jobs:
         path: | 
             ${{ steps.makepkg.outputs.pkgfile0 }}
             ${{ steps.makepkg.outputs.pkgfile1 }}
-#   aur-publish:
-#     if: github.event_name != 'pull_request'
-#     needs: [build-packages]
-#     runs-on: ubuntu-latest
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         package: 
-#           [
-#             cadical-pic, 
-#             glpk-cut-log, 
-#             libpoly-git, 
-#             python-cvc5, 
-#             symfpu-cvc5, 
-#             cvc5, 
-#             cvc5-bestperformance, 
-#             cvc5-bin
-#           ]
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: Publish AUR package ${{ matrix.package }}
-#         uses: KSXGitHub/github-actions-deploy-aur@v2.7.0
-#         with:
-#           pkgname: ${{ matrix.package }}
-#           pkgbuild: ./${{ matrix.package }}/PKGBUILD
-#           commit_username: ${{ secrets.AUR_USERNAME }}
-#           commit_email: ${{ secrets.AUR_EMAIL }}
-#           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-#           commit_message: Update package
-#           ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
-#           allow_empty_commits: false
-# if: ${{ github.event_name != 'pull_request' && needs.changes.outputs.pgkbuild == 'true' }}
   publish-to-repo:
     if: ${{ github.event_name != 'pull_request'}}
     runs-on: ubuntu-latest
@@ -115,7 +83,43 @@ jobs:
           repo-add -p -R pollinger.db.tar.gz *.pkg.tar.zst
       - name: Commit changes
         run: |
-            git config --global --add safe.directory /__w/iSM/iSM
+            git config --global --add safe.directory $(pwd)
+            git add arch
+            git config --global user.name 'GitHub Actions [Bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git commit -am "Updated packages"
+            git push
+  publish-to-gitea-repo:
+    if: ${{ github.event_name != 'pull_request'}}
+    runs-on: ubuntu-latest
+    needs: [build-packages, changes]
+    container: 
+      image: archlinux:base-devel
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm git
+      - name: Download packages
+        uses: actions/download-artifact@v3
+        with:
+          name: pkgfiles
+          path: /tmp/pkgfiles
+      - name: Clone repo
+        env:
+          EXTERNAL_TOKEN : ${{ secrets.EXTERNAL_TOKEN }}
+        run: |
+          git clone https://username:$EXTERNAL_TOKEN@git.pollinger.dev/julian/repo.git
+      - name: Add packages to repo
+        run: |
+          cd repo
+          cp -f /tmp/pkgfiles/* ./arch/x86_64/
+          cd arch/x86_64
+          repo-add -p -R pollinger.db.tar.gz *.pkg.tar.zst
+      - name: Commit changes
+        run: |
+            cd repo
+            git config --global --add safe.directory $(pwd)
             git add arch
             git config --global user.name 'GitHub Actions [Bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
