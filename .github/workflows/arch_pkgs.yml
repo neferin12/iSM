@@ -100,6 +100,7 @@ jobs:
         run: |
           pacman -Syu --noconfirm
           pacman -S --noconfirm git git-lfs
+          git lfs install
       - name: Download packages
         uses: actions/download-artifact@v3
         with:
@@ -113,7 +114,6 @@ jobs:
       - name: Add packages to repo
         run: |
           cd repo
-          git lfs install
           cp -f /tmp/pkgfiles/* ./arch/x86_64/
           cd arch/x86_64
           repo-add -p -R pollinger.db.tar.gz *.pkg.tar.zst
