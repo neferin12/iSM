@@ -99,7 +99,7 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm
-          pacman -S --noconfirm git
+          pacman -S --noconfirm git git-lfs
       - name: Download packages
         uses: actions/download-artifact@v3
         with:
