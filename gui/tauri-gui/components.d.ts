@@ -9,16 +9,12 @@ declare module 'vue' {
   export interface GlobalComponents {
     BAlert: typeof import('bootstrap-vue-next')['BAlert']
     BButton: typeof import('bootstrap-vue-next')['BButton']
-    BCard: typeof import('bootstrap-vue-next')['BCard']
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
     BForm: typeof import('bootstrap-vue-next')['BForm']
     BFormCheckbox: typeof import('bootstrap-vue-next')['BFormCheckbox']
     BFormGroup: typeof import('bootstrap-vue-next')['BFormGroup']
     BFormInput: typeof import('bootstrap-vue-next')['BFormInput']
     BInputGroup: typeof import('bootstrap-vue-next')['BInputGroup']
-    BNavbarBrand: typeof import('bootstrap-vue-next')['BNavbarBrand']
-    BNavbarNav: typeof import('bootstrap-vue-next')['BNavbarNav']
-    BNavItem: typeof import('bootstrap-vue-next')['BNavItem']
     BProgress: typeof import('bootstrap-vue-next')['BProgress']
     BTable: typeof import('bootstrap-vue-next')['BTable']
     BTableSimple: typeof import('bootstrap-vue-next')['BTableSimple']
@@ -27,8 +23,5 @@ declare module 'vue' {
     BTr: typeof import('bootstrap-vue-next')['BTr']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-  }
-  export interface ComponentCustomProperties {
-    vBColorMode: typeof import('bootstrap-vue-next')['vBColorMode']
   }
 }

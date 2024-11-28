@@ -1,8 +1,8 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 
 pkgname=('rism-gui')
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Gui for RiSM'
 arch=('x86_64')
 url='https://github.com/neferin12/iSM'
