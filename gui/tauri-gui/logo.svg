@@ -7,46 +7,30 @@
    viewBox="0 0 512 512"
    version="1.1"
    id="svg1"
-   inkscape:export-filename="logo.png"
-   inkscape:export-xdpi="192"
-   inkscape:export-ydpi="192"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="px" />
   <defs
      id="defs1" />
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
+     id="layer3">
+    <circle
+       style="fill:#212529;fill-opacity:1;stroke:none;stroke-width:10"
+       id="path1"
+       cx="256"
+       cy="256"
+       r="250" />
+  </g>
+  <g
+     id="layer2">
     <text
        xml:space="preserve"
-       style="font-size:265.78px;font-family:'Arimo Nerd Font';-inkscape-font-specification:'Arimo Nerd Font';text-align:center;text-anchor:middle;fill:#d40000;stroke-width:13.8427"
-       x="258.01151"
-       y="350.99557"
+       style="font-size:218.23px;font-family:'Hack Nerd Font';-inkscape-font-specification:'Hack Nerd Font';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:11.3661"
+       x="246.90701"
+       y="337.83624"
        id="text1"><tspan
-         sodipodi:role="line"
          id="tspan1"
-         x="258.01151"
-         y="350.99557"
-         style="font-size:265.78px;fill:#d40000;stroke-width:13.8427">iSM</tspan></text>
-    <rect
-       style="fill:#d40000;fill-opacity:0;stroke:#000000;stroke-width:10;stroke-opacity:1"
-       id="rect1"
-       width="440.9725"
-       height="213.26633"
-       x="35.513748"
-       y="149.36684" />
+         x="246.90703"
+         y="337.83624"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:218.23px;font-family:'BigBlueTerm437 Nerd Font';-inkscape-font-specification:'BigBlueTerm437 Nerd Font';fill:#a53df6;fill-opacity:1;stroke:none;stroke-width:11.3661">iSM</tspan></text>
   </g>
 </svg>

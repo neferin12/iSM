@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, reactive} from "vue";
-import {open} from "@tauri-apps/api/dialog"
+import {open} from "@tauri-apps/plugin-dialog"
 import {useRouter} from "vue-router";
 import {storeToRefs} from "pinia";
 import {useDataStore} from "@/stores/data";

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {invoke} from "@tauri-apps/api";
+import {invoke} from "@tauri-apps/api/core"
 import {onMounted, reactive} from "vue";
 import {listen} from "@tauri-apps/api/event";
 import {storeToRefs} from "pinia";

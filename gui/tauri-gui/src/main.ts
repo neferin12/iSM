@@ -1,6 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css'
-// import "bootswatch/dist/cyborg/bootstrap.min.css";
-import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
+import "./main.scss"
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

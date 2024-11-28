@@ -2,7 +2,7 @@
 import {onMounted, reactive} from "vue";
 import {useDataStore} from "@/stores/data";
 import {storeToRefs} from "pinia";
-import {invoke} from "@tauri-apps/api";
+import {invoke} from "@tauri-apps/api/core"
 import {listen} from "@tauri-apps/api/event";
 import {useRouter} from "vue-router";
 
@@ -31,10 +31,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <p><strong>Running...</strong></p>
+  <p><strong>Progress per thread</strong></p>
   <div v-for="(value, key) in progress" :key="key" class="mb-3">
-    <p class="mb-0">Thread {{ key + 1 }}</p>
-    <b-progress :value="value[1].progress" :max="value[1].total">
+    <b-progress :value="value[1].progress" :max="value[1].total" height="5px">
     </b-progress>
   </div>
 </template>

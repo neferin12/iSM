@@ -1,10 +1,10 @@
 [package]
 name = "app"
-version = "0.1.0"
+version = "0.2.0"
 description = "Graphical User Interface for RISM"
 authors = ["Julian Pollinger"]
-license = ""
-repository = ""
+license = "MIT"
+repository = "https://github.com/neferin12/ism"
 default-run = "app"
 edition = "2021"
 rust-version = "1.60"
@@ -12,13 +12,19 @@ rust-version = "1.60"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "1.5.1", features = [] }
+tauri-build = { version = "2.0.3", features = [] }
 
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.6.2", features = ["dialog-open"] }
+tauri = { version = "2.1.1", features = [] }
 rism = { path = "../../../rust"}
+tauri-plugin-dialog = "2.0.0-rc.7"
+tauri-plugin-notification = "2"
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.

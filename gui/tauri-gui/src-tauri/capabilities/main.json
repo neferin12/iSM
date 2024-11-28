@@ -1,0 +1,15 @@
+{
+  "identifier": "main-capabilities",
+  "description": "Permissions",
+  "local": true,
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:app:default",
+    "dialog:allow-open",
+    "dialog:default",
+    "core:event:allow-listen",
+    "notification:default"
+  ]
+}
