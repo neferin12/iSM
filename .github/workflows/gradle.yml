@@ -34,7 +34,7 @@ jobs:
         arguments: distZip
         build-root-directory: java
     - name: Upload distribution
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: java-dist
         path: java/app/build/distributions/app.zip

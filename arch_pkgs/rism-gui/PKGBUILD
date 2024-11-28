@@ -1,7 +1,7 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 
 pkgname=('rism-gui')
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Gui for RiSM'
 arch=('x86_64')
@@ -22,7 +22,7 @@ prepare() {
 
 
 build() {
-    cd $_dir
+    cd $_dir/src-tauri
     export RUSTUP_TOOLCHAIN=stable
     npx tauri build -b deb
 }
@@ -31,4 +31,4 @@ package() {
     cp -r $_dir/src-tauri/target/release/bundle/deb/rism-gui_${pkgver}_amd64/data/* $pkgdir
     # install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('a9505819638eb8c14c88bb548aa158492218fc6ac0237fd601a8e0a766c0c3b5')
+sha256sums=('SKIP')
