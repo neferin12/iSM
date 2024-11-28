@@ -31,4 +31,4 @@ package() {
     cp -r $_dir/src-tauri/target/release/bundle/deb/rism-gui_${pkgver}_amd64/data/* $pkgdir
     # install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('ea1935cce053dc7f63d15990d2571015a404f6451bea60fccc364d213d31821c')
+sha256sums=('a9505819638eb8c14c88bb548aa158492218fc6ac0237fd601a8e0a766c0c3b5')
