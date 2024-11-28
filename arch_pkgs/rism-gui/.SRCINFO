@@ -1,7 +1,7 @@
 pkgbase = rism-gui
 	pkgdesc = Gui for RiSM
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neferin12/iSM
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = rism-gui
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = sed
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = z3
 	source = rism-gui-0.2.2.tar.gz::https://github.com/neferin12/iSM/archive/refs/tags/rism-gui-v0.2.2.tar.gz
 	sha256sums = SKIP
