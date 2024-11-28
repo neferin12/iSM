@@ -1,8 +1,8 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 
 pkgname=('rism-gui')
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='Gui for RiSM'
 arch=('x86_64')
 url='https://github.com/neferin12/iSM'
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-    cp -r $_dir/src-tauri/target/release/bundle/deb/rism-gui_${pkgver}_amd64/data/* $pkgdir
+    cp -r $_dir/src-tauri/target/release/bundle/deb/RiSM\ GUI_${pkgver}_amd64/data/* $pkgdir
     # install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 sha256sums=('SKIP')
