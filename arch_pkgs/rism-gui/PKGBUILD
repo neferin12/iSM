@@ -2,7 +2,7 @@
 
 pkgname=('rism-gui')
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Gui for RiSM'
 arch=('x86_64')
 url='https://github.com/neferin12/iSM'
